@@ -1,8 +1,6 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { locales, type Locale } from '~/i18n';
-import Content from '~/components/widgets/Content.astro';
-import Features2 from '~/components/widgets/Features2.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
@@ -24,36 +22,129 @@ const metadata = {
     subtitle="Research outcomes from the SSTDV project."
   />
 
-  <Content
-    title="Publications"
-    subtitle="Peer-reviewed research contributions from the SSTDV project."
-    columns={1}
-    items={[
-      {
-        title: 'Generative AI in Breast Surgical Simulation',
-        description: 'Status: Targeted for Q3 2026 | Related Use Case: Breast Cancer Surgical Simulation',
-      },
-      {
-        title: '2.5D Deep Learning Model for Efficient and Accurate Breast Tumor Segmentation from Breast MRI to Support Surgical Planning in Patients with Breast Cancer',
-        description: 'Status: Submitted | Related Use Case: Breast Cancer | Related Technology: Multi-Structure Segmentation',
-      },
-    ]}
-  />
+  <section class="px-4 py-12 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+    <div class="mx-auto prose prose-lg max-w-6xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400">
 
-  <Content
-    title="Patents"
-    subtitle="Intellectual property protecting SSTDV project innovations."
-    columns={1}
-    items={[
-      {
-        title: 'Proprietary Conditioning Mechanisms for High-Accuracy Surgical Outcome Synthesis',
-        description: 'Related Technology: Objective-Reinforced Generation, Surgical Plan Conditioning',
-      },
-      {
-        title: 'Interactive Patient-Centric Anatomical Mapping for Informed Consent and Surgical Consultation',
-        description: 'Related Use Case: Breast Cancer Surgical Simulation | Related System: Patient-Centric Surgical Planning System',
-      },
-    ]}
-  />
+      <h2>Publications</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Paper (First Author)</th>
+            <th>Journal / Proceedings</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>AI-based deformable hippocampal mesh reflects hippocampal morphological characteristics in relation to cognition in healthy older adults<br/><span class="text-sm text-muted">Wonjung Park</span></td>
+            <td>NeuroImage</td>
+            <td>2025.04</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Prediction of beach profile changes using spatiotemporal graph neural networks for beach morphological evolution modeling<br/><span class="text-sm text-muted">Jinah Kim</span></td>
+            <td>Ocean Engineering</td>
+            <td>2025.11</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Morphodynamics-guided spatiotemporal network for modeling the morphological evolution of sand beaches response to extreme storm events: alphaBeach-X<br/><span class="text-sm text-muted">Jinah Kim</span></td>
+            <td>Journal of Ocean Engineering and Science</td>
+            <td>2025.11</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Volumetric Conditioning Module to Control Pretrained Diffusion Models for 3D Medical Images<br/><span class="text-sm text-muted">Suhyun Ahn</span></td>
+            <td>Proceedings of WACV</td>
+            <td>2025.02</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>SAM3X: Efficient 3D-Aware Network for Medical Image Segmentation Using SAM<br/><span class="text-sm text-muted">Donggyu Lee</span></td>
+            <td>Proceedings of ISBI 2025</td>
+            <td>2025.04</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Train Once, Generate Anywhere: Discretization Agnostic Neural Cellular Automata using SPH Method<br/><span class="text-sm text-muted">Hyunsoo Kim</span></td>
+            <td>SIGGRAPH Posters '25</td>
+            <td>2025.08</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Are Medical Image Generative Models Biologically Trustworthy?<br/><span class="text-sm text-muted">Suhyun Ahn</span></td>
+            <td>Proceedings of ICCV Workshops</td>
+            <td>2025.10</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>BrainODE: Neural Shape Dynamics for Age- and Disease-aware Brain Trajectories<br/><span class="text-sm text-muted">Wonjung Park</span></td>
+            <td>Advances in Neural Information Processing Systems</td>
+            <td>2025.12</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Improved Tumor Segmentation using Selective Synthetic Augmentation for Enhanced Surgical Planning in Breast MRI<br/><span class="text-sm text-muted">Miguel Luna</span></td>
+            <td>Lecture Notes in Computer Science</td>
+            <td>2025.09</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Predicting Motor Symptom Progression in Parkinson's Disease Using GCN and DTI<br/><span class="text-sm text-muted">Hyewon Shin</span></td>
+            <td>Annual Meeting of the Organization for Human Brain Mapping</td>
+            <td>2025.06</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>의료 인공지능 연구 동향 - 치매 관련 연구를 중심으로<br/><span class="text-sm text-muted">우성호, 김일기</span></td>
+            <td>정보처리학회지</td>
+            <td>2025.09</td>
+          </tr>
+        </tbody>
+      </table>
 
+      <h2>Patents</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>지식재산권 명칭</th>
+            <th>국명</th>
+            <th>출원인</th>
+            <th>출원일</th>
+            <th>출원번호</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>의료 이미지를 생성하기 위한 기초 모델을 조정하는 방법</td>
+            <td>대한민국</td>
+            <td>주식회사 빔웍스</td>
+            <td>2024.11.22</td>
+            <td>10-2024-0167915</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>유방 촉출된 판독문을 생성 및 변경하는 방법</td>
+            <td>대한민국</td>
+            <td>주식회사 빔웍스</td>
+            <td>2024.11.22</td>
+            <td>10-2024-0167914</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>의료 정비의 화면 정보를 분석하는 방법</td>
+            <td>대한민국</td>
+            <td>주식회사 빔웍스</td>
+            <td>우선출원 신청</td>
+            <td>10-2025-0148633</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
 </Layout>

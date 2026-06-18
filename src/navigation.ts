@@ -15,7 +15,7 @@ export function getHeaderData(locale: Locale) {
         href: getRelativeLocaleUrl(locale, '/use-cases/'),
       },
       {
-        text: t(locale, 'nav.publications'),
+        text: 'Publications & Patents',
         href: getRelativeLocaleUrl(locale, '/publications/'),
       },
       {
@@ -52,7 +52,7 @@ export function getFooterData(locale: Locale) {
       {
         title: t(locale, 'footer.resources'),
         links: [
-          { text: t(locale, 'nav.publications'), href: getRelativeLocaleUrl(locale, '/publications/') },
+          { text: 'Publications & Patents', href: getRelativeLocaleUrl(locale, '/publications/') },
           { text: t(locale, 'nav.docs'), href: externalLinks.docs },
         ],
       },

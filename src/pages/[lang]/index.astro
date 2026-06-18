@@ -37,16 +37,6 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <Stats
-    title="Project Overview"
-    stats={[
-      { title: 'Research Institutions', amount: '5' },
-      { title: 'Use Cases', amount: '2' },
-      { title: 'Software Tools', amount: '5' },
-      { title: 'Research Areas', amount: '7' },
-    ]}
-  />
-
   <Features3
     title="Research Areas"
     subtitle="Core technical research areas spanning synthetic data generation, evaluation, and medical imaging applications."
@@ -178,6 +168,15 @@ const metadata = {
         icon: 'tabler:book',
         callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/docs/') },
       },
+    ]}
+  />
+
+  <Stats
+    title="Project Outcomes"
+    stats={[
+      { title: 'Open-source Software', amount: '14' },
+      { title: 'Open Datasets', amount: '7' },
+      { title: 'Use Cases', amount: '2' },
     ]}
   />
 
