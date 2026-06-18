@@ -79,7 +79,7 @@
     "breastLabel": "02 — Breast Cancer",
     "breastTitle": "Breast Cancer Surgical Simulation",
     "breastSubtitle": "Beamworks · 1,483 pre/post-operative cases",
-    "breastOverview": "From a patient's pre-operative MRI and the planned surgery type, the model predicts the post-operative breast. The synthesized image displays the resection region and the resulting shape change. This lets physicians analyze the expected outcome before surgery and patients take part in the treatment decision.<br><img src='/images/breast_usecase_pipeline.png' alt='Breast Cancer Surgical Simulation Pipeline' class='mt-4 rounded-lg w-full' />",
+    "breastOverview": "From a patient's pre-operative MRI and the planned surgery type, the model predicts the post-operative breast. The synthesized image displays the resection region and the resulting shape change. This lets physicians analyze the expected outcome before surgery and patients take part in the treatment decision.",
     "breastDataTitle": "Data & Technologies",
     "breastDataDesc": "The generative model is trained using 1,483 cases of pre-operative and post-operative breast MR images. The framework incorporates structural knowledge including resection regions, implant location, and implant size as conditioning information.",
     "breastPipelineLabel": "Pipeline",
