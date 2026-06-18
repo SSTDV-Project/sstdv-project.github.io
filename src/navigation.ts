@@ -18,6 +18,10 @@ export function getHeaderData(locale: Locale) {
         text: t(locale, 'nav.publications'),
         href: getRelativeLocaleUrl(locale, '/publications/'),
       },
+      {
+        text: t(locale, 'nav.docs'),
+        href: getRelativeLocaleUrl(locale, '/docs/'),
+      },
     ],
     actions: [
       // {
@@ -49,6 +53,7 @@ export function getFooterData(locale: Locale) {
         title: t(locale, 'footer.resources'),
         links: [
           { text: t(locale, 'nav.publications'), href: getRelativeLocaleUrl(locale, '/publications/') },
+          { text: t(locale, 'nav.docs'), href: externalLinks.docs },
         ],
       },
     ],
