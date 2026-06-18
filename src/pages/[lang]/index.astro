@@ -126,7 +126,7 @@ const metadata = {
   />
 
   <Steps2
-    title="Core Goals"
+    title="Research Goals"
     subtitle="The SSTDV project pursues four core research objectives to advance synthetic spatio-temporal data technology."
     items={[
       {
@@ -149,6 +149,39 @@ const metadata = {
   />
 
   <Features2
+    tagline="Resources"
+    title="Research & Use Cases"
+    subtitle={t(lang, 'resources.subtitle')}
+    columns={4}
+    items={[
+      {
+        title: 'Research',
+        description: t(lang, 'resources.researchDesc'),
+        icon: 'tabler:flask',
+        callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/features/') },
+      },
+      {
+        title: 'Use Cases',
+        description: t(lang, 'resources.useCasesDesc'),
+        icon: 'tabler:stethoscope',
+        callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/use-cases/') },
+      },
+      {
+        title: 'Publications & Patents',
+        description: t(lang, 'resources.publicationsDesc'),
+        icon: 'tabler:file-text',
+        callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/publications/') },
+      },
+      {
+        title: 'Docs',
+        description: t(lang, 'resources.docsDesc'),
+        icon: 'tabler:book',
+        callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/docs/') },
+      },
+    ]}
+  />
+
+  <Features2
     title="Get In Touch"
     tagline="Contact"
     columns={2}
@@ -166,48 +199,11 @@ const metadata = {
     ]}
   />
 
-  <Features2
-    tagline="Resources"
-    title="Documentation & Outcomes"
-    subtitle={t(lang, 'resources.subtitle')}
-    columns={3}
-    items={[
-      {
-        title: 'Docs',
-        description: t(lang, 'resources.docsDesc'),
-        icon: 'tabler:book',
-        callToAction: { text: 'Go to Docs', href: getRelativeLocaleUrl(lang, '/docs/'), target: '_blank' },
-      },
-      {
-        title: 'Publications & Patents',
-        description: t(lang, 'resources.publicationsDesc'),
-        icon: 'tabler:file-text',
-        callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/publications/') },
-      },
-      {
-        title: 'Research',
-        description: t(lang, 'resources.researchDesc'),
-        icon: 'tabler:flask',
-        callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/features/') },
-      },
-    ]}
-  />
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: t(lang, 'nav.docs'),
-        href: getRelativeLocaleUrl(lang, '/docs/'),
-        target: '_blank',
-        icon: 'tabler:book',
-      },
-    ]}
-  >
+  <CallToAction actions={[]}>
     <Fragment slot="title">SSTDV Project</Fragment>
     <Fragment slot="subtitle">
-      Supported by IITP grant funded by the Korea government (MSIT)<br />
-      No.00223446 — Development of object-oriented synthetic data generation and evaluation methods
+      This work was supported by the <strong>Institute for Information &amp; Communications Technology Promotion (IITP)</strong> grant funded by <strong>the Korea government (MSIT)</strong>.<br />
+      (No.00223446, Development of object-oriented synthetic data generation and evaluation methods)
     </Fragment>
   </CallToAction>
 </Layout>
