@@ -13,308 +13,57 @@ const { lang } = Astro.params as { lang: Locale };
 <Layout metadata={{ title: 'Docs' }} lang={lang}>
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
     <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter mb-4">Docs</h1>
-    <p class="text-muted text-lg mb-12">Step-by-step tutorials and software references for SSTDV project tools.</p>
+    <p class="text-muted text-lg mb-12">Open-source repositories from the SSTDV project.</p>
 
     <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md">
 
-      <!-- ===== TUTORIALS ===== -->
-      <h2>Tutorials</h2>
-      <p>Step-by-step guides for common research workflows using SSTDV tools.</p>
+      <h2>Generation</h2>
 
-      <!-- Brain Imaging -->
-      <h3>Brain Imaging Analysis Tutorial</h3>
-      <table>
-        <tbody>
-          <tr><td><strong>Estimated Time</strong></td><td>45 minutes</td></tr>
-          <tr><td><strong>Difficulty</strong></td><td>Intermediate</td></tr>
-          <tr><td><strong>Prerequisites</strong></td><td>Python 3.9+</td></tr>
-        </tbody>
-      </table>
-
-      <h4>What You'll Learn</h4>
-      <ul>
-        <li>Load and preprocess brain MRI scans</li>
-        <li>Extract shape features using BrainShapeToolKit</li>
-        <li>Apply differentiable appearance modeling with DiffAM</li>
-        <li>Visualize and interpret results</li>
-      </ul>
-
-      <h4>Dataset</h4>
-      <p>This tutorial uses the <strong>ADNI dataset</strong> (Alzheimer's Disease Neuroimaging Initiative). Ensure you have obtained access and downloaded the appropriate MRI scans before proceeding.</p>
-
-      <h4>Step 1: Setup Environment</h4>
-      <pre><code class="language-bash">git clone https://github.com/SSTDV-Project/BrainShapeToolKit.git
-git clone https://github.com/SSTDV-Project/DiffAM.git
-cd BrainShapeToolKit &amp;&amp; pip install -e .
-cd ../DiffAM &amp;&amp; pip install -e .</code></pre>
-
-      <h4>Step 2: Load and Preprocess Data</h4>
-      <pre><code class="language-python">import nibabel as nib
-import numpy as np
-from brainshapetoolkit import MeshProcessor
-
-mri = nib.load('data/sample_brain.nii.gz')
-mri_data = mri.get_fdata()
-processor = MeshProcessor()
-mesh = processor.extract_surface(mri_data, threshold=0.5)
-mesh_smooth = processor.smooth(mesh, iterations=10)</code></pre>
-
-      <h4>Step 3: Extract Shape Features</h4>
-      <pre><code class="language-python">from brainshapetoolkit.features import ShapeFeatures
-feature_extractor = ShapeFeatures()
-features = feature_extractor.compute(mesh_smooth)
-print(f"Surface area: &#123;features['surface_area']:.2f&#125; mm²")</code></pre>
-
-      <h4>Step 4: Appearance Modeling with DiffAM</h4>
-      <pre><code class="language-python">import diffam
-model = diffam.DiffAM(pretrained=True)
-embeddings = model.extract_embeddings(mesh_smooth)
-synthetic = model.interpolate(embeddings, n_samples=5)</code></pre>
-
-      <h4>Citation</h4>
-      <pre><code>@software&#123;brainshapetoolkit,
-  title  = &#123;BrainShapeToolKit&#125;,
-  author = &#123;SSTDV Project&#125;,
-  year   = &#123;2024&#125;,
-  url    = &#123;https://github.com/SSTDV-Project/BrainShapeToolKit&#125;
-&#125;</code></pre>
-
-      <hr />
-
-      <!-- Breast Cancer -->
-      <h3>Breast Cancer Detection Tutorial</h3>
-      <table>
-        <tbody>
-          <tr><td><strong>Estimated Time</strong></td><td>60 minutes</td></tr>
-          <tr><td><strong>Difficulty</strong></td><td>Advanced</td></tr>
-          <tr><td><strong>Prerequisites</strong></td><td>Python 3.9+, familiarity with deep learning concepts</td></tr>
-        </tbody>
-      </table>
-
-      <h4>What You'll Learn</h4>
-      <ul>
-        <li>Generate synthetic mammography data using DiffuAug</li>
-        <li>Evaluate synthetic data quality with EvalDistSim</li>
-        <li>Train a detection model with an augmented dataset</li>
-      </ul>
-
-      <h4>Step 1: Setup</h4>
-      <pre><code class="language-bash">git clone https://github.com/SSTDV-Project/DiffuAug.git
-cd DiffuAug &amp;&amp; pip install -e .</code></pre>
-
-      <h4>Step 2: Generate Synthetic Data</h4>
-      <pre><code class="language-python">import diffaug
-augmenter = diffaug.DiffuAug(model_type='ddpm', checkpoint='diffaug_pretrained.pth')
-synthetic_data = augmenter.generate(condition=labels, n_samples=500, diffusion_steps=100)</code></pre>
-
-      <h4>Step 3: Evaluate Distribution Similarity</h4>
-      <pre><code class="language-python">import evaldistsim
-evaluator = evaldistsim.EvalDistSim()
-metrics = evaluator.compute_metrics(
-    original=original_data,
-    synthetic=synthetic_data,
-    methods=['ks_test', 'wasserstein', 'fid']
-)
-print(f"KS test: &#123;metrics['ks_test']:.4f&#125;")</code></pre>
-
-      <h4>Troubleshooting</h4>
-      <table>
-        <thead><tr><th>Issue</th><th>Solution</th></tr></thead>
-        <tbody>
-          <tr><td>Out of memory</td><td>Reduce <code>n_samples</code> or batch size</td></tr>
-          <tr><td>Poor FID score</td><td>Increase <code>diffusion_steps</code> (200–500)</td></tr>
-          <tr><td>Checkpoint not found</td><td>Download from DiffuAug releases on GitHub</td></tr>
-        </tbody>
-      </table>
-
-      <h4>Citation</h4>
-      <pre><code>@software&#123;diffuaug,
-  title  = &#123;DiffuAug: Diffusion-based Data Augmentation&#125;,
-  author = &#123;SSTDV Project&#125;,
-  year   = &#123;2024&#125;,
-  url    = &#123;https://github.com/SSTDV-Project/DiffuAug&#125;
-&#125;</code></pre>
-
-      <!-- ===== SOFTWARE REFERENCES ===== -->
-      <h2>Software References</h2>
-      <p>API documentation and usage guides for SSTDV-Project software.</p>
-
-      <!-- BrainShapeToolKit -->
-      <h3>BrainShapeToolKit</h3>
-      <p>Python toolkit for brain shape analysis from MRI data. Surface extraction, mesh processing, and quantitative shape feature computation.</p>
-      <table>
-        <tbody>
-          <tr><td><strong>Repository</strong></td><td><a href="https://github.com/SSTDV-Project/BrainShapeToolKit" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
-          <tr><td><strong>License</strong></td><td>MIT</td></tr>
-        </tbody>
-      </table>
-
-      <h4>Installation</h4>
-      <pre><code class="language-bash">pip install brainshapetoolkit</code></pre>
-
-      <h4>Quick Start</h4>
-      <pre><code class="language-python">import brainshapetoolkit as bst
-processor = bst.MeshProcessor()
-mesh = processor.load('brain_mesh.gii')
-mesh_smooth = processor.smooth(mesh, iterations=10)
-features = bst.ShapeFeatures().compute(mesh_smooth)
-print(f"Surface area: &#123;features['surface_area']&#125;")</code></pre>
-
-      <h4>Features</h4>
-      <table>
-        <thead><tr><th>Feature</th><th>Description</th><th>Units</th></tr></thead>
-        <tbody>
-          <tr><td><code>surface_area</code></td><td>Total surface area</td><td>mm²</td></tr>
-          <tr><td><code>volume</code></td><td>Enclosed volume</td><td>mm³</td></tr>
-          <tr><td><code>thickness</code></td><td>Cortical thickness</td><td>mm</td></tr>
-          <tr><td><code>curvature</code></td><td>Mean curvature</td><td>1/mm</td></tr>
-        </tbody>
-      </table>
-
-      <h4>Dependencies</h4>
-      <ul>
-        <li><code>numpy&gt;=1.21</code>, <code>scipy&gt;=1.7</code>, <code>nibabel&gt;=3.2</code>, <code>numba&gt;=0.55</code></li>
-      </ul>
-
-      <h4>Citation</h4>
-      <pre><code>@software&#123;brainshapetoolkit,
-  title  = &#123;BrainShapeToolKit&#125;,
-  author = &#123;SSTDV Project&#125;,
-  year   = &#123;2024&#125;,
-  url    = &#123;https://github.com/SSTDV-Project/BrainShapeToolKit&#125;
-&#125;</code></pre>
-
-      <hr />
-
-      <!-- DiffAM -->
-      <h3>DiffAM: Differentiable Appearance Modeling</h3>
-      <p>Framework for learning and generating image appearances in a differentiable manner. Enables embedding extraction, conditional synthesis, and attribute-level editing.</p>
-      <table>
-        <tbody>
-          <tr><td><strong>Repository</strong></td><td><a href="https://github.com/SSTDV-Project/DiffAM" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
-          <tr><td><strong>License</strong></td><td>MIT</td></tr>
-        </tbody>
-      </table>
-
-      <h4>Installation</h4>
-      <pre><code class="language-bash">pip install diffam</code></pre>
-
-      <h4>Quick Start</h4>
-      <pre><code class="language-python">import diffam, torch
-model = diffam.DiffAM(pretrained='medical_imaging')
-image = torch.randn(1, 1, 256, 256)
-embeddings = model.extract_embeddings(image)
-synthetic = model.generate(embeddings, n_samples=5)
-edited = model.edit_attributes(embeddings, attribute='contrast', strength=1.5)</code></pre>
-
-      <h4>Pretrained Models</h4>
-      <table>
-        <thead><tr><th>Model</th><th>Best For</th></tr></thead>
-        <tbody>
-          <tr><td><code>medical_imaging_v1</code></td><td>MRI, CT, X-ray</td></tr>
-          <tr><td><code>face_v1</code></td><td>Face images</td></tr>
-          <tr><td><code>general_v1</code></td><td>Natural images</td></tr>
-        </tbody>
-      </table>
-
-      <h4>Dependencies</h4>
-      <ul>
-        <li><code>torch&gt;=2.0</code>, <code>torchvision&gt;=0.15</code>, <code>einops&gt;=0.6</code></li>
-      </ul>
-
-      <h4>Citation</h4>
-      <pre><code>@software&#123;diffam,
-  title  = &#123;DiffAM: Differentiable Appearance Modeling&#125;,
-  author = &#123;SSTDV Project&#125;,
-  year   = &#123;2024&#125;,
-  url    = &#123;https://github.com/SSTDV-Project/DiffAM&#125;
-&#125;</code></pre>
-
-      <hr />
-
-      <!-- VCM -->
-      <h3>VCM: Variable Coverage Model</h3>
-      <p>Framework for generating synthetic data with controllable coverage guarantees, ensuring generated samples adequately represent target subgroups and distributions.</p>
-      <table>
-        <tbody>
-          <tr><td><strong>Repository</strong></td><td><a href="https://github.com/SSTDV-Project/VCM" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
-          <tr><td><strong>License</strong></td><td>MIT</td></tr>
-        </tbody>
-      </table>
-
-      <h4>Installation</h4>
-      <pre><code class="language-bash">pip install vcm-model</code></pre>
-
-      <h4>Quick Start</h4>
-      <pre><code class="language-python">import vcm
-model = vcm.VCM(coverage_target=0.95, min_group_size=50, diversity_weight=0.3)
-model.fit(real_data, epochs=100)
-synthetic_data = model.generate(n_samples=1000, coverage='guaranteed')
-coverage = vcm.metrics.coverage(real_data, synthetic_data)
-print(f"Actual coverage: &#123;coverage:.2%&#125;")</code></pre>
-
-      <h4>Coverage Modes</h4>
-      <table>
-        <thead><tr><th>Mode</th><th>Behavior</th></tr></thead>
-        <tbody>
-          <tr><td><code>guaranteed</code></td><td>Ensures minimum coverage across all subgroups</td></tr>
-          <tr><td><code>balanced</code></td><td>Equal weight to coverage and fidelity</td></tr>
-          <tr><td><code>fidelity</code></td><td>Optimizes for sample quality</td></tr>
-        </tbody>
-      </table>
-
-      <h4>Dependencies</h4>
-      <ul>
-        <li><code>torch&gt;=2.0</code>, <code>numpy&gt;=1.21</code>, <code>scipy&gt;=1.7</code>, <code>scikit-learn&gt;=1.0</code></li>
-      </ul>
-
-      <h4>Citation</h4>
-      <pre><code>@software&#123;vcm,
-  title  = &#123;VCM: Variable Coverage Model&#125;,
-  author = &#123;SSTDV Project&#125;,
-  year   = &#123;2024&#125;,
-  url    = &#123;https://github.com/SSTDV-Project/VCM&#125;
-&#125;</code></pre>
-
-      <!-- ===== REPOSITORIES ===== -->
-      <h2>Repositories</h2>
-
-      <h3>Generation — Brain Imaging</h3>
+      <h3>Knowledge Encoding</h3>
       <table>
         <thead><tr><th>Repository</th><th>Description</th><th>GitHub</th></tr></thead>
         <tbody>
-          <tr><td>BrainShapeToolKit</td><td>Brain MRI-based shape extraction</td><td><a href="https://github.com/SSTDV-Project/BrainShapeToolKit" target="_blank" rel="noopener noreferrer">SSTDV-Project/BrainShapeToolKit</a></td></tr>
-          <tr><td>DiffAM</td><td>Spine CT-based anatomical modeling</td><td><a href="https://github.com/SSTDV-Project/DiffAM" target="_blank" rel="noopener noreferrer">SSTDV-Project/DiffAM</a></td></tr>
-          <tr><td>VCM</td><td>Conditional brain MRI image generation</td><td><a href="https://github.com/SSTDV-Project/VCM" target="_blank" rel="noopener noreferrer">SSTDV-Project/VCM</a></td></tr>
-          <tr><td>HF-GAN</td><td>High-fidelity unified brain MRI synthesis</td><td><a href="https://github.com/SSTDV-Project/HF-GAN" target="_blank" rel="noopener noreferrer">SSTDV-Project/HF-GAN</a></td></tr>
+          <tr><td>BrainShapeToolKit</td><td>Brain MRI-based shape extraction</td><td><a href="https://github.com/SSTDV-Project/BrainShapeToolKit" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>DiffAM</td><td>Spine CT-based anatomical modeling</td><td><a href="https://github.com/SSTDV-Project/DiffAM" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>VCM</td><td>Conditional brain MRI image generation</td><td><a href="https://github.com/SSTDV-Project/VCM" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>HF-GAN</td><td>High-fidelity unified brain MRI synthesis</td><td><a href="https://github.com/SSTDV-Project/HF-GAN" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
         </tbody>
       </table>
 
-      <h3>Generation — Ocean / SST</h3>
+      <h3>Relation Modeling</h3>
       <table>
         <thead><tr><th>Repository</th><th>Description</th><th>GitHub</th></tr></thead>
         <tbody>
-          <tr><td>KIOST-SST-EVL</td><td>EVL-based SST forecasting for temporal extreme event modeling</td><td><a href="https://github.com/SSTDV-Project/KIOST-SST-EVL" target="_blank" rel="noopener noreferrer">SSTDV-Project/KIOST-SST-EVL</a></td></tr>
-          <tr><td>KIOST-SST-Downscaling</td><td>GAN-based SST downscaling for spatial relation modeling</td><td><a href="https://github.com/SSTDV-Project/KIOST-SST-Downscaling" target="_blank" rel="noopener noreferrer">SSTDV-Project/KIOST-SST-Downscaling</a></td></tr>
-          <tr><td>KIOST-3D-VAR-DA</td><td>3D-Var data assimilation with deep learning for spatiotemporal ocean data generation</td><td><a href="https://github.com/SSTDV-Project/KIOST-3D-VAR-DA" target="_blank" rel="noopener noreferrer">SSTDV-Project/KIOST-3D-VAR-DA</a></td></tr>
+          <tr><td>KIOST-SST-EVL</td><td>EVL-based SST forecasting for temporal extreme event modeling</td><td><a href="https://github.com/SSTDV-Project/KIOST-SST-EVL" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>KIOST-SST-Downscaling</td><td>GAN-based SST downscaling for spatial relation modeling</td><td><a href="https://github.com/SSTDV-Project/KIOST-SST-Downscaling" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
         </tbody>
       </table>
 
-      <h3>Generation — Breast Cancer</h3>
+      <h3>Data Assimilation</h3>
       <table>
         <thead><tr><th>Repository</th><th>Description</th><th>GitHub</th></tr></thead>
         <tbody>
-          <tr><td>DiffuAug</td><td>Breast MRI generation using Classifier-Free Diffusion Guidance with DDPM and DDIM sampling</td><td><a href="https://github.com/SSTDV-Project/DiffuAug" target="_blank" rel="noopener noreferrer">SSTDV-Project/DiffuAug</a></td></tr>
+          <tr><td>KIOST-3D-VAR-DA</td><td>3D-Var data assimilation with deep learning for spatiotemporal ocean data generation</td><td><a href="https://github.com/SSTDV-Project/KIOST-3D-VAR-DA" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
         </tbody>
       </table>
 
-      <h3>Evaluation</h3>
+      <h3>Objective Synthesis</h3>
       <table>
         <thead><tr><th>Repository</th><th>Description</th><th>GitHub</th></tr></thead>
         <tbody>
-          <tr><td>EvalCorrSyn</td><td>Evaluation of multivariate distribution similarity in synthetic data</td><td>—</td></tr>
-          <tr><td>EvalSynLongD</td><td>Statistical similarity of real and synthetic longitudinal data</td><td>—</td></tr>
-          <tr><td>EvalDistSim</td><td>1D data distribution similarity via KS test, KL divergence, and Jensen-Shannon divergence</td><td>—</td></tr>
+          <tr><td>DiffuAug</td><td>Breast MRI generation using Classifier-Free Diffusion Guidance with DDPM and DDIM sampling</td><td><a href="https://github.com/SSTDV-Project/DiffuAug" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+        </tbody>
+      </table>
+
+      <h2>Evaluation</h2>
+
+      <h3>Statistical Similarity</h3>
+      <table>
+        <thead><tr><th>Repository</th><th>Description</th><th>GitHub</th></tr></thead>
+        <tbody>
+          <tr><td>EvalCorrSyn</td><td>Evaluation of multivariate distribution similarity in synthetic data</td><td><a href="https://github.com/SSTDV-Project/EvalCorrSyn" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>EvalSynLongD</td><td>Statistical similarity of real and synthetic longitudinal data</td><td><a href="https://github.com/SSTDV-Project/EvalSynLongD" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>EvalDistSim</td><td>1D data distribution similarity via KS test, KL divergence, and Jensen-Shannon divergence</td><td><a href="https://github.com/SSTDV-Project/EvalDistSim" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
         </tbody>
       </table>
 
