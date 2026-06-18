@@ -1,0 +1,58 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { locales, type Locale } from '~/i18n';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+
+const metadata = {
+  title: 'Generation',
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <Hero
+    tagline="Features"
+    title="Generation"
+    subtitle="Produce high-fidelity synthetic tabular data through knowledge encoding, relation modeling, data assimilation, and objective-reinforced learning."
+  />
+
+  <Features2
+    title="Generation Capabilities"
+    subtitle="Each capability addresses a distinct aspect of producing realistic, useful synthetic data."
+    columns={2}
+    items={[
+      {
+        title: 'Knowledge Encoding',
+        description: 'Transform domain expertise into structured representations that guide synthetic data generation with precision and fidelity.',
+        icon: 'tabler:brain',
+        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/generation/knowledge-encoding/') },
+      },
+      {
+        title: 'Relation Modeling',
+        description: 'Capture and reproduce the complex inter-variable dependencies that define the structure and coherence of real datasets.',
+        icon: 'tabler:binary-tree',
+        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/generation/relation-modeling/') },
+      },
+      {
+        title: 'Data Assimilation',
+        description: 'Incorporate real-world observations into the generation pipeline to ensure synthetic outputs stay grounded in empirical evidence.',
+        icon: 'tabler:database-import',
+        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/generation/data-assimilation/') },
+      },
+      {
+        title: 'Objective Reinforced',
+        description: 'Guide generation toward user-defined objectives, optimizing synthetic data for downstream tasks and performance metrics.',
+        icon: 'tabler:target',
+        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/generation/objective-reinforced/') },
+      },
+    ]}
+  />
+</Layout>

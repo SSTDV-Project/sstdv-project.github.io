@@ -1,0 +1,94 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { locales, type Locale } from '~/i18n';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<Layout metadata={{ title: 'Brain Imaging Analysis Tutorial' }} lang={lang}>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
+    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter mb-8">Brain Imaging Analysis Tutorial</h1>
+    <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md">
+
+      <h2>Overview</h2>
+      <table>
+        <tbody>
+          <tr><td><strong>Estimated Time</strong></td><td>45 minutes</td></tr>
+          <tr><td><strong>Difficulty</strong></td><td>Intermediate</td></tr>
+          <tr><td><strong>Prerequisites</strong></td><td>Python 3.9+</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What You'll Learn</h2>
+      <ul>
+        <li>Load and preprocess brain MRI scans</li>
+        <li>Extract shape features using BrainShapeToolKit</li>
+        <li>Apply differentiable appearance modeling with DiffAM</li>
+        <li>Visualize and interpret results</li>
+      </ul>
+
+      <h2>Dataset</h2>
+      <p>
+        This tutorial uses the <strong>ADNI dataset</strong> (Alzheimer's Disease Neuroimaging Initiative).
+        Ensure you have obtained access and downloaded the appropriate MRI scans before proceeding.
+      </p>
+
+      <h2>Step 1: Setup Environment</h2>
+      <p>Clone and install both BrainShapeToolKit and DiffAM repositories:</p>
+      <pre><code class="language-bash">git clone https://github.com/SSTDV-Project/BrainShapeToolKit.git
+git clone https://github.com/SSTDV-Project/DiffAM.git
+cd BrainShapeToolKit &amp;&amp; pip install -e .
+cd ../DiffAM &amp;&amp; pip install -e .</code></pre>
+
+      <h2>Step 2: Load and Preprocess Data</h2>
+      <p>Load a brain MRI scan and extract the surface mesh:</p>
+      <pre><code class="language-python">import nibabel as nib
+import numpy as np
+from brainshapetoolkit import MeshProcessor
+
+mri = nib.load('data/sample_brain.nii.gz')
+mri_data = mri.get_fdata()
+processor = MeshProcessor()
+mesh = processor.extract_surface(mri_data, threshold=0.5)
+mesh_smooth = processor.smooth(mesh, iterations=10)</code></pre>
+
+      <h2>Step 3: Extract Shape Features</h2>
+      <p>Compute quantitative shape features from the smoothed mesh:</p>
+      <pre><code class="language-python">from brainshapetoolkit.features import ShapeFeatures
+feature_extractor = ShapeFeatures()
+features = feature_extractor.compute(mesh_smooth)
+print(f"Surface area: &#123;features['surface_area']:.2f&#125; mm²")</code></pre>
+
+      <h2>Step 4: Appearance Modeling with DiffAM</h2>
+      <p>Use DiffAM to extract appearance embeddings and generate synthetic variants:</p>
+      <pre><code class="language-python">import diffam
+model = diffam.DiffAM(pretrained=True)
+embeddings = model.extract_embeddings(mesh_smooth)
+synthetic = model.interpolate(embeddings, n_samples=5)</code></pre>
+
+      <h2>Citation</h2>
+      <p>If you use BrainShapeToolKit or DiffAM in your research, please cite:</p>
+      <pre><code>@software&#123;brainshapetoolkit,
+  title   = &#123;BrainShapeToolKit&#125;,
+  author  = &#123;SSTDV Project&#125;,
+  year    = &#123;2024&#125;,
+  url     = &#123;https://github.com/SSTDV-Project/BrainShapeToolKit&#125;
+&#125;
+
+@software&#123;diffam,
+  title   = &#123;DiffAM: Differentiable Appearance Modeling&#125;,
+  author  = &#123;SSTDV Project&#125;,
+  year    = &#123;2024&#125;,
+  url     = &#123;https://github.com/SSTDV-Project/DiffAM&#125;
+&#125;</code></pre>
+
+      <p><a href={getRelativeLocaleUrl(lang, '/docs/tutorials/')}>&#8592; Back to Tutorials</a></p>
+    </div>
+  </section>
+</Layout>

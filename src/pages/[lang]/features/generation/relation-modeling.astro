@@ -1,0 +1,53 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { locales, type Locale } from '~/i18n';
+import Content from '~/components/widgets/Content.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+
+const metadata = {
+  title: 'Relation Modeling',
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <Hero
+    tagline="Generation"
+    title="Relation Modeling"
+    subtitle="Capture and reproduce the complex inter-variable relationships that give real data its structure and meaning."
+  />
+
+  <Content
+    items={[
+      {
+        title: 'Multivariate Dependencies',
+        description: 'Model correlations and conditional dependencies across columns to preserve joint distributions.',
+        icon: 'tabler:git-branch',
+      },
+      {
+        title: 'Temporal Relations',
+        description: 'Handle time-series patterns and sequential dependencies so that generated data reflects realistic temporal dynamics.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Causal Structure',
+        description: 'Encode causal graphs that ensure synthetic data respects directional influences observed in the real world.',
+        icon: 'tabler:arrows-diff',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1551288049-bebba4e2a583?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Relation Modeling',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Preserving Structure</h3>
+    </Fragment>
+  </Content>
+</Layout>

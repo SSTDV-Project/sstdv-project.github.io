@@ -1,0 +1,53 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { locales, type Locale } from '~/i18n';
+import Content from '~/components/widgets/Content.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+
+const metadata = {
+  title: 'Objective-Reinforced Generation',
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <Hero
+    tagline="Generation"
+    title="Objective-Reinforced Generation"
+    subtitle="Guide synthetic data generation with task-specific objectives so that output data maximizes downstream utility."
+  />
+
+  <Content
+    items={[
+      {
+        title: 'Utility-Driven Optimization',
+        description: 'Optimize synthetic data for specific downstream tasks such as classification, regression, or anomaly detection.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Constraint Satisfaction',
+        description: 'Enforce hard constraints — privacy budgets, fairness thresholds, and statistical bounds — throughout generation.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Adaptive Reinforcement',
+        description: 'Iteratively refine generation based on feedback signals from evaluation metrics and domain objectives.',
+        icon: 'tabler:repeat',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1504868584819-f8e0ad2ebb55?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Objective-Reinforced Generation',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Purpose-Built Data</h3>
+    </Fragment>
+  </Content>
+</Layout>

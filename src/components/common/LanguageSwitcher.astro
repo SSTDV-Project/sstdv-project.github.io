@@ -1,0 +1,41 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { SITE } from 'astrowind:config';
+import type { Locale } from '~/i18n';
+import { locales } from '~/i18n';
+
+interface Props {
+  currentLang: Locale;
+}
+
+const { currentLang } = Astro.props;
+
+const languages: { code: Locale; name: string }[] = [
+  { code: 'en', name: 'English' },
+  { code: 'ko', name: '한국어' },
+];
+
+const base = SITE.base || '/';
+const localePrefixPattern = new RegExp(`^${base}(${locales.join('|')})`);
+const currentPath = Astro.url.pathname.replace(localePrefixPattern, '') || '/';
+---
+
+<div class="flex items-center gap-1">
+  {
+    languages.map((lang) => (
+      <a
+        href={getRelativeLocaleUrl(lang.code, currentPath)}
+        class:list={[
+          'px-2 py-1 text-sm rounded-md transition-colors',
+          lang.code === currentLang
+            ? 'bg-blue-600 text-white font-medium'
+            : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white',
+        ]}
+        aria-label={`Switch to ${lang.name}`}
+        aria-current={lang.code === currentLang ? 'page' : undefined}
+      >
+        {lang.name}
+      </a>
+    ))
+  }
+</div>

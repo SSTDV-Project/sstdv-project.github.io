@@ -1,0 +1,53 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { locales, type Locale } from '~/i18n';
+import Content from '~/components/widgets/Content.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+
+const metadata = {
+  title: 'Objective Relevance',
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <Hero
+    tagline="Evaluation"
+    title="Objective Relevance"
+    subtitle="Assess whether synthetic data retains the utility needed for specific downstream tasks and analytical objectives."
+  />
+
+  <Content
+    items={[
+      {
+        title: 'Downstream Task Performance',
+        description: 'Train models on synthetic data and evaluate on real data to measure how well utility transfers.',
+        icon: 'tabler:target-arrow',
+      },
+      {
+        title: 'Feature Importance Preservation',
+        description: 'Verify that the predictive power of key features remains intact in the synthetic dataset.',
+        icon: 'tabler:star',
+      },
+      {
+        title: 'Query Answer Consistency',
+        description: 'Compare answers to analytical queries run on real vs. synthetic data to ensure decision-making alignment.',
+        icon: 'tabler:database-search',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1456513080510-7bf3198fc652?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Objective Relevance',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Beyond Fidelity</h3>
+    </Fragment>
+  </Content>
+</Layout>

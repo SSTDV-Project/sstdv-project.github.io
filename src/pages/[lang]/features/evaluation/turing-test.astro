@@ -1,0 +1,53 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { locales, type Locale } from '~/i18n';
+import Content from '~/components/widgets/Content.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+
+const metadata = {
+  title: 'Turing Test',
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <Hero
+    tagline="Evaluation"
+    title="Turing Test"
+    subtitle="Evaluate synthetic data indistinguishability by testing whether domain experts can differentiate it from real data."
+  />
+
+  <Content
+    items={[
+      {
+        title: 'Expert Discrimination Trials',
+        description: 'Present mixed real and synthetic records to domain experts and measure their ability to tell them apart.',
+        icon: 'tabler:user-search',
+      },
+      {
+        title: 'Visual Plausibility',
+        description: 'Generate visual summaries and side-by-side comparisons to assess qualitative realism at a glance.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Adversarial Testing',
+        description: 'Use machine-learning classifiers as adversarial discriminators — lower detection rates indicate higher realism.',
+        icon: 'tabler:robot',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Turing Test',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">The Ultimate Realism Check</h3>
+    </Fragment>
+  </Content>
+</Layout>

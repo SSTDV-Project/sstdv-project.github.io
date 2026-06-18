@@ -1,0 +1,84 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { locales, type Locale } from '~/i18n';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<Layout metadata={{ title: 'DiffAM: Differentiable Appearance Modeling' }} lang={lang}>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
+    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter mb-8">DiffAM: Differentiable Appearance Modeling</h1>
+    <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md">
+
+      <h2>Overview</h2>
+      <p>
+        DiffAM is a framework for learning and generating image appearances in a differentiable manner.
+        It enables embedding extraction, conditional synthesis, and attribute-level editing of medical and natural images.
+      </p>
+      <table>
+        <tbody>
+          <tr><td><strong>Repository</strong></td><td><a href="https://github.com/SSTDV-Project/DiffAM" target="_blank" rel="noopener noreferrer">https://github.com/SSTDV-Project/DiffAM</a></td></tr>
+          <tr><td><strong>License</strong></td><td>MIT</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Installation</h2>
+      <pre><code class="language-bash">pip install diffam</code></pre>
+
+      <h2>Quick Start</h2>
+      <pre><code class="language-python">import diffam, torch
+model = diffam.DiffAM(pretrained='medical_imaging')
+image = torch.randn(1, 1, 256, 256)
+embeddings = model.extract_embeddings(image)
+synthetic = model.generate(embeddings, n_samples=5)
+edited = model.edit_attributes(embeddings, attribute='contrast', strength=1.5)</code></pre>
+
+      <h2>Pretrained Models</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>medical_imaging_v1</code></td>
+            <td>MRI, CT, X-ray</td>
+          </tr>
+          <tr>
+            <td><code>face_v1</code></td>
+            <td>Face images</td>
+          </tr>
+          <tr>
+            <td><code>general_v1</code></td>
+            <td>Natural images</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Dependencies</h2>
+      <ul>
+        <li><code>torch&gt;=2.0</code></li>
+        <li><code>torchvision&gt;=0.15</code></li>
+        <li><code>einops&gt;=0.6</code></li>
+      </ul>
+
+      <h2>Citation</h2>
+      <pre><code>@software&#123;diffam,
+  title   = &#123;DiffAM: Differentiable Appearance Modeling&#125;,
+  author  = &#123;SSTDV Project&#125;,
+  year    = &#123;2024&#125;,
+  url     = &#123;https://github.com/SSTDV-Project/DiffAM&#125;
+&#125;</code></pre>
+
+      <p><a href={getRelativeLocaleUrl(lang, '/docs/software/')}>&#8592; Back to Software References</a></p>
+    </div>
+  </section>
+</Layout>

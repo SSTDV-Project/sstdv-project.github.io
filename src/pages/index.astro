@@ -1,0 +1,25 @@
+---
+import { SITE } from 'astrowind:config';
+import { locales, defaultLocale } from '~/i18n';
+---
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script define:vars={{ basePath: SITE.base, supportedLangs: locales, defaultLang: defaultLocale }}>
+      const cookieLang = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('preferred-lang='))
+        ?.split('=')[1];
+      const targetLang = cookieLang && supportedLangs.includes(cookieLang)
+        ? cookieLang
+        : (supportedLangs.includes(navigator.language.split('-')[0]) ? navigator.language.split('-')[0] : defaultLang);
+      window.location.replace(basePath + targetLang + '/');
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>

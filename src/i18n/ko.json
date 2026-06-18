@@ -1,0 +1,263 @@
+{
+  "nav": {
+    "features": "Research",
+    "generation": "생성",
+    "evaluation": "평가",
+    "useCases": "실증사례",
+    "brainImaging": "뇌영상",
+    "breastCancer": "유방암",
+    "environment": "환경/재난",
+    "publications": "연구성과",
+    "docs": "문서",
+    "download": "다운로드",
+    "researchTeam": "연구팀",
+    "about": "About"
+  },
+  "footer": {
+    "resources": "리소스",
+    "company": "연구팀",
+    "about": "소개",
+    "madeBy": "제작자",
+    "ack": "이 논문은 2026년도 정부(과학기술정보통신부)의 재원으로 정보통신기획평가원의 지원을 받아 수행된 연구임 \n(No.00223446, 목적 맞춤형 합성데이터 생성 및 평가기술 개발)"
+  },
+  "common": {
+    "learnMore": "자세히 보기",
+    "getStarted": "시작하기"
+  },
+  "hero": {
+    "title": "Synthetic Spatio-Temporal Data Vault",
+    "subtitle": "<strong>SSTDV</strong>는 실제 세계 시공간 데이터로부터 합성 훈련 데이터를 생성하고 평가하기 위한 연구 프로젝트입니다."
+  },
+  "features": {
+    "heroTagline": "Research",
+    "heroTitle": "생성 & 평가",
+    "heroSubtitle": "실세계 시공간 데이터로부터 고품질 합성 데이터를 생성하고, 통계적·목적적으로 품질을 검증합니다.",
+    "generationLabel": "01 — 생성",
+    "generationTitle": "생성",
+    "generationSubtitle": "도메인 지식을 인지한 고품질 합성 시공간 데이터 생성",
+    "knowledgeEncodingTitle": "지식 인코딩",
+    "knowledgeEncodingDesc": "시공간 데이터의 구조·역학 등 사전지식을 생성 모델에 명시적으로 인코딩합니다.",
+    "relationModelingTitle": "상호관계 모델링",
+    "relationModelingDesc": "다변량 시공간 데이터 간 상관관계·인과관계를 모델링해 데이터 추론을 가능하게 합니다.",
+    "dataAssimilationTitle": "자료 동화",
+    "dataAssimilationDesc": "데이터 섭동 기술로 생성 중 누적 오차를 수정해 합성 정확도를 향상합니다.",
+    "objectiveReinforcementTitle": "목적 강화",
+    "objectiveReinforcementDesc": "도메인 요구사항에 맞는 보상함수를 적용해 목적 맞춤형 합성 데이터를 생성합니다.",
+    "evaluationLabel": "02 — 평가",
+    "evaluationTitle": "평가",
+    "evaluationSubtitle": "생성 데이터의 품질을 통계적·목적적으로 정량 검증",
+    "statisticalSimilarityTitle": "분포 유사성",
+    "statisticalSimilarityDesc": "합성 데이터와 실제 데이터의 분포 유사성 및 변량 간 상관관계를 정량적으로 평가합니다.",
+    "objectiveRelevanceTitle": "목적 적합성",
+    "objectiveRelevanceDesc": "목적 맞춤형 AI 모델 성능을 실데이터·합성데이터·혼합 구성별로 비교해 적합성을 평가합니다."
+  },
+  "resources": {
+    "subtitle": "프로젝트 문서, 튜토리얼, 소프트웨어 툴, 연구 성과를 확인하세요.",
+    "docsDesc": "Virtual Brain·Breast Cancer 튜토리얼 및 BrainShapeToolKit, DiffAM, VCM 레퍼런스.",
+    "publicationsDesc": "논문·특허·오픈 데이터셋 및 활용 성과.",
+    "researchDesc": "SSTDV의 합성 데이터 생성 및 평가 방법론 소개."
+  },
+  "useCases": {
+    "heroTagline": "실증사례",
+    "heroTitle": "실증사례",
+    "heroSubtitle": "의료영상 두 분야에서 목적 강화 합성 데이터의 유효성을 검증합니다.",
+    "brainLabel": "01 — 뇌영상",
+    "brainTitle": "Virtual Brain",
+    "brainSubtitle": "동국대학교 · ADNI",
+    "brainOverview": "신경 퇴행성 질환과 관련된 종단 및 만성 뇌 영상 변화를 시뮬레이션하고, 질병 분류 및 예측 모델 개발에 사용할 수 있는 합성 뇌 영상 데이터를 생성하는 프레임워크입니다.",
+    "brainDataTitle": "데이터 및 기술",
+    "brainDataDesc": "동국대학교 및 ADNI 공개 데이터셋의 뇌영상 데이터를 활용합니다.",
+    "brainEvalLabel": "평가",
+    "brainEval1Title": "분포 유사성",
+    "brainEval1Desc": "실제 뇌 영상과 합성 뇌 영상 간 분포 유사성 평가",
+    "brainEval2Title": "재현성",
+    "brainEval2Desc": "영역별 만성 뇌 변화의 재현성 평가",
+    "brainEval3Title": "목적 적합성",
+    "brainEval3Desc": "질병 분류 모델에 대한 목적 적합성 평가",
+    "breastLabel": "02 — 유방암",
+    "breastTitle": "유방암 수술 시뮬레이션",
+    "breastSubtitle": "Beamworks · 수술 전/후 MR 1,483 케이스",
+    "breastOverview": "유방 MR 생성 및 유방 모양 예측 기술을 기반으로, 유방암 치료 및 수술 계획 수립 시 필요한 수술 절제 영역과 수술 후 유방 형태 변화를 정량화하고 시뮬레이션합니다. 수술 전/후 유방 MR 영상을 활용하여 수술 후 유방 형태를 예측함으로써 환자-의사 간 의사결정을 지원합니다.",
+    "breastDataTitle": "데이터 및 기술",
+    "breastDataDesc": "유방암 수술 환자의 수술 전/후 유방 MR 영상 1,483 케이스를 기반으로 학습됩니다. 절제 영역, 임플란트 위치 및 크기 등 구조적 지식을 조건 정보로 반영합니다.",
+    "breastPipelineLabel": "파이프라인",
+    "breastStep1Title": "MRI Sequence 분류",
+    "breastStep1Desc": "Raw DICOM 파일을 자동으로 분류하여 임상적으로 의미 있는 MRI series로 정리합니다.",
+    "breastStep2Title": "영상 표준화",
+    "breastStep2Desc": "Orientation correction, N4-bias field removal, noise reduction, normalization 등을 통해 영상을 표준화합니다.",
+    "breastStep3Title": "다중 구조 분할",
+    "breastStep3Desc": "유방 조직, 종양 영역, 절제 영역, 임플란트 관련 구조를 식별하거나 생성 조건으로 활용합니다.",
+    "breastStep4Title": "수술 전/후 MRI 정합",
+    "breastStep4Desc": "수술 전 MR 영상과 수술 후 MR 영상을 정합하여 종단적 생성 모델 학습을 위한 데이터를 구성합니다.",
+    "breastStep5Title": "수술 후 MRI 생성",
+    "breastStep5Desc": "수술 계획, 종양 위치, 절제 영역, 임플란트 정보를 조건으로 수술 후 유방 MR 영상을 예측하는 생성 모델을 학습합니다.",
+    "breastStep6Title": "시스템 통합",
+    "breastStep6Desc": "생성 결과를 MRI viewer, segmentation module, measurement module, 3D rendering module을 포함하는 메디컬 트윈 기반 수술 계획 시스템에 통합합니다.",
+    "breastEvalLabel": "평가",
+    "breastEval1Title": "정성적 평가",
+    "breastEval1Desc": "다수의 전문의가 합성 영상과 실제 영상을 구분하는 튜링 테스트 방식으로 진행됩니다.",
+    "breastEval2Title": "정량적 평가",
+    "breastEval2Desc": "절제 영역 및 임플란트 영역에 대해 생성 결과와 기준 데이터 간의 일치도를 Dice Similarity Coefficient(DSC)로 분석합니다."
+  },
+  "about": {
+    "hero": {
+      "tagline": "소개",
+      "title": "SSTDV 연구팀",
+      "subtitle": "의료, 환경과학 등을 위한 최첨단 합성 시공간 데이터 생성 및 평가 방법을 개발합니다."
+    },
+    "stats": {
+      "title": "프로젝트 개요",
+      "publications": "논문",
+      "datasets": "생성 데이터셋",
+      "institutions": "연구 기관",
+      "years": "활동 기간"
+    },
+    "researchAreas": {
+      "title": "연구 분야",
+      "items": [
+        {
+          "title": "합성 데이터 생성",
+          "description": "실제 데이터의 통계적 특성을 보존하는 합성 시공간 데이터 생성 기법 개발"
+        },
+        {
+          "title": "평가 지표",
+          "description": "합성 데이터의 품질과 유용성을 정량적으로 평가하는 metrics 연구"
+        },
+        {
+          "title": "개인정보 보호",
+          "description": "차분 개인信息公开 기술과 연합학습을 활용한隐私 보호 합성 데이터 생성"
+        },
+        {
+          "title": "도메인 적응",
+          "description": "하나의 도메인에서 학습한 모델을 다른 도메인에 효율적으로 전이하는 방법 연구"
+        },
+        {
+          "title": "시간적 모델링",
+          "description": "시계열 데이터의 시간적 의존성과 변화를 효과적으로 포착하는 모델 개발"
+        },
+        {
+          "title": "불확실성 정량화",
+          "description": "합성 데이터의 불확실성을 정량화하고 신뢰할 수 있는 불확실성 추정 제공"
+        }
+      ]
+    },
+    "collaborators": {
+      "title": "공동 연구기관",
+      "items": [
+        {
+          "title": "의료 영상 파트너",
+          "description": "의료 영상 분석을 위한 합성 데이터 공동 연구"
+        },
+        {
+          "title": "환경 기관",
+          "description": "환경 모니터링 데이터 생성 및 분석 협력"
+        },
+        {
+          "title": "대학 연구기관",
+          "description": "다양한 학술 기관과의 합성 데이터 연구 협업"
+        },
+        {
+          "title": "산업 파트너",
+          "description": "실제 산업 문제에 합성 데이터 기술 적용"
+        }
+      ]
+    },
+    "mission": {
+      "title": "미션",
+      "items": [
+        {
+          "title": "고품질 합성 데이터로 AI 발전 촉진",
+          "description": "양질의 합성 데이터를 통해 머신러닝 모델의 학습 효율성과 성능을 향상させます"
+        },
+        {
+          "title": "개인정보와 윤리적 관행 보장",
+          "description": "개인정보 보호와 윤리적 합성 데이터 사용을 위한 연구 수행"
+        },
+        {
+          "title": "과학적 발견 가속화",
+          "description": "합성 데이터를 활용하여 과학 연구의 속도를 높이고 새로운 발견을 촉진"
+        }
+      ]
+    },
+    "milestones": {
+      "title": "주요 성과",
+      "items": [
+        {
+          "title": "학술 논문 발표",
+          "description": "동료评审 학술 논문 12편 출판",
+          "icon": "tabler:file-text"
+        },
+        {
+          "title": "벤치마크 데이터셋 구축",
+          "description": "48개의 벤치마크 합성 데이터셋 생성",
+          "icon": "tabler:database"
+        },
+        {
+          "title": "국제 학술 대회 발표",
+          "description": "주요 국제 학회에서의 연구 결과 발표",
+          "icon": "tabler:presentation"
+        }
+      ]
+    },
+    "getInTouch": {
+      "title": "연락처",
+      "items": [
+        {
+          "title": "이메일 문의",
+          "description": "연구 관련 문의는 이메일로 연락주세요",
+          "icon": "tabler:mail"
+        },
+        {
+          "title": "GitHub Issues",
+          "description": "프로젝트 관련 버그 리포트 및 기능 요청은 GitHub를 이용하세요",
+          "icon": "tabler:brand-github"
+        }
+      ]
+    }
+  },
+  "publications": {
+    "hero": {
+      "tagline": "연구성과",
+      "title": "논문 및 특허",
+      "subtitle": "합성 데이터 생성 및 평가 기술에 관한公开发表된 논문과 특허를 확인하세요."
+    },
+    "selected": {
+      "title": "주요 논문",
+      "items": [
+        {
+          "title": "Privacy-Preserving Synthetic Medical Imaging Data Generation using Diffeomorphic Flows",
+          "description": "권도현, 이서연, 박지훈, 최영민 | Nature Machine Intelligence, 2025"
+        },
+        {
+          "title": "Temporal Consistency in Synthetic Spatio-Temporal Data: A Benchmark Study",
+          "description": "김태형, 정수민, 한동희 | ICML, 2025"
+        },
+        {
+          "title": "Cross-Domain Adaptation of Synthetic Data Generators for Environmental Monitoring",
+          "description": "이준호, 최민지, 강성호 | AAAI, 2025"
+        },
+        {
+          "title": "Uncertainty Quantification in Synthetic Medical Time Series: A Bayesian Approach",
+          "description": "박서린, 김동윤, 조민수 | ICLR, 2024"
+        },
+        {
+          "title": "Evaluation Metrics for Synthetic Spatio-Temporal Data: A Comprehensive Survey",
+          "description": "정하은, 윤석호, 허성현 | TPAMI, 2024"
+        }
+      ]
+    },
+    "preprints": {
+      "title": "프리프린트 및 기술 보고서",
+      "items": [
+        {
+          "title": "Synthetic Data Generation for Rare Disease Imaging: A Feasibility Study",
+          "description": "최수진, 김현우, 박종석 | arXiv, 2026"
+        },
+        {
+          "title": "Federated Learning with Synthetic Data: Privacy and Utility Trade-offs",
+          "description": "서예린, 이동훈, 김지수 | Technical Report, 2026"
+        }
+      ]
+    }
+  }
+}

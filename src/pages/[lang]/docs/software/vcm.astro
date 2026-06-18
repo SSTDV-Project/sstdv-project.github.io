@@ -1,0 +1,85 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { locales, type Locale } from '~/i18n';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<Layout metadata={{ title: 'VCM: Variable Coverage Model' }} lang={lang}>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
+    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter mb-8">VCM: Variable Coverage Model</h1>
+    <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md">
+
+      <h2>Overview</h2>
+      <p>
+        VCM is a framework for generating synthetic data with controllable coverage guarantees.
+        It ensures that generated samples adequately represent target subgroups and distributions in the real data.
+      </p>
+      <table>
+        <tbody>
+          <tr><td><strong>Repository</strong></td><td><a href="https://github.com/SSTDV-Project/VCM" target="_blank" rel="noopener noreferrer">https://github.com/SSTDV-Project/VCM</a></td></tr>
+          <tr><td><strong>License</strong></td><td>MIT</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Installation</h2>
+      <pre><code class="language-bash">pip install vcm-model</code></pre>
+
+      <h2>Quick Start</h2>
+      <pre><code class="language-python">import vcm
+model = vcm.VCM(coverage_target=0.95, min_group_size=50, diversity_weight=0.3)
+model.fit(real_data, epochs=100)
+synthetic_data = model.generate(n_samples=1000, coverage='guaranteed')
+coverage = vcm.metrics.coverage(real_data, synthetic_data)
+print(f"Actual coverage: &#123;coverage:.2%&#125;")</code></pre>
+
+      <h2>Coverage Modes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Mode</th>
+            <th>Behavior</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>guaranteed</code></td>
+            <td>Ensures minimum coverage across all subgroups</td>
+          </tr>
+          <tr>
+            <td><code>balanced</code></td>
+            <td>Equal weight to coverage and fidelity</td>
+          </tr>
+          <tr>
+            <td><code>fidelity</code></td>
+            <td>Optimizes for sample quality</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Dependencies</h2>
+      <ul>
+        <li><code>torch&gt;=2.0</code></li>
+        <li><code>numpy&gt;=1.21</code></li>
+        <li><code>scipy&gt;=1.7</code></li>
+        <li><code>scikit-learn&gt;=1.0</code></li>
+      </ul>
+
+      <h2>Citation</h2>
+      <pre><code>@software&#123;vcm,
+  title   = &#123;VCM: Variable Coverage Model&#125;,
+  author  = &#123;SSTDV Project&#125;,
+  year    = &#123;2024&#125;,
+  url     = &#123;https://github.com/SSTDV-Project/VCM&#125;
+&#125;</code></pre>
+
+      <p><a href={getRelativeLocaleUrl(lang, '/docs/software/')}>&#8592; Back to Software References</a></p>
+    </div>
+  </section>
+</Layout>

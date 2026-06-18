@@ -1,0 +1,101 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { locales, type Locale } from '~/i18n';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<Layout metadata={{ title: 'BrainShapeToolKit' }} lang={lang}>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
+    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter mb-8">BrainShapeToolKit</h1>
+    <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md">
+
+      <h2>Overview</h2>
+      <p>
+        BrainShapeToolKit is a Python toolkit for brain shape analysis from MRI data. It provides tools for
+        surface extraction, mesh processing, and quantitative shape feature computation.
+      </p>
+      <table>
+        <tbody>
+          <tr><td><strong>Repository</strong></td><td><a href="https://github.com/SSTDV-Project/BrainShapeToolKit" target="_blank" rel="noopener noreferrer">https://github.com/SSTDV-Project/BrainShapeToolKit</a></td></tr>
+          <tr><td><strong>License</strong></td><td>MIT</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Installation</h2>
+      <pre><code class="language-bash">pip install brainshapetoolkit</code></pre>
+
+      <h2>Quick Start</h2>
+      <pre><code class="language-python">import brainshapetoolkit as bst
+processor = bst.MeshProcessor()
+mesh = processor.load('brain_mesh.gii')
+mesh_smooth = processor.smooth(mesh, iterations=10)
+features = bst.ShapeFeatures().compute(mesh_smooth)
+print(f"Surface area: &#123;features['surface_area']&#125;")</code></pre>
+
+      <h2>Core Modules</h2>
+      <ul>
+        <li><strong>MeshProcessor</strong> — Load, preprocess, and smooth brain surface meshes from MRI or GIFTI files.</li>
+        <li><strong>ShapeFeatures</strong> — Compute quantitative shape descriptors including area, volume, thickness, and curvature.</li>
+        <li><strong>SurfaceStatistics</strong> — Run group-level statistical analyses on shape feature distributions.</li>
+      </ul>
+
+      <h2>Features</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Description</th>
+            <th>Units</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>surface_area</code></td>
+            <td>Total surface area</td>
+            <td>mm²</td>
+          </tr>
+          <tr>
+            <td><code>volume</code></td>
+            <td>Enclosed volume</td>
+            <td>mm³</td>
+          </tr>
+          <tr>
+            <td><code>thickness</code></td>
+            <td>Cortical thickness</td>
+            <td>mm</td>
+          </tr>
+          <tr>
+            <td><code>curvature</code></td>
+            <td>Mean curvature</td>
+            <td>1/mm</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Dependencies</h2>
+      <ul>
+        <li><code>numpy&gt;=1.21</code></li>
+        <li><code>scipy&gt;=1.7</code></li>
+        <li><code>nibabel&gt;=3.2</code></li>
+        <li><code>numba&gt;=0.55</code></li>
+      </ul>
+
+      <h2>Citation</h2>
+      <pre><code>@software&#123;brainshapetoolkit,
+  title   = &#123;BrainShapeToolKit&#125;,
+  author  = &#123;SSTDV Project&#125;,
+  year    = &#123;2024&#125;,
+  url     = &#123;https://github.com/SSTDV-Project/BrainShapeToolKit&#125;
+&#125;</code></pre>
+
+      <p><a href={getRelativeLocaleUrl(lang, '/docs/software/')}>&#8592; Back to Software References</a></p>
+    </div>
+  </section>
+</Layout>

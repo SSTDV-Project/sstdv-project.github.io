@@ -1,0 +1,42 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { locales, type Locale } from '~/i18n';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<Layout metadata={{ title: 'Tutorials' }} lang={lang}>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
+    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter mb-8">Tutorials</h1>
+    <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md">
+      <p>Step-by-step guides for working with SSTDV pipelines. Each tutorial walks through a complete workflow from data preparation to result interpretation.</p>
+
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Python 3.9+</li>
+        <li>Git</li>
+        <li>Access to respective datasets</li>
+      </ul>
+
+      <h2>Available Tutorials</h2>
+
+      <h3><a href={getRelativeLocaleUrl(lang, '/docs/tutorials/brain-imaging/')}>Brain Imaging Analysis</a></h3>
+      <p>
+        Complete pipeline using BrainShapeToolKit and DiffAM. Shape analysis and visualization of brain MRI data,
+        including surface extraction, feature computation, and differentiable appearance modeling.
+      </p>
+
+      <h3><a href={getRelativeLocaleUrl(lang, '/docs/tutorials/breast-cancer/')}>Breast Cancer Detection</a></h3>
+      <p>
+        End-to-end workflow using DiffuAug for synthetic data augmentation and EvalDistSim for evaluation.
+        Covers synthetic mammography generation, distribution similarity assessment, and model training with augmented data.
+      </p>
+    </div>
+  </section>
+</Layout>

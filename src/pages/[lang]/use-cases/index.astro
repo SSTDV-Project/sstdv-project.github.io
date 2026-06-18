@@ -1,0 +1,174 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { t, locales, type Locale } from '~/i18n';
+import Content from '~/components/widgets/Content.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+
+const metadata = {
+  title: t(lang, 'useCases.heroTitle'),
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <Hero
+    tagline={t(lang, 'useCases.heroTagline')}
+    title={t(lang, 'useCases.heroTitle')}
+    subtitle={t(lang, 'useCases.heroSubtitle')}
+  />
+
+  <!-- 01. Brain Imaging -->
+  <div id="brain-imaging" class="max-w-5xl mx-auto px-4 sm:px-6 pt-12 pb-2">
+    <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
+      {t(lang, 'useCases.brainLabel')}
+    </p>
+    <h2 class="text-3xl font-bold font-heading text-heading mt-1">
+      {t(lang, 'useCases.brainTitle')}
+    </h2>
+    <p class="mt-1 text-muted">{t(lang, 'useCases.brainSubtitle')}</p>
+  </div>
+
+  <Content
+    items={[
+      {
+        title: t(lang, 'useCases.brainDataTitle'),
+        description: t(lang, 'useCases.brainDataDesc'),
+        icon: 'tabler:database',
+      },
+    ]}
+    image={{ src: '~/assets/images/VirtualBrain.PNG', alt: 'Brain Imaging', width: 1280, height: 720 }}
+  >
+    <Fragment slot="content">
+      <p class="text-lg dark:text-slate-400">{t(lang, 'useCases.brainOverview')}</p>
+    </Fragment>
+  </Content>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-2">
+    <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
+      {t(lang, 'useCases.brainEvalLabel')}
+    </p>
+  </div>
+
+  <Steps
+    items={[
+      {
+        title: t(lang, 'useCases.brainEval1Title'),
+        description: t(lang, 'useCases.brainEval1Desc'),
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: t(lang, 'useCases.brainEval2Title'),
+        description: t(lang, 'useCases.brainEval2Desc'),
+        icon: 'tabler:repeat',
+      },
+      {
+        title: t(lang, 'useCases.brainEval3Title'),
+        description: t(lang, 'useCases.brainEval3Desc'),
+        icon: 'tabler:check',
+      },
+    ]}
+  />
+
+  <!-- 02. Breast Cancer -->
+  <div id="breast-cancer" class="max-w-5xl mx-auto px-4 sm:px-6 pt-12 pb-2">
+    <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
+      {t(lang, 'useCases.breastLabel')}
+    </p>
+    <h2 class="text-3xl font-bold font-heading text-heading mt-1">
+      {t(lang, 'useCases.breastTitle')}
+    </h2>
+    <p class="mt-1 text-muted">{t(lang, 'useCases.breastSubtitle')}</p>
+  </div>
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: t(lang, 'useCases.breastDataTitle'),
+        description: t(lang, 'useCases.breastDataDesc'),
+        icon: 'tabler:database',
+      },
+    ]}
+    image={{ src: '~/assets/images/Breast.PNG', alt: 'Breast Cancer', width: 1280, height: 720 }}
+  >
+    <Fragment slot="content">
+      <p class="text-lg dark:text-slate-400">{t(lang, 'useCases.breastOverview')}</p>
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-2">
+    <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
+      {t(lang, 'useCases.breastPipelineLabel')}
+    </p>
+  </div>
+
+  <Steps
+    items={[
+      {
+        title: t(lang, 'useCases.breastStep1Title'),
+        description: t(lang, 'useCases.breastStep1Desc'),
+        icon: 'tabler:folders',
+      },
+      {
+        title: t(lang, 'useCases.breastStep2Title'),
+        description: t(lang, 'useCases.breastStep2Desc'),
+        icon: 'tabler:adjustments',
+      },
+      {
+        title: t(lang, 'useCases.breastStep3Title'),
+        description: t(lang, 'useCases.breastStep3Desc'),
+        icon: 'tabler:vector',
+      },
+      {
+        title: t(lang, 'useCases.breastStep4Title'),
+        description: t(lang, 'useCases.breastStep4Desc'),
+        icon: 'tabler:arrows-join',
+      },
+      {
+        title: t(lang, 'useCases.breastStep5Title'),
+        description: t(lang, 'useCases.breastStep5Desc'),
+        icon: 'tabler:brain',
+      },
+      {
+        title: t(lang, 'useCases.breastStep6Title'),
+        description: t(lang, 'useCases.breastStep6Desc'),
+        icon: 'tabler:layout-dashboard',
+      },
+    ]}
+  />
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-2">
+    <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
+      {t(lang, 'useCases.breastEvalLabel')}
+    </p>
+  </div>
+
+  <Steps
+    items={[
+      {
+        title: t(lang, 'useCases.breastEval1Title'),
+        description: t(lang, 'useCases.breastEval1Desc'),
+        icon: 'tabler:eye',
+      },
+      {
+        title: t(lang, 'useCases.breastEval2Title'),
+        description: t(lang, 'useCases.breastEval2Desc'),
+        icon: 'tabler:chart-bar',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Steps>
+</Layout>

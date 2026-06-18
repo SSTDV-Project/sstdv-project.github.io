@@ -1,0 +1,46 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { locales, type Locale } from '~/i18n';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+
+const metadata = {
+  title: 'Evaluation',
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <Hero
+    tagline="Features"
+    title="Evaluation"
+    subtitle="Assess synthetic data quality with statistical similarity and objective relevance metrics."
+  />
+
+  <Features2
+    title="Evaluation Capabilities"
+    subtitle="Rigorous methods to measure how faithfully synthetic data reflects the real world."
+    columns={2}
+    items={[
+      {
+        title: 'Statistical Similarity',
+        description: 'Quantify how closely synthetic data reproduces the statistical properties of the original dataset — including distributional similarity and inter-variable correlations.',
+        icon: 'tabler:chart-bar',
+        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/evaluation/statistical-similarity/') },
+      },
+      {
+        title: 'Objective Relevance',
+        description: 'Evaluate whether synthetic data preserves the utility needed for specific downstream tasks, using domain-specific performance metrics such as classification, detection, and prediction.',
+        icon: 'tabler:target-arrow',
+        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/evaluation/objective-relevance/') },
+      },
+    ]}
+  />
+</Layout>

@@ -1,0 +1,64 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { locales, type Locale } from '~/i18n';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<Layout metadata={{ title: 'Software References' }} lang={lang}>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
+    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter mb-8">Software References</h1>
+    <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md">
+      <p>API documentation and reference guides for the SSTDV software tools.</p>
+
+      <h2>Projects</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>Description</th>
+            <th>GitHub</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href={getRelativeLocaleUrl(lang, '/docs/software/brainshapetoolkit/')}>BrainShapeToolKit</a></td>
+            <td>Brain shape analysis from MRI</td>
+            <td><a href="https://github.com/SSTDV-Project/BrainShapeToolKit" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+          </tr>
+          <tr>
+            <td><a href={getRelativeLocaleUrl(lang, '/docs/software/diffam/')}>DiffAM</a></td>
+            <td>Differentiable appearance modeling</td>
+            <td><a href="https://github.com/SSTDV-Project/DiffAM" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+          </tr>
+          <tr>
+            <td><a href={getRelativeLocaleUrl(lang, '/docs/software/vcm/')}>VCM</a></td>
+            <td>Conditional brain MRI generation with coverage control</td>
+            <td><a href="https://github.com/SSTDV-Project/VCM" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Installation</h2>
+      <p>All SSTDV packages can be installed via pip or from source:</p>
+      <pre><code class="language-bash">pip install package-name
+# or from source:
+git clone https://github.com/SSTDV-Project/PACKAGE_NAME.git
+cd PACKAGE_NAME &amp;&amp; pip install -e .</code></pre>
+
+      <h2>Common Dependencies</h2>
+      <ul>
+        <li>Python 3.9+</li>
+        <li>NumPy</li>
+        <li>SciPy</li>
+        <li>PyTorch 2.0+</li>
+      </ul>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,115 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { locales, type Locale } from '~/i18n';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+
+const metadata = {
+  title: 'Publications & Patents',
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <Hero
+    tagline="Publications & Patents"
+    title="Research Outcomes"
+    subtitle="Papers, patents, and software outcomes from the SSTDV project."
+  />
+
+  <Content
+    title="Publications"
+    subtitle="Peer-reviewed research contributions from the SSTDV project."
+    columns={1}
+    items={[
+      {
+        title: 'Generative AI in Breast Surgical Simulation',
+        description: 'Status: Targeted for Q3 2026 | Related Use Case: Breast Cancer Surgical Simulation',
+      },
+      {
+        title: '2.5D Deep Learning Model for Efficient and Accurate Breast Tumor Segmentation from Breast MRI to Support Surgical Planning in Patients with Breast Cancer',
+        description: 'Status: Submitted | Related Use Case: Breast Cancer | Related Technology: Multi-Structure Segmentation',
+      },
+    ]}
+  />
+
+  <Content
+    title="Patents"
+    subtitle="Intellectual property protecting SSTDV project innovations."
+    columns={1}
+    items={[
+      {
+        title: 'Proprietary Conditioning Mechanisms for High-Accuracy Surgical Outcome Synthesis',
+        description: 'Related Technology: Objective-Reinforced Generation, Surgical Plan Conditioning',
+      },
+      {
+        title: 'Interactive Patient-Centric Anatomical Mapping for Informed Consent and Surgical Consultation',
+        description: 'Related Use Case: Breast Cancer Surgical Simulation | Related System: Patient-Centric Surgical Planning System',
+      },
+    ]}
+  />
+
+  <Features2
+    title="Related Software"
+    subtitle="Open-source tools developed as part of the SSTDV project."
+    columns={3}
+    items={[
+      {
+        title: 'BrainShapeToolKit',
+        description: 'Brain MRI-based shape extraction and modeling.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'DiffAM',
+        description: 'Spine CT-based anatomical modeling.',
+        icon: 'tabler:scan',
+      },
+      {
+        title: 'VCM',
+        description: 'Conditional brain MRI image generation.',
+        icon: 'tabler:photo-scan',
+      },
+      {
+        title: 'BrainODE',
+        description: 'Longitudinal brain change modeling via neural ODEs.',
+        icon: 'tabler:timeline',
+      },
+      {
+        title: 'Evaluation Tools',
+        description: 'PSNR, SSIM, LPIPS, Dice Score and more for synthetic data evaluation.',
+        icon: 'tabler:chart-bar',
+      },
+    ]}
+  />
+
+  <Content
+    title="Application Outcomes"
+    subtitle="Real-world impact of SSTDV research."
+    columns={1}
+    items={[
+      {
+        title: 'Supplementing scarce medical imaging data',
+        description: 'Addressing the shortage of training data in medical AI through high-quality synthetic image generation.',
+      },
+      {
+        title: 'Improved disease classification and prediction',
+        description: 'Enhancing performance of AI models for disease classification and prediction using synthetic data augmentation.',
+      },
+      {
+        title: 'Open datasets and software dissemination',
+        description: 'Sharing research-grade open data and software tools to accelerate the wider research community.',
+      },
+      {
+        title: 'Dissemination through patents, papers, and software',
+        description: 'Spreading technical outcomes via publications, patent filings, and open-source software releases.',
+      },
+    ]}
+  />
+</Layout>

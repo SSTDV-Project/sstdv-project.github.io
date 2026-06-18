@@ -1,0 +1,93 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { locales, type Locale } from '~/i18n';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<Layout metadata={{ title: 'Breast Cancer Detection Tutorial' }} lang={lang}>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
+    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter mb-8">Breast Cancer Detection Tutorial</h1>
+    <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md">
+
+      <h2>Overview</h2>
+      <table>
+        <tbody>
+          <tr><td><strong>Estimated Time</strong></td><td>60 minutes</td></tr>
+          <tr><td><strong>Difficulty</strong></td><td>Advanced</td></tr>
+          <tr><td><strong>Prerequisites</strong></td><td>Python 3.9+, familiarity with deep learning concepts</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What You'll Learn</h2>
+      <ul>
+        <li>Generate synthetic mammography data using DiffuAug</li>
+        <li>Evaluate synthetic data quality with EvalDistSim</li>
+        <li>Train a detection model with an augmented dataset</li>
+      </ul>
+
+      <h2>Step 1: Setup</h2>
+      <p>Clone and install the DiffuAug repository:</p>
+      <pre><code class="language-bash">git clone https://github.com/SSTDV-Project/DiffuAug.git
+cd DiffuAug &amp;&amp; pip install -e .</code></pre>
+
+      <h2>Step 2: Generate Synthetic Data</h2>
+      <p>Use DiffuAug to generate conditional synthetic mammography images:</p>
+      <pre><code class="language-python">import diffaug
+augmenter = diffaug.DiffuAug(model_type='ddpm', checkpoint='diffaug_pretrained.pth')
+synthetic_data = augmenter.generate(condition=labels, n_samples=500, diffusion_steps=100)</code></pre>
+
+      <h2>Step 3: Evaluate Distribution Similarity</h2>
+      <p>Assess how well the synthetic data matches the real data distribution:</p>
+      <pre><code class="language-python">import evaldistsim
+evaluator = evaldistsim.EvalDistSim()
+metrics = evaluator.compute_metrics(
+    original=original_data,
+    synthetic=synthetic_data,
+    methods=['ks_test', 'wasserstein', 'fid']
+)
+print(f"KS test: &#123;metrics['ks_test']:.4f&#125;")</code></pre>
+
+      <h2>Troubleshooting</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Issue</th>
+            <th>Solution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Out of memory during generation</td>
+            <td>Reduce <code>n_samples</code> or use a smaller batch size via the <code>batch_size</code> parameter</td>
+          </tr>
+          <tr>
+            <td>Poor FID score</td>
+            <td>Increase <code>diffusion_steps</code> (try 200–500) or fine-tune on your dataset</td>
+          </tr>
+          <tr>
+            <td>Checkpoint not found</td>
+            <td>Download pretrained weights from the DiffuAug releases page on GitHub</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Citation</h2>
+      <p>If you use DiffuAug or EvalDistSim in your research, please cite:</p>
+      <pre><code>@software&#123;diffuaug,
+  title   = &#123;DiffuAug: Diffusion-based Data Augmentation&#125;,
+  author  = &#123;SSTDV Project&#125;,
+  year    = &#123;2024&#125;,
+  url     = &#123;https://github.com/SSTDV-Project/DiffuAug&#125;
+&#125;</code></pre>
+
+      <p><a href={getRelativeLocaleUrl(lang, '/docs/tutorials/')}>&#8592; Back to Tutorials</a></p>
+    </div>
+  </section>
+</Layout>

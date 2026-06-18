@@ -1,0 +1,213 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { t, locales, type Locale } from '~/i18n';
+import { externalLinks } from '~/config/externalLinks';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return locales.map((locale) => ({ params: { lang: locale } }));
+};
+
+const { lang } = Astro.params as { lang: Locale };
+
+const metadata = {
+  title: 'SSTDV — Synthetic Spatio-Temporal Data Vault',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <Hero
+    tagline="About"
+    image={{
+      src: '~/assets/images/Rep.png',
+      alt: 'SSTDV Research Team',
+    }}
+  >
+    <Fragment slot="title">SSTDV</Fragment>
+    <Fragment slot="subtitle">
+      SSTDV is a research project for generating and evaluating synthetic training data from real-world spatiotemporal data, supported by IITP grant funded by the Korea government (MSIT).
+    </Fragment>
+  </Hero>
+
+  <Stats
+    title="Project Overview"
+    stats={[
+      { title: 'Research Institutions', amount: '5' },
+      { title: 'Use Cases', amount: '2' },
+      { title: 'Software Tools', amount: '5' },
+      { title: 'Research Areas', amount: '7' },
+    ]}
+  />
+
+  <Features3
+    title="Research Areas"
+    subtitle="Core technical research areas spanning synthetic data generation, evaluation, and medical imaging applications."
+    columns={3}
+    isBeforeContent={true}
+    items={[
+      {
+        title: 'Synthetic Data Generation',
+        description: 'Developing methods to generate high-quality synthetic spatio-temporal data that preserves statistical properties of real-world data.',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Knowledge Encoding',
+        description: 'Explicitly encoding domain prior knowledge — structure, dynamics, and constraints — into generative models.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Relation Modeling',
+        description: 'Modeling correlations, causality, and teleconnections among multivariate spatio-temporal data.',
+        icon: 'tabler:network',
+      },
+      {
+        title: 'Data Assimilation',
+        description: 'Correcting accumulated errors and missing data during generation through data perturbation techniques.',
+        icon: 'tabler:adjustments',
+      },
+      {
+        title: 'Objective-Reinforced Generation',
+        description: 'Learning generation models using reward functions aligned with domain data requirements and objectives.',
+        icon: 'tabler:target-arrow',
+      },
+      {
+        title: 'Evaluation of Synthetic Data',
+        description: 'Quantitatively verifying synthetic data quality through statistical similarity and objective relevance metrics.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Medical Imaging Applications',
+        description: 'Validating synthetic data effectiveness in brain imaging and breast cancer surgical simulation domains.',
+        icon: 'tabler:stethoscope',
+      },
+    ]}
+  />
+
+  <Features3
+    title="Participating Institutions"
+    subtitle="Five research institutions collaborating across generation, evaluation, and use case domains."
+    columns={3}
+    isAfterContent={true}
+    items={[
+      {
+        title: 'KAIST CGV',
+        description: 'Brain MRI-based shape extraction and conditional image generation.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'KIOST',
+        description: 'Spatiotemporal dependency learning and sea surface temperature forecasting.',
+        icon: 'tabler:wave-sine',
+      },
+      {
+        title: 'Dongguk University',
+        description: 'Evaluation of multivariate distribution similarity and longitudinal brain MRI synthesis.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'KAIST CNI',
+        description: 'Evaluation of fitness-for-purpose using classification, detection, and prediction performance metrics.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Beamworks',
+        description: 'Post-surgical breast MRI generation for medical twin-based surgical planning.',
+        icon: 'tabler:building',
+      },
+    ]}
+  />
+
+  <Steps2
+    title="Core Goals"
+    subtitle="The SSTDV project pursues four core research objectives to advance synthetic spatio-temporal data technology."
+    items={[
+      {
+        title: 'High-quality synthetic data generation',
+        description: 'Developing technology to generate high-quality synthetic data that reflects real-world spatio-temporal characteristics.',
+      },
+      {
+        title: 'Domain knowledge-based generative models',
+        description: 'Building generative models that explicitly encode domain knowledge including structure, dynamics, and physical constraints.',
+      },
+      {
+        title: 'Purpose-oriented evaluation technology',
+        description: 'Developing evaluation methods that verify synthetic data quality in terms of both statistical fidelity and task-specific utility.',
+      },
+      {
+        title: 'Medical imaging validation',
+        description: 'Validating the effectiveness of synthetic data in real-world medical imaging use cases: brain imaging and breast cancer surgical simulation.',
+      },
+    ]}
+  />
+
+  <Features2
+    title="Get In Touch"
+    tagline="Contact"
+    columns={2}
+    items={[
+      {
+        title: 'Email',
+        description: 'For research inquiries and collaboration opportunities.',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'GitHub',
+        description: 'For project-related bug reports, feature requests, and open-source contributions.',
+        icon: 'tabler:brand-github',
+      },
+    ]}
+  />
+
+  <Features2
+    tagline="Resources"
+    title="Documentation & Outcomes"
+    subtitle={t(lang, 'resources.subtitle')}
+    columns={3}
+    items={[
+      {
+        title: 'Docs',
+        description: t(lang, 'resources.docsDesc'),
+        icon: 'tabler:book',
+        callToAction: { text: 'Go to Docs', href: getRelativeLocaleUrl(lang, '/docs/'), target: '_blank' },
+      },
+      {
+        title: 'Publications & Patents',
+        description: t(lang, 'resources.publicationsDesc'),
+        icon: 'tabler:file-text',
+        callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/publications/') },
+      },
+      {
+        title: 'Research',
+        description: t(lang, 'resources.researchDesc'),
+        icon: 'tabler:flask',
+        callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/features/') },
+      },
+    ]}
+  />
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: t(lang, 'nav.docs'),
+        href: getRelativeLocaleUrl(lang, '/docs/'),
+        target: '_blank',
+        icon: 'tabler:book',
+      },
+    ]}
+  >
+    <Fragment slot="title">SSTDV Project</Fragment>
+    <Fragment slot="subtitle">
+      Supported by IITP grant funded by the Korea government (MSIT)<br />
+      No.00223446 — Development of object-oriented synthetic data generation and evaluation methods
+    </Fragment>
+  </CallToAction>
+</Layout>
