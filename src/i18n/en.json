@@ -18,7 +18,7 @@
     "company": "Research team",
     "about": "About",
     "madeBy": "Made by",
-    "ack": "This work was supported by Institute for Information & communications Technology Promotion(IITP) grant funded by the Korea government(MSIT)\n(No.00223446, Development of object-oriented synthetic data generation and evaluation methods)"
+    "ack": "This work was supported by <strong>Institute for Information &amp; Communications Technology Promotion (IITP)</strong> grant funded by <strong>the Korea government (MSIT)</strong><br/>(No.00223446, Development of object-oriented synthetic data generation and evaluation methods)"
   },
   "common": {
     "learnMore": "Learn more",
