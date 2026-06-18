@@ -1,7 +1,7 @@
 site:
   name: SSTDV
-  site: 'https://eunhye0323.github.io'
-  base: '/My-little-landing-page/'
+  site: 'https://sstdv-project.github.io'
+  base: '/'
   trailingSlash: true
 
   googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
