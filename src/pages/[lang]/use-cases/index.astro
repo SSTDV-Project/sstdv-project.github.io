@@ -52,6 +52,32 @@ const metadata = {
 
   <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-2">
     <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
+      {t(lang, 'useCases.brainSoftwareLabel')}
+    </p>
+  </div>
+
+  <Steps
+    items={[
+      {
+        title: t(lang, 'useCases.brainScenario1Title'),
+        description: t(lang, 'useCases.brainScenario1Desc'),
+        icon: 'tabler:user-question',
+      },
+      {
+        title: t(lang, 'useCases.brainScenario2Title'),
+        description: t(lang, 'useCases.brainScenario2Desc'),
+        icon: 'tabler:brain',
+      },
+      {
+        title: t(lang, 'useCases.brainRequiredDataTitle'),
+        description: t(lang, 'useCases.brainRequiredDataDesc'),
+        icon: 'tabler:database',
+      },
+    ]}
+  />
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-2">
+    <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
       {t(lang, 'useCases.brainEvalLabel')}
     </p>
   </div>
