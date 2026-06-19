@@ -13,6 +13,147 @@ const { lang } = Astro.params as { lang: Locale };
 const metadata = {
   title: 'Publications & Patents',
 };
+
+const publications = [
+  {
+    index: 1,
+    title: 'Neural Particle Automata: Learning Self-Organizing Particle Dynamics',
+    author: 'Hyunsoo Kim',
+    fullAuthors: 'Hyunsoo Kim, Ehsan Pajouheshgar, Sabine Süsstrunk, Wenzel Jakob, Jinah Park',
+    journal: '2026 SIGGRAPH',
+    date: '2026.03',
+    doi: 'https://arxiv.org/html/2601.16096v1',
+    image: '/images/npa_fig.jpg',
+    abstract: 'We introduce Neural Particle Automata (NPA), a Lagrangian generalization of Neural Cellular Automata (NCA) from static lattices to dynamic particle systems. Unlike classical Eulerian NCA where cells are pinned to pixels or voxels, NPA model each cell as a particle with a continuous position and internal state, both updated by a shared, learnable neural rule. This particle-based formulation yields clear individuation of cells, allows heterogeneous dynamics, and concentrates computation only on regions where activity is present. At the same time, particle systems pose challenges: neighborhoods are dynamic, and a naive implementation of local interactions scale quadratically with the number of particles. We address these challenges by replacing grid-based neighborhood perception with differentiable Smoothed Particle Hydrodynamics (SPH) operators backed by memory-efficient, CUDA-accelerated kernels, enabling scalable end-to-end training. Across tasks including morphogenesis, point-cloud classification, and particle-based texture synthesis, we show that NPA retain key NCA behaviors such as robustness and self-regeneration, while enabling new behaviors specific to particle systems. Together, these results position NPA as a compact neural model for learning self-organizing particle dynamics.',
+    keywords: ['Neural Particle Automata', 'Neural Cellular Automata', 'Smoothed Particle Hydrodynamics', 'Self-organizing systems', 'Morphogenesis'],
+  },
+  {
+    index: 2,
+    title: 'BrainODE: Neural Shape Dynamics for Age- and Disease-aware Brain Trajectories',
+    author: 'Wonjung Park',
+    fullAuthors: 'Wonjung Park, Suhyun Ahn, Maria C. Valdes Hernandez, Susana Muñoz Maniega, Jinah Park',
+    journal: '2026 NeurIPS',
+    date: '2025.12',
+    doi: 'https://neurips.cc/virtual/2025/loc/san-diego/poster/119662',
+    image: '/images/BrainODE.png',
+    abstract: 'We present BrainODE, a neural ordinary differential equation (ODE)-based framework for modeling continuous longitudinal deformations of brain shapes. BrainODE learns a deformation space over anatomically meaningful brain regions to facilitate early prediction of neurodegenerative disease progression. Addressing inherent challenges of longitudinal neuroimaging data-such as limited sample sizes, irregular temporal sampling, and substantial inter-subject variability-we propose a conditional neural ODE architecture that models shape dynamics with subject-specific age and cognitive status. To enable autoregressive forecasting of brain morphology from a single observation, we propose a pseudo-cognitive status embedding that allows progressive shape prediction across intermediate time points with predicted cognitive decline. Experiments show that BrainODE outperforms time-aware baselines in predicting future brain shapes, demonstrating strong generalization across longitudinal datasets with both regular and irregular time intervals.',
+    keywords: ['Shape analysis', 'Medical application', 'Prediagnosis'],
+  },
+  {
+    index: 3,
+    title: 'Prediction of beach profile changes using spatiotemporal graph neural networks for beach morphological evolution modeling',
+    author: 'Jinah Kim',
+    fullAuthors: 'Jinah Kim, Taekyung Kim, Sungyeol Chang, Jinhoon Kim, Inho Kim',
+    journal: 'Ocean Engineering',
+    issn: '0029-8018',
+    doi: 'https://doi.org/10.1016/j.oceaneng.2025.122282',
+    date: '2025.11',
+    image: '/images/kiost_fig.jpg',
+    abstract: 'In this study, a deep learning framework based on spatiotemporal graph neural networks (GNNs) is proposed to improve the prediction of beach morphological changes by effectively capturing nonlinear relationships and spatiotemporal dependencies among multiple input variables. The model is applied to the Wonpyeong (WP) region on the eastern coast of Korea, comprising four sandy beaches. It incorporates beach characteristics and oceanic forcing data collected through field surveys and ocean observations from 2010 and 2024, along with satellite optical imagery as supplemental remote sensing input. The WP region is subject to frequent anthropogenic interventions, such as submerged breakwater installation and beach nourishment, implemented to mitigate erosion resulting from coastal development. Accordingly, continuous monitoring and accurate morphological change prediction are critical for effective coastal management. An extensive set of ablation experiments was conducted to identify the optimal input variables, which include not only oceanic forcing factors, such as wave conditions and tidal levels, but also beach characteristics such as beach-face slope, median grain size, shoreline position, and cross-sectional profiles indicative of sediment transport and morphological change. To accommodate diverse temporal resolutions, variable-length data embeddings were developed for each input, along with a dedicated subnetwork for extracting shoreline features from satellite imagery. Despite abrupt anthropogenic alterations in beach morphology, the model exhibited robust predictive performance. Although it tended to underestimate bed level changes induced by artificial interventions, the predicted patterns of erosion, deposition, and shoreline movement aligned well with observed trends. Furthermore, the proposed model outperformed recently developed deep learning approaches in terms of prediction accuracy.',
+    keywords: ['Beach morphological evolution', 'Beach profile change', 'Spatiotemporal dependency', 'Nonlinear relationships', 'Spatiotemporal graph neural networks'],
+  },
+  {
+    index: 4,
+    title: 'Morphodynamics-guided spatiotemporal network for modeling the morphological evolution of sand beaches in response to extreme storm events: alphaBeach-X',
+    author: 'Jinah Kim',
+    fullAuthors: 'Jinah Kim, Taekyung Kim, Donghyun Park, Sungyeol Chang, Jinhoon Kim, Inho Kim, Kideok Do',
+    journal: 'Journal of Ocean Engineering and Science',
+    issn: '2468-0133',
+    doi: 'https://doi.org/10.1016/j.joes.2025.11.003',
+    date: '2025.11',
+    image: '/images/kiost_fig2.jpg',
+    abstract: 'In this study, we propose alphaBeach-X, a morphodynamics-guided spatiotemporal deep neural network designed to model the morphological evolution of a sandy beach and its changes in response to extreme storm events. The model was developed through a knowledge transfer learning strategy, in which morphodynamics were pretrained using numerical simulation data and then fine-tuned using field survey data to improve accuracy. The training and test datasets are curated based on hydrodynamic energy conditions to reduce the data imbalance issues commonly associated with rare extreme events. To further improve prediction accuracy during such extreme events — especially given the non-periodic temporal resolution of the field survey data — a recursive autoregressive process is incorporated into the model. The proposed model was applied to Maengbang Beach, located on the east coast of South Korea, and demonstrated skillful predictability in modeling storm-induced morphological changes through an ensemble prediction. As assessed using the Brier skill score (BSS), alphaBeach-X outperformed previous studies, achieving improved accuracy in prediction pre- and post-storm morphological changes. Based on 49 bathymetric survey datasets collected over six years, and using a 70:30 training-to-testing data split, the proposed alphaBeach-X model demonstrates average morphological change prediction performance in the swash zone (above −5m relative to mean sea level) with a Root Mean Square Error of 0.63m, a Bias of 0.10m, a Structural Similarity Index Measure of 0.45, and a BSS of 0.52.',
+    keywords: ['Morphological evolution', 'Sandy beach morphodynamics', 'Spatiotemporal deep neural network', 'Extreme storm events', 'Knowledge transfer learning', 'Autoregressive modeling'],
+  },
+  {
+    index: 5,
+    title: 'Are Medical Image Generative Models Biologically Trustworthy?',
+    author: 'Suhyun Ahn',
+    fullAuthors: 'Suhyun Ahn, Wonjung Park, Jinah Park',
+    journal: '2025 ICCV Workshops',
+    issn: '2473-9944',
+    date: '2025.10',
+    image: '/images/truthworthy.gif',
+    abstract: 'We investigate the biological trustworthiness of deep generative models in capturing intrinsic variability in medical imaging, with a focus on neurodegenerative disease and sex dimorphism. While recent generative models for medical images have demonstrated high perceptual quality, their ability to preserve biologically meaningful variations remains underexplored. In this work, we systematically evaluate two representative generative models conditioned on sex and Alzheimer\'s disease cognitive states. Using real brain MRI data, we first characterize sex- and disease-related anatomical variability, then assess whether the generated synthetic images accurately reflect these patterns. Despite producing visually plausible outputs, both models exhibit substantial limitations in capturing structural differences across key brain regions, indicating low biological fidelity. Our findings highlight critical gaps in current generative approaches and underscore the need for biologically grounded evaluation metrics to ensure clinically meaningful and equitable synthetic data generation.',
+    keywords: ['Biological trustworthiness', 'Medical image generation', 'Neurodegenerative disease', 'Sex dimorphism', 'Brain MRI'],
+  },
+  {
+    index: 6,
+    title: 'Improved Tumor Segmentation using Selective Synthetic Augmentation for Enhanced Surgical Planning in Breast MRI',
+    author: 'Miguel Luna',
+    fullAuthors: 'Miguel Luna, John Baek, Won Hwa Kim, Wan Gyu Son, Kwang Min Lee, Hye Jung Kim, Jaeil Kim',
+    journal: '2025 MICCAI',
+    date: '2025.09',
+    doi: 'https://share.google/9dbp6CMfOnvxPiCdt',
+    image: '/images/tumor_seg.webp',
+    abstract: 'Breast-conserving surgery (BCS) is the preferred treatment for early-stage breast cancer, offering survival rates comparable to mastectomy while preserving breast aesthetics. Accurate tumor segmentation is essential for surgical planning, yet segmentation models often exhibit biases toward specific tumor sizes, particularly underperforming on smaller tumors. To address this, we propose a novel approach that uses generative models to improve segmentation across tumor sizes. Specifically, we adapt the Stable Diffusion model and apply a Denoising Diffusion Probabilistic Model (DDPM) inversion approach to generate synthetic tumors of controlled sizes within real breast MRIs, helping to balance tumor size distribution in the training data. By augmenting the dataset with 10–20% synthetic tumor images, our method significantly improves segmentation accuracy for small tumors without compromising performance for larger tumors. This enhancement allows for more precise tumor assessment, leading to better-informed surgical decisions and potentially reducing unnecessary mastectomies.',
+    keywords: ['Breast cancer', 'Tumor segmentation', 'Synthetic augmentation', 'Diffusion model', 'Breast MRI'],
+  },
+  {
+    index: 7,
+    title: 'AI-based deformable hippocampal mesh reflects hippocampal morphological characteristics in relation to cognition in healthy older adults',
+    author: 'Wonjung Park',
+    fullAuthors: 'Wonjung Park, Maria del C. Valdés Hernández, Jaeil Kim, Susana Muñoz Maniega, Fraser N. Sneden, Karen J. Ferguson, Mark E. Bastin, Joanna M. Wardlaw, Simon R. Cox, Jinah Park',
+    journal: 'NeuroImage',
+    issn: '1053-8119',
+    doi: 'https://doi.org/10.1016/j.neuroimage.2025.121145',
+    date: '2025.04',
+    image: '/images/deform_hippo.jpg',
+    abstract: 'Magnetic resonance imaging (MRI)-derived hippocampus measurements have been associated with different cognitive domains. The knowledge of hippocampal structural deformations as we age has contributed to our understanding of the overall aging process. Different morphological hippocampal shape analysis methods have been developed, but it is unclear how their principles relate and how consistent are the published results in relation to cognition in the normal elderly in the light of the new deep-learning-based (DL) state-of-the-art modeling methods. We compared results from analyzing the hippocampal morphology using manually-generated binary masks and a Laplacian-based deformation shape analysis method, with those resulting from analyzing SynthSeg-generated hippocampal binary masks using a DL method based on the PointNet architecture, in relation to different cognitive domains. Whilst most previously reported statistically significant associations were also replicated, differences were also observed due to 1) differences in the binary masks and 2) differences in sensitivity between the methods. Differences in the template mesh, number of vertices of the template mesh, and their distribution did not impact the results.',
+    keywords: ['Hippocampus shape model point cloud', 'Laplacian deformation cognition', 'Template mesh'],
+  },
+  {
+    index: 8,
+    title: 'SAM3X: Efficient 3D-Aware Network for Medical Image Segmentation Using SAM',
+    author: 'Donggyu Lee',
+    journal: 'IEEE 22nd International Symposium on Biomedical Imaging (ISBI)',
+    issn: '1945-8452',
+    doi: 'https://doi.org/10.1109/ISBI60581.2025.10981074',
+    date: '2025.04',
+    image: '/images/sam3x.gif',
+    abstract: 'Recent studies have adopted the Segment Anything Model (SAM), a vision foundation model, for medical image analysis, demonstrating its generalizability and superior performance. However, since most research focuses on slice-by-slice approaches, the potential of pre-trained SAM for 3D medical images remains underexplored. Furthermore, achieving consistent segmentation across slices is challenging due to the need for expert-provided prompts. To alleviate these issues, we propose a novel lightweight network, SAM3X, to fully leverage the ability of pre-trained SAM in 3D medical image segmentation. SAM3X employs the SAM encoder across three axes to obtain robust and rich representations of 3D volume images. Also, we implement SAM3X in a prompt-free manner and employ lightweight decoders with fine-grained skip connection to capture inter-slice information in various aspects while keeping the network efficient in parameters. Through extensive experiments on various datasets, we verify the effectiveness and efficiency compared to other SAM-based approaches and vision transformer methods.',
+    keywords: ['Segment Anything Model', '3D medical image segmentation', 'Vision foundation model', 'Prompt-free segmentation'],
+  },
+  {
+    index: 9,
+    title: 'Volumetric Conditioning Module to Control Pretrained Diffusion Models for 3D Medical Images',
+    author: 'Suhyun Ahn',
+    fullAuthors: 'Suhyun Ahn, Wonjung Park, Jihoon Cho, Seunghyuck Park, Jinah Park',
+    journal: '2025 WACV',
+    doi: 'https://doi.org/10.48550/arXiv.2410.21826',
+    date: '2025.02',
+    image: '/images/VCM_details.png',
+    abstract: 'Spatial control methods using additional modules on pretrained diffusion models have gained attention for enabling conditional generation in natural images. These methods guide the generation process with new conditions while leveraging the capabilities of large models. They could be beneficial as training strategies in the context of 3D medical imaging, where training a diffusion model from scratch is challenging due to high computational costs and data scarcity. However, the potential application of spatial control methods with additional modules to 3D medical images has not yet been explored. In this paper, we present a tailored spatial control method for 3D medical images with a novel lightweight module, Volumetric Conditioning Module (VCM). Our VCM employs an asymmetric U-Net architecture to effectively encode complex information from various levels of 3D conditions, providing detailed guidance in image synthesis. To examine the applicability of spatial control methods and the effectiveness of VCM for 3D medical data, we conduct experiments under single- and multimodal conditions scenarios across a wide range of dataset sizes, from extremely small datasets with 10 samples to large datasets with 500 samples. The experimental results show that the VCM is effective for conditional generation and efficient in terms of requiring less training data and computational resources.',
+    keywords: ['Volumetric conditioning', '3D medical imaging', 'Diffusion models', 'Conditional generation', 'Spatial control'],
+  },
+];
+
+const patents = [
+  {
+    index: 1,
+    title: '의료 이미지를 생성하기 위한 기초 모델을 조정하는 방법',
+    country: '대한민국',
+    applicant: '주식회사 빔웍스',
+    date: '2024.11.22',
+    number: '10-2024-0167915',
+  },
+  {
+    index: 2,
+    title: '유방 촉출된 판독문을 생성 및 변경하는 방법',
+    country: '대한민국',
+    applicant: '주식회사 빔웍스',
+    date: '2024.11.22',
+    number: '10-2024-0167914',
+  },
+  {
+    index: 3,
+    title: '의료 정비의 화면 정보를 분석하는 방법',
+    country: '대한민국',
+    applicant: '주식회사 빔웍스',
+    date: '우선출원 신청',
+    number: '10-2025-0148633',
+  },
+];
 ---
 
 <Layout metadata={metadata} lang={lang}>
@@ -22,129 +163,71 @@ const metadata = {
     subtitle="Research outcomes from the SSTDV project."
   />
 
-  <section class="px-4 py-12 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <div class="mx-auto prose prose-lg max-w-6xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400">
+  <section class="px-4 py-12 sm:px-6 mx-auto lg:px-8 max-w-5xl">
 
-      <h2>Publications</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Paper (First Author)</th>
-            <th>Journal / Proceedings</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>AI-based deformable hippocampal mesh reflects hippocampal morphological characteristics in relation to cognition in healthy older adults<br/><span class="text-sm text-muted">Wonjung Park</span></td>
-            <td>NeuroImage</td>
-            <td>2025.04</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Prediction of beach profile changes using spatiotemporal graph neural networks for beach morphological evolution modeling<br/><span class="text-sm text-muted">Jinah Kim</span></td>
-            <td>Ocean Engineering</td>
-            <td>2025.11</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Morphodynamics-guided spatiotemporal network for modeling the morphological evolution of sand beaches response to extreme storm events: alphaBeach-X<br/><span class="text-sm text-muted">Jinah Kim</span></td>
-            <td>Journal of Ocean Engineering and Science</td>
-            <td>2025.11</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Volumetric Conditioning Module to Control Pretrained Diffusion Models for 3D Medical Images<br/><span class="text-sm text-muted">Suhyun Ahn</span></td>
-            <td>Proceedings of WACV</td>
-            <td>2025.02</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>SAM3X: Efficient 3D-Aware Network for Medical Image Segmentation Using SAM<br/><span class="text-sm text-muted">Donggyu Lee</span></td>
-            <td>Proceedings of ISBI 2025</td>
-            <td>2025.04</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Train Once, Generate Anywhere: Discretization Agnostic Neural Cellular Automata using SPH Method<br/><span class="text-sm text-muted">Hyunsoo Kim</span></td>
-            <td>SIGGRAPH Posters '25</td>
-            <td>2025.08</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Are Medical Image Generative Models Biologically Trustworthy?<br/><span class="text-sm text-muted">Suhyun Ahn</span></td>
-            <td>Proceedings of ICCV Workshops</td>
-            <td>2025.10</td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>BrainODE: Neural Shape Dynamics for Age- and Disease-aware Brain Trajectories<br/><span class="text-sm text-muted">Wonjung Park</span></td>
-            <td>Advances in Neural Information Processing Systems</td>
-            <td>2025.12</td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Improved Tumor Segmentation using Selective Synthetic Augmentation for Enhanced Surgical Planning in Breast MRI<br/><span class="text-sm text-muted">Miguel Luna</span></td>
-            <td>Lecture Notes in Computer Science</td>
-            <td>2025.09</td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Predicting Motor Symptom Progression in Parkinson's Disease Using GCN and DTI<br/><span class="text-sm text-muted">Hyewon Shin</span></td>
-            <td>Annual Meeting of the Organization for Human Brain Mapping</td>
-            <td>2025.06</td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>의료 인공지능 연구 동향 - 치매 관련 연구를 중심으로<br/><span class="text-sm text-muted">우성호, 김일기</span></td>
-            <td>정보처리학회지</td>
-            <td>2025.09</td>
-          </tr>
-        </tbody>
-      </table>
+    <h2 class="text-2xl font-bold font-heading text-heading mb-6">Publications</h2>
 
-      <h2>Patents</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>지식재산권 명칭</th>
-            <th>국명</th>
-            <th>출원인</th>
-            <th>출원일</th>
-            <th>출원번호</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>의료 이미지를 생성하기 위한 기초 모델을 조정하는 방법</td>
-            <td>대한민국</td>
-            <td>주식회사 빔웍스</td>
-            <td>2024.11.22</td>
-            <td>10-2024-0167915</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>유방 촉출된 판독문을 생성 및 변경하는 방법</td>
-            <td>대한민국</td>
-            <td>주식회사 빔웍스</td>
-            <td>2024.11.22</td>
-            <td>10-2024-0167914</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>의료 정비의 화면 정보를 분석하는 방법</td>
-            <td>대한민국</td>
-            <td>주식회사 빔웍스</td>
-            <td>우선출원 신청</td>
-            <td>10-2025-0148633</td>
-          </tr>
-        </tbody>
-      </table>
-
+    <div class="flex flex-col gap-4">
+      {publications.map((pub) => (
+        <div class="flex gap-6 p-6 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+          {pub.image && (
+            <div class="flex-shrink-0 w-64 h-48 hidden sm:block self-start bg-gray-50 dark:bg-slate-700 rounded-xl p-2 flex items-center justify-center">
+              <img src={pub.image} alt={pub.title} class="rounded-lg object-contain w-full h-full" />
+            </div>
+          )}
+          <div class="flex flex-col justify-between flex-1 min-w-0">
+            <div>
+              <span class="text-xs font-semibold text-blue-500 dark:text-blue-400 mb-1 block">#{pub.index}</span>
+              <p class="font-semibold text-heading text-sm leading-snug">{pub.title}</p>
+              <p class="text-xs text-muted mt-1">{pub.fullAuthors ?? pub.author}</p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-3 items-center">
+              <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 dark:bg-slate-700 text-blue-700 dark:text-blue-300">{pub.journal}{pub.volume ? `, ${pub.volume}` : ''}</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300">{pub.date}</span>
+              {pub.doi && (
+                <a href={pub.doi} target="_blank" rel="noopener noreferrer" class="text-xs text-blue-600 dark:text-blue-400 hover:underline">Link ↗</a>
+              )}
+              {pub.link && (
+                <a href={pub.link} target="_blank" rel="noopener noreferrer" class="text-xs text-blue-600 dark:text-blue-400 hover:underline">{pub.linkLabel ?? 'Link'} ↗</a>
+              )}
+            </div>
+            {pub.abstract && (
+              <details class="mt-3">
+                <summary class="text-xs font-semibold text-muted cursor-pointer hover:text-heading select-none">Abstract</summary>
+                <p class="text-xs text-muted mt-2 leading-relaxed">{pub.abstract}</p>
+                {pub.keywords && (
+                  <div class="flex flex-wrap gap-1 mt-2">
+                    {pub.keywords.map((kw: string) => (
+                      <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-gray-400">{kw}</span>
+                    ))}
+                  </div>
+                )}
+              </details>
+            )}
+          </div>
+        </div>
+      ))}
     </div>
+
+    <h2 class="text-2xl font-bold font-heading text-heading mt-12 mb-6">Patents</h2>
+
+    <div class="flex flex-col gap-4">
+      {patents.map((pat) => (
+        <div class="flex gap-4 p-5 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+          <div class="flex flex-col justify-between flex-1 min-w-0">
+            <div>
+              <span class="text-xs font-semibold text-blue-500 dark:text-blue-400 mb-1 block">#{pat.index}</span>
+              <p class="font-semibold text-heading text-sm leading-snug">{pat.title}</p>
+              <p class="text-xs text-muted mt-1">{pat.applicant} · {pat.country}</p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 dark:bg-slate-700 text-blue-700 dark:text-blue-300">{pat.number}</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300">{pat.date}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
   </section>
 </Layout>
