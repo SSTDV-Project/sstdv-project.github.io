@@ -31,9 +31,9 @@ const metadata = {
       alt: 'SSTDV Main Figure',
     }}
   >
-    <Fragment slot="title">SSTDV</Fragment>
+    <Fragment slot="title">SSTDV<span class="text-2xl md:text-3xl font-bold font-heading tracking-tighter block mt-1">(Synthetic Spatio-Temporal Data Vault)</span></Fragment>
     <Fragment slot="subtitle">
-      SSTDV is a research project for generating and evaluating synthetic training data from real-world spatiotemporal data, supported by IITP grant funded by the Korea government (MSIT).
+      SSTDV(Synthetic Spatio-Temporal Data Vault) is a research project for generating and evaluating synthetic data from real-world spatiotemporal data.
     </Fragment>
   </Hero>
 
@@ -82,35 +82,34 @@ const metadata = {
   />
 
   <Features3
-    title="Participating Institutions"
-    subtitle="Five research institutions collaborating across generation, evaluation, and use case domains."
-    columns={3}
+    title="Research Team"
+    subtitle="Four research institutions collaborating across generation, evaluation, and use case domains."
+    columns={2}
     isAfterContent={true}
     items={[
       {
-        title: 'KAIST CGV',
-        description: 'Brain MRI-based shape extraction and conditional image generation.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'KIOST',
-        description: 'Spatiotemporal dependency learning and sea surface temperature forecasting.',
-        icon: 'tabler:ripple',
+        title: 'KAIST (CGV/CNI)',
+        description: '<ul class="list-disc pl-5 space-y-1"><li>Brain MRI-based shape extraction and conditional image generation.</li><li>Evaluation using classification, detection, and prediction performance metrics.</li></ul>',
+        image: '/images/kaist_logo.png',
+        classes: { icon: 'h-20 w-auto' },
       },
       {
         title: 'Dongguk University',
-        description: 'Evaluation of multivariate distribution similarity and longitudinal brain MRI synthesis.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'KAIST CNI',
-        description: 'Evaluation of fitness-for-purpose using classification, detection, and prediction performance metrics.',
-        icon: 'tabler:school',
+        description: '<ul class="list-disc pl-5 space-y-1"><li>Evaluation of multivariate distribution similarity and longitudinal brain MRI synthesis.</li></ul>',
+        image: '/images/dongguk_logo.png',
+        classes: { icon: 'h-24 w-auto' },
       },
       {
         title: 'Beamworks',
-        description: 'Post-surgical breast MRI generation for medical twin-based surgical planning.',
-        icon: 'tabler:building',
+        description: '<ul class="list-disc pl-5 space-y-1"><li>Post-surgical breast MRI generation for medical twin-based surgical planning.</li></ul>',
+        image: '/images/beamworks_logo.png',
+        classes: { icon: 'h-24 w-auto' },
+      },
+      {
+        title: 'KIOST',
+        description: '<ul class="list-disc pl-5 space-y-1"><li>Spatiotemporal dependency learning and sea surface temperature forecasting.</li></ul>',
+        image: '/images/kiost_logo.png',
+        classes: { icon: 'h-32 w-auto' },
       },
     ]}
   />
@@ -163,7 +162,7 @@ const metadata = {
         callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/publications/') },
       },
       {
-        title: 'Docs',
+        title: 'Software',
         description: t(lang, 'resources.docsDesc'),
         icon: 'tabler:book',
         callToAction: { text: t(lang, 'common.learnMore'), href: getRelativeLocaleUrl(lang, '/docs/') },
@@ -187,12 +186,12 @@ const metadata = {
     items={[
       {
         title: 'Email',
-        description: 'For research inquiries and collaboration opportunities.',
+        description: 'Contact us for research inquiries: <a href="mailto:jinahpark@kaist.ac.kr" class="underline text-blue-600 dark:text-blue-400">jinahpark@kaist.ac.kr</a>',
         icon: 'tabler:mail',
       },
       {
         title: 'GitHub',
-        description: 'For project-related bug reports, feature requests, and open-source contributions.',
+        description: 'Access open-source software and datasets: <a href="https://github.com/SSTDV-Project/" target="_blank" class="underline text-blue-600 dark:text-blue-400">github.com/SSTDV-Project</a>',
         icon: 'tabler:brand-github',
       },
     ]}

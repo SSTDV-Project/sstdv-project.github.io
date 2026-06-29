@@ -53,7 +53,7 @@ export function getFooterData(locale: Locale) {
         title: t(locale, 'footer.resources'),
         links: [
           { text: 'Publications & Patents', href: getRelativeLocaleUrl(locale, '/publications/') },
-          { text: t(locale, 'nav.docs'), href: externalLinks.docs },
+          { text: t(locale, 'nav.docs'), href: getRelativeLocaleUrl(locale, '/docs/') },
         ],
       },
     ],
