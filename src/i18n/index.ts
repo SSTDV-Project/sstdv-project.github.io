@@ -1,10 +1,11 @@
 import en from './en.json';
+import ko from './ko.json';
 
-export const locales = ['en'] as const;
+export const locales = ['en', 'ko'] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'en';
 
-const translations: Record<Locale, typeof en> = { en };
+const translations: Record<Locale, typeof en> = { en, ko: ko as unknown as typeof en };
 
 export function t(locale: Locale, key: string): string {
   const keys = key.split('.');

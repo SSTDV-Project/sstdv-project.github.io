@@ -37,20 +37,66 @@ const metadata = {
     </Fragment>
   </Hero>
 
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <h2 class="text-3xl lg:text-4xl font-bold font-heading text-center mb-2">Research Goals</h2>
+    <p class="text-xl text-muted text-center mb-10">Overview of research and development technologies pursued by the SSTDV project.</p>
+    <div class="space-y-6">
+      {[
+        {
+          index: 1,
+          title: 'High-Quality Synthetic Spatio-Temporal Data Generation',
+          description: `<ul class="list-decimal pl-5 space-y-1">
+            <li><strong>Knowledge Encoding:</strong> Computable data structures and generative models that explicitly encode prior knowledge — structure, dynamics, and constraints — of entities in spatio-temporal data.</li>
+            <li><strong>Objective-Reinforced Generation:</strong> Learning models for spatio-temporal data augmentation and generation using reward functions aligned with domain data requirements and objectives.</li>
+            <li><strong>Data Assimilation:</strong> Improving synthetic accuracy by correcting accumulated errors and missing data during spatio-temporal generation through data perturbation techniques.</li>
+            <li><strong>Relationship Modeling:</strong> Modeling correlations, causality, and teleconnections among multivariate spatio-temporal data from prior knowledge and data, enabling generation through learning and inference.</li>
+          </ul>`,
+        },
+        {
+          index: 2,
+          title: 'Synthetic Data Quality Evaluation',
+          description: `<ul class="list-decimal pl-5 space-y-2">
+            <li><strong>Statistical similarity evaluation:</strong> Quantitatively assessing distributional similarity between synthetic and real data — including variable distributions and inter-variable correlations within synthetic data.</li>
+            <li><strong>Objective relevance evaluation:</strong> Quantitatively comparing performance improvement from using synthetic data on fixed AI models, evaluated using domain-specific metrics aligned with the intended use of the synthetic data.</li>
+            <li><strong>Synthetic data Turing test:</strong> Developing and conducting a domain expert evaluation protocol to validate synthetic spatio-temporal data.</li>
+          </ul>`,
+        },
+        {
+          index: 3,
+          title: 'Validation and Commercialization',
+          description: `<p>The synthetic data generation and evaluation technologies developed through this project are validated in the medical domain through scenario-based demonstrations:</p>
+          <ul class="list-disc pl-5 space-y-1 mt-2">
+            <li><strong>Brain imaging:</strong> Prediction of brain aging and neurodegenerative disease progression.</li>
+            <li><strong>Breast cancer surgical simulation:</strong> Prediction of post-surgical outcomes for breast cancer treatment planning.</li>
+          </ul>`,
+        },
+      ].map(({ index, title, description }) => (
+        <div class="flex gap-6 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
+          <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-primary font-bold text-xl">
+            {index}
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold font-heading mb-3">{title}</h3>
+            <div class="text-muted dark:text-gray-400" set:html={description} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-2 text-center">
+    <h2 class="text-3xl lg:text-4xl font-bold font-heading mb-2">Research Areas</h2>
+    <p class="text-xl text-muted">Core technical research areas spanning synthetic data generation and quality evaluation.</p>
+  </div>
+
   <Features3
-    title="Research Areas"
-    subtitle="Core technical research areas spanning synthetic data generation, evaluation, and medical imaging applications."
-    columns={3}
+    tagline="Generation"
+    columns={4}
     isBeforeContent={true}
     items={[
       {
-        title: 'Synthetic Data Generation',
-        description: 'Developing methods to generate high-quality synthetic spatio-temporal data that preserves statistical properties of real-world data.',
-        icon: 'tabler:database',
-      },
-      {
         title: 'Knowledge Encoding',
-        description: 'Explicitly encoding domain prior knowledge — structure, dynamics, and constraints — into generative models.',
+        description: 'Encoding domain prior knowledge — structure, dynamics, and physical constraints — explicitly into generative models.',
         icon: 'tabler:brain',
       },
       {
@@ -60,23 +106,36 @@ const metadata = {
       },
       {
         title: 'Data Assimilation',
-        description: 'Correcting accumulated errors and missing data during generation through data perturbation techniques.',
+        description: 'Combining numerical model outputs and real observations to generate more reliable spatio-temporal data.',
         icon: 'tabler:adjustments',
       },
       {
-        title: 'Objective-Reinforced Generation',
-        description: 'Learning generation models using reward functions aligned with domain data requirements and objectives.',
+        title: 'Objective Synthesis',
+        description: 'Goal-oriented generative modeling conditioned on clinical objectives rather than statistical learning alone.',
         icon: 'tabler:target-arrow',
       },
+    ]}
+  />
+
+  <Features3
+    tagline="Evaluation"
+    columns={3}
+    isAfterContent={true}
+    items={[
       {
-        title: 'Evaluation of Synthetic Data',
-        description: 'Quantitatively verifying synthetic data quality through statistical similarity and objective relevance metrics.',
+        title: 'Statistical Similarity',
+        description: 'Measuring distributional similarity between real and synthetic data via univariate (KS/KL/JS), multivariate correlation, and longitudinal (LMM) analysis.',
         icon: 'tabler:chart-bar',
       },
       {
-        title: 'Use Cases',
-        description: 'Validating synthetic data effectiveness in brain imaging and breast cancer surgical simulation domains.',
-        icon: 'tabler:stethoscope',
+        title: 'Objective Relevance',
+        description: 'Assessing biological, anatomical, and clinical validity of synthetic data for AI model training through CNN-based structural and disease-related evaluation.',
+        icon: 'tabler:checkup-list',
+      },
+      {
+        title: 'Expert Evaluation',
+        description: 'Visual Turing Test in which domain experts blindly classify real vs. synthetic medical images to validate perceptual fidelity.',
+        icon: 'tabler:eye',
       },
     ]}
   />
@@ -110,29 +169,6 @@ const metadata = {
         description: '<ul class="list-disc pl-5 space-y-1"><li>Spatiotemporal dependency learning and sea surface temperature forecasting.</li></ul>',
         image: '/images/kiost_logo.png',
         classes: { icon: 'h-32 w-auto' },
-      },
-    ]}
-  />
-
-  <Steps2
-    title="Research Goals"
-    subtitle="The SSTDV project pursues four core research objectives to advance synthetic spatio-temporal data technology."
-    items={[
-      {
-        title: 'High-quality synthetic data generation',
-        description: 'Developing technology to generate high-quality synthetic data that reflects real-world spatio-temporal characteristics.',
-      },
-      {
-        title: 'Domain knowledge-based generative models',
-        description: 'Building generative models that explicitly encode domain knowledge including structure, dynamics, and physical constraints.',
-      },
-      {
-        title: 'Purpose-oriented evaluation technology',
-        description: 'Developing evaluation methods that verify synthetic data quality in terms of both statistical fidelity and task-specific utility.',
-      },
-      {
-        title: 'Medical imaging validation',
-        description: 'Validating the effectiveness of synthetic data in real-world medical imaging use cases: brain imaging and breast cancer surgical simulation.',
       },
     ]}
   />

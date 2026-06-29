@@ -1,263 +1,114 @@
 {
   "nav": {
-    "features": "Research",
+    "features": "연구",
     "generation": "생성",
     "evaluation": "평가",
-    "useCases": "실증사례",
-    "brainImaging": "뇌영상",
+    "useCases": "활용 사례",
+    "brainImaging": "뇌 영상",
     "breastCancer": "유방암",
-    "environment": "환경/재난",
-    "publications": "연구성과",
-    "docs": "문서",
+    "environment": "환경",
+    "publications": "연구성과 및 특허",
+    "docs": "소프트웨어",
     "download": "다운로드",
     "researchTeam": "연구팀",
-    "about": "About"
+    "about": "소개"
   },
   "footer": {
-    "resources": "리소스",
+    "resources": "자료",
     "company": "연구팀",
     "about": "소개",
-    "madeBy": "제작자",
-    "ack": "이 논문은 2026년도 정부(과학기술정보통신부)의 재원으로 정보통신기획평가원의 지원을 받아 수행된 연구임 \n(No.00223446, 목적 맞춤형 합성데이터 생성 및 평가기술 개발)"
+    "madeBy": "제작",
+    "ack": "본 연구는 <strong>정보통신기획평가원(IITP)</strong>의 지원을 받아 <strong>과학기술정보통신부(MSIT)</strong> 재원으로 수행된 연구입니다.<br/>(No.00223446, 객체 지향 합성 데이터 생성 및 평가 방법 개발)"
   },
   "common": {
     "learnMore": "자세히 보기",
     "getStarted": "시작하기"
   },
   "hero": {
-    "title": "Synthetic Spatio-Temporal Data Vault",
-    "subtitle": "<strong>SSTDV</strong>는 실제 세계 시공간 데이터로부터 합성 훈련 데이터를 생성하고 평가하기 위한 연구 프로젝트입니다."
+    "title": "합성 시공간 데이터 저장소",
+    "subtitle": "<strong></strong>는 실세계 시공간 데이터로부터 합성 학습 데이터를 생성하고 평가하는 연구 프로젝트입니다."
   },
   "features": {
-    "heroTagline": "Research",
-    "heroTitle": "생성 & 평가",
-    "heroSubtitle": "실세계 시공간 데이터로부터 고품질 합성 데이터를 생성하고, 통계적·목적적으로 품질을 검증합니다.",
+    "heroTagline": "생성 및 평가",
+    "heroTitle": "연구",
+    "heroSubtitle": "실세계 시공간 데이터로부터 고품질 합성 데이터를 생성하고, 통계적·객관적 지표를 통해 품질을 검증합니다.",
     "generationLabel": "01 — 생성",
     "generationTitle": "생성",
-    "generationSubtitle": "도메인 지식을 인지한 고품질 합성 시공간 데이터 생성",
+    "generationSubtitle": "<strong>목표:</strong> 합성 파이프라인의 모든 단계에 도메인 지식을 명시적으로 통합하여 고품질 합성 시공간 데이터를 생성하는 원칙적 프레임워크를 개발합니다.<br/><strong>목적:</strong> 해양 역학에서 의료 영상에 이르는 다양한 도메인에 걸쳐 통계적으로 충실하고, 구조적으로 일관성 있으며, 목적에 부합하는 합성 데이터를 생성합니다.<br/><strong>방법론:</strong> 데이터 기반 학습에만 의존하지 않고, 물리적 제약, 변수 간 관계, 과업별 목적을 생성 모델에 인코딩합니다.",
     "knowledgeEncodingTitle": "지식 인코딩",
-    "knowledgeEncodingDesc": "시공간 데이터의 구조·역학 등 사전지식을 생성 모델에 명시적으로 인코딩합니다.",
-    "relationModelingTitle": "상호관계 모델링",
-    "relationModelingDesc": "다변량 시공간 데이터 간 상관관계·인과관계를 모델링해 데이터 추론을 가능하게 합니다.",
+    "knowledgeEncodingDesc": "<ul class='list-disc pl-5 mt-1 space-y-2'><li>지식 인코딩은 시공간 데이터의 개체에 대한 구조, 역학, 물리적 제약 등 도메인 사전지식을 표현하기 위한 계산 가능한 데이터 구조를 구현합니다.</li><li>생성 모델은 이 인코딩된 지식을 명시적으로 활용하도록 구축되어, 원칙적이고 제어 가능한 합성 데이터 생성을 가능하게 합니다.</li></ul><br><span class='block mt-2 text-sm font-semibold text-heading'>소프트웨어</span><span class='block text-sm text-muted'><a href='/ko/docs/#brainshapetoolkit' class='underline'>BrainShapeToolKit</a> — 뇌 MRI 기반 형태 추출<br><a href='/ko/docs/#diffam' class='underline'>DiffAM</a> — 척추 CT 기반 해부학적 모델링<br><a href='/ko/docs/#vcm' class='underline'>VCM</a> — 조건부 뇌 MRI 이미지 생성<br><a href='https://github.com/SSTDV-Project/HF-GAN' target='_blank' class='underline'>HF-GAN</a> — 고충실도 통합 뇌 MRI 합성</span><br><span class='block mt-2 text-sm font-semibold text-heading'>공개 데이터</span><span class='block text-sm text-muted'><em>전체 합성 데이터셋 요청은 <a href='mailto:eunhye0323@kaist.ac.kr' class='underline'>eunhye0323@kaist.ac.kr</a>으로 문의하시기 바랍니다.</em></span><br><img src='/images/versatile_VCM.png' alt='Versatile VCM' class='mt-4 rounded-lg w-full' /><img src='/images/VCM_details.png' alt='VCM Details' class='mt-4 rounded-lg w-full' />",
+    "relationModelingTitle": "관계 모델링",
+    "relationModelingDesc": "<ul class='list-disc pl-5 mt-1 space-y-2'><li>관계 모델링은 해양 변수들이 시간, 공간, 해상도에 걸쳐 어떻게 연결되어 있는지 파악하는 것을 목표로 합니다. SST 분석에서 이는 과거 온도 변화, 극한 고온·저온 이벤트, 저해상도 해양장이 미래 또는 고해상도 SST 패턴과 어떻게 관련되는지를 설명하는 데 도움을 줍니다.</li><li>이러한 관계를 모델링하기 위해 EVL 기반 SST 예측으로 시간적 극한 이벤트를 포착하고, GAN 기반 SST 다운스케일링으로 저해상도와 고해상도 해양장 간의 공간적 관계를 학습합니다.</li></ul><br><span class='block mt-2 text-sm font-semibold text-heading'>소프트웨어</span><span class='block text-sm text-muted'><a href='https://github.com/SSTDV-Project/KIOST-SST-Downscaling' target='_blank' class='underline'>KIOST-SST-Downscaling</a> — 공간 관계 모델링을 위한 GAN 기반 SST 다운스케일링<br><a href='https://github.com/SSTDV-Project/KIOST-SST-EVL' target='_blank' class='underline'>KIOST-SST-EVL</a> — 시간적 극한 이벤트 모델링을 위한 EVL 기반 SST 예측</span><br><span class='block mt-2 text-sm font-semibold text-heading'>공개 데이터</span><span class='block text-sm text-muted'><a href='https://github.com/SSTDV-Project/KIOST-SST-EVL/tree/main/data' target='_blank' class='underline'>KIOST-SST-EVL/data</a> · KIOST-SST-Downscaling/data/OSTIA/peninsula<br><em>파일 크기 제한으로 GitHub에는 일부 데이터셋만 제공됩니다. 전체 합성 데이터셋 요청은 <a href='mailto:tkkim@kiost.ac.kr' class='underline'>tkkim@kiost.ac.kr</a>로 문의하시기 바랍니다.</em></span><br><img src='/images/relation_modeling.png' alt='Relation Modeling' class='mt-4 rounded-lg w-full' />",
     "dataAssimilationTitle": "자료 동화",
-    "dataAssimilationDesc": "데이터 섭동 기술로 생성 중 누적 오차를 수정해 합성 정확도를 향상합니다.",
-    "objectiveReinforcementTitle": "목적 강화",
-    "objectiveReinforcementDesc": "도메인 요구사항에 맞는 보상함수를 적용해 목적 맞춤형 합성 데이터를 생성합니다.",
+    "dataAssimilationDesc": "<ul class='list-disc pl-5 mt-1 space-y-2'><li>자료 동화는 수치 모델 출력과 실제 관측값을 결합하여 보다 신뢰할 수 있는 해양 상태를 추정합니다. 관측이 희박하거나 잡음이 많거나 불완전한 경우, 물리적 제약이 결측 또는 불확실한 변수의 복원을 안내할 수 있어 특히 유용합니다.</li><li>이를 위해 3D-Var 자료 동화와 딥러닝을 결합하여 관측 증거와 물리 기반 제약을 모두 반영한 시공간 해양 데이터를 생성합니다.</li></ul><br><span class='block mt-2 text-sm font-semibold text-heading'>소프트웨어</span><span class='block text-sm text-muted'><a href='https://github.com/SSTDV-Project/KIOST-3D-VAR-DA' target='_blank' class='underline'>KIOST-3D-VAR-DA</a> — 시공간 해양 데이터 생성을 위한 딥러닝 결합 3D-Var 자료 동화</span><br><span class='block mt-2 text-sm font-semibold text-heading'>공개 데이터</span><span class='block text-sm text-muted'><a href='https://github.com/SSTDV-Project/KIOST-3D-VAR-DA/tree/main/data' target='_blank' class='underline'>KIOST-3D-VAR-DA/data</a><br><em>파일 크기 제한으로 GitHub에는 일부 데이터셋만 제공됩니다. 전체 합성 데이터셋 요청은 <a href='mailto:tkkim@kiost.ac.kr' class='underline'>tkkim@kiost.ac.kr</a>로 문의하시기 바랍니다.</em></span><br><img src='/images/data_assimilation.png' alt='Data Assimilation' class='mt-4 rounded-lg w-full' />",
+    "objectiveReinforcementTitle": "목적 합성",
+    "objectiveReinforcementDesc": "<ul class='list-disc pl-5 mt-1 space-y-2'><li>목적 합성은 목표 지향적 생성 모델링에 초점을 맞추며, 합성 과정이 순수한 통계적 학습에만 의존하지 않고 임상 목표에 명시적으로 조건화됩니다. 유방암 수술 시뮬레이션의 맥락에서, 이는 특정 수술 계획과 환자별 해부학적 구조를 반영하는 해부학적으로 타당한 수술 후 MRI를 생성하는 것을 의미합니다.</li><li>이 모델은 환자의 수술 전 MRI와 계획된 수술 유형으로부터 수술 후 유방을 예측합니다 — 절제 영역, 임플란트 위치, 임플란트 크기를 조건으로 합니다. 1,483건의 실제 수술 전·후 대응 연구로 학습되어, 유방 보존 수술 및 재건으로 인한 복잡한 형태학적 변환을 포착하고, 의사가 수술 전 예상 결과를 시각화하고 환자가 치료 결정에 참여할 수 있게 합니다.</li></ul><br><span class='block mt-2 text-sm font-semibold text-heading'>소프트웨어</span><span class='block text-sm text-muted'><a href='https://github.com/SSTDV-Project/DiffuAug' target='_blank' class='underline'>DiffuAug</a> — DDPM 및 DDIM 샘플링을 활용한 Classifier-Free Diffusion Guidance 기반 유방 MRI 생성</span><br><img src='/images/objective_synthesis.png' alt='Objective Synthesis' class='mt-4 rounded-lg w-full' />",
     "evaluationLabel": "02 — 평가",
     "evaluationTitle": "평가",
-    "evaluationSubtitle": "생성 데이터의 품질을 통계적·목적적으로 정량 검증",
-    "statisticalSimilarityTitle": "분포 유사성",
-    "statisticalSimilarityDesc": "합성 데이터와 실제 데이터의 분포 유사성 및 변량 간 상관관계를 정량적으로 평가합니다.",
+    "evaluationSubtitle": "<strong>목표:</strong> 합성 3D T1 강조 뇌 MRI를 검증하기 위한 엄격한 평가 프레임워크를 구축합니다.<br/><strong>목적:</strong> 생성된 의료 영상의 수학적, 생물학적, 임상적 신뢰성을 보장합니다.<br/><strong>방법론:</strong> 3단계 통계 분석(단변량 및 다변량 통계적 유사성 분석, 선형 혼합 모델 기반 종단적 변화 유사성 분석)과 시각적 Turing Test를 통한 정성적 전문가 평가를 통합합니다.",
+    "statisticalSimilarityTitle": "통계적 유사성",
+    "statisticalSimilarityDesc": "<ul class='list-disc pl-5 mt-1 space-y-2'><li>뚜렷한 해부학적 영역에서 추출된 형태학적 특징(예: 부피, 피질 두께, 표면적)을 평가하여, 실제 데이터와 합성 데이터의 확률 분포 간 수학적 거리를 세 가지 차원에서 측정합니다.</li><li><strong>단변량 통계적 유사성</strong>: 단변량 통계적 유사성을 평가하기 위해 3D T1-w MRI 내 뚜렷한 해부학적 영역에서 추출된 형태학적 특징을 분석합니다. 원시 복셀 강도를 평가하는 대신, 세 가지 핵심 통계 지표를 사용하여 실제 데이터와 합성 데이터셋에서 추출된 형태학적 특징의 확률 분포 간 수학적 거리를 측정하는 프로그램을 개발했습니다:<ul class='list-disc pl-5 mt-1 space-y-1 text-sm'><li><strong>Kolmogorov-Smirnov (KS) 검정</strong>: 이 비모수 검정은 실제 데이터와 합성 데이터의 경험적 누적분포함수(CDF) 간 최대 거리를 측정합니다.</li><li><strong>Kullback-Leibler (KL) 발산</strong>: 상대 엔트로피라고도 불리는 KL 발산은 합성 형태학적 분포가 실제 데이터 분포를 근사할 때 손실되는 정보량을 정량화합니다.</li><li><strong>Jensen-Shannon (JS) 발산</strong>: KL 발산이 비대칭적이므로, 분포 비교를 위한 대칭적이고 평활화된 지표를 제공하기 위해 JS 발산을 도입했습니다.</li></ul><img src='/images/uss1.png' alt='Univariate Statistical Similarity' class='mt-3 rounded-lg w-full' /></li><li><strong>다변량 상관 분석 (결합 분포 평가)</strong>: 1D 지표가 개별 특징의 현실성을 보장하는 반면, 인간의 뇌는 고도로 구조화되어 있어 한 뇌 영역의 강도와 형태가 다른 영역과 본질적으로 상관관계를 가집니다.<ul class='list-disc pl-5 mt-1 space-y-1 text-sm'><li><strong>특징 상호의존성 보존</strong>: 실제 데이터와 합성 데이터셋 모두에서 여러 변수에 대한 상관 행렬을 계산합니다.</li><li><strong>구조적 공분산 평가</strong>: 실제 데이터와 합성 데이터의 공분산 행렬을 비교하여 생성 모델이 전반적인 해부학적 구조와 특징 간 잠재적 상호작용을 성공적으로 학습했는지 정량적으로 평가합니다.</li></ul><img src='/images/uss2.png' alt='Multivariate Correlation Analysis' class='mt-3 rounded-lg w-full' /></li><li><strong>선형 혼합 효과 모델(LMM)을 통한 종단적 평가</strong>: 합성 데이터가 시간에 따른 동적 생물학적 변화를 정확하게 모방하는지 검증하기 위해 LMM 분석 프로그램을 구현했습니다.<ul class='list-disc pl-5 mt-1 space-y-1 text-sm'><li><strong>종단적 데이터 구조 검증</strong>: LMM은 시간 진행이나 나이와 같은 변수에 의해 주도되는 집단 수준의 고정 효과에서 피험자별 무작위 효과를 분리할 수 있는 고급 통계 프레임워크입니다.</li><li><strong>궤적 일관성 평가</strong>: LMM 고정 효과의 기울기와 절편을 비교하여 합성 데이터가 정적 스냅샷이 아닌 동적 시간적 궤적을 정확하게 반영함을 증명합니다.</li></ul><img src='/images/uss3_final.png' alt='Longitudinal Evaluation via LMM' class='mt-3 rounded-lg w-full' /></li></ul><br><span class='block mt-2 text-sm font-semibold text-heading'>소프트웨어</span><span class='block text-sm text-muted'><a href='https://github.com/SSTDV-Project/EvalDistSim' target='_blank' class='underline'>EvalDistSim</a> — KS 검정, KL 발산, Jensen-Shannon 발산을 통한 1D 분포 유사성<br><a href='https://github.com/SSTDV-Project/EvalCorrSyn' target='_blank' class='underline'>EvalCorrSyn</a> — 합성 데이터의 다변량 분포 유사성 평가<br><a href='https://github.com/SSTDV-Project/EvalSynLongD' target='_blank' class='underline'>EvalSynLongD</a> — 실제 데이터와 합성 종단 데이터의 통계적 유사성 (LMM, Cohen's d)</span>",
     "objectiveRelevanceTitle": "목적 적합성",
-    "objectiveRelevanceDesc": "목적 맞춤형 AI 모델 성능을 실데이터·합성데이터·혼합 구성별로 비교해 적합성을 평가합니다."
+    "objectiveRelevanceDesc": "<ul class='list-disc pl-5 mt-1 space-y-2'><li>CNN 기반 평가는 합성 뇌 영상 데이터가 AI 모델 훈련 및 실제 연구 환경에서 활용하기에 충분한 생물학적, 해부학적, 임상적 타당성을 갖추고 있는지 평가합니다.</li><li><strong>시각적 및 구조적 유사성</strong>: 합성 이미지가 실제 뇌 이미지와 시각적·구조적으로 유사한지, CNN으로 추출된 특징이 실제 데이터와 합성 데이터 간에 비교 가능한지 평가합니다.</li><li><strong>질병 관련 특성 보존</strong>: 합성 데이터가 질병 진행 단계에 걸쳐 환자 그룹과 대조 그룹 간의 질병 관련 차이를 보존하는지 평가합니다.</li></ul><br><img src='/images/cni_eval.png' alt='Objective Relevance Evaluation' class='mt-4 rounded-lg w-full' />",
+    "turingTestTitle": "시각적 Turing Test를 통한 전문가 평가 (정성적 평가)",
+    "turingTestDesc": "<ul class='list-disc pl-5 mt-1 space-y-2'><li>수학적·통계적 검증을 넘어, 합성 의료 영상의 임상적·해부학적 현실성을 평가하려면 인간 전문가의 판단이 필요합니다. 이를 위해 시각적 Turing Test를 도입했습니다.</li><li><strong>임상적 현실성 평가</strong>: 도메인 전문가(방사선과 전문의 또는 신경과 전문의 등)에게 실제 MRI와 합성 3D T1-w MRI를 무작위로 혼합하여 블라인드로 제시하고, 각 스캔을 \"실제\" 또는 \"합성\"으로 분류하도록 했습니다.</li><li><strong>지각적 충실도 검증</strong>: 전문가의 분류 정확도가 무작위 확률(약 50%)에 근접한다면, 합성 MRI가 실제 환자 스캔과 시각적으로 구별하기 어렵다는 강력한 증거가 됩니다.</li></ul><br><img src='/images/turing_test_img.png' alt='Turing Test Results' class='mt-4 rounded-lg w-full' />"
   },
   "resources": {
-    "subtitle": "프로젝트 문서, 튜토리얼, 소프트웨어 툴, 연구 성과를 확인하세요.",
-    "docsDesc": "Virtual Brain·Breast Cancer 튜토리얼 및 BrainShapeToolKit, DiffAM, VCM 레퍼런스.",
-    "publicationsDesc": "논문·특허·오픈 데이터셋 및 활용 성과.",
-    "researchDesc": "SSTDV의 합성 데이터 생성 및 평가 방법론 소개."
+    "subtitle": "프로젝트 연구, 활용 사례, 연구성과 및 오픈소스 소프트웨어를 확인하세요.",
+    "researchDesc": "SSTDV의 합성 데이터 생성 및 평가 방법론.",
+    "useCasesDesc": "뇌 영상 및 유방암 수술 시뮬레이션 분야에서의 검증된 활용 사례.",
+    "publicationsDesc": "SSTDV 프로젝트의 연구성과.",
+    "docsDesc": "SSTDV 프로젝트의 오픈소스 저장소."
   },
   "useCases": {
-    "heroTagline": "실증사례",
-    "heroTitle": "실증사례",
-    "heroSubtitle": "의료영상 두 분야에서 목적 강화 합성 데이터의 유효성을 검증합니다.",
-    "brainLabel": "01 — 뇌영상",
-    "brainTitle": "Virtual Brain",
-    "brainSubtitle": "동국대학교 · ADNI",
-    "brainOverview": "신경 퇴행성 질환과 관련된 종단 및 만성 뇌 영상 변화를 시뮬레이션하고, 질병 분류 및 예측 모델 개발에 사용할 수 있는 합성 뇌 영상 데이터를 생성하는 프레임워크입니다.",
+    "heroTagline": "응용",
+    "heroTitle": "활용 사례",
+    "heroSubtitle": "두 가지 의료 영상 도메인에서 검증된, 목적 강화 합성 데이터의 효과성을 보여줍니다.",
+    "brainLabel": "01 — 뇌 영상",
+    "brainTitle": "가상 뇌",
+    "brainSubtitle": "동국대학교",
+    "brainOverview": "Virtual Brain은 신경퇴행성 질환과 관련된 종단적·만성적 뇌 영상 변화를 시뮬레이션하고, 질병 분류 및 예측 모델 개발에 활용할 수 있는 합성 뇌 영상 데이터를 생성하는 프레임워크입니다.",
     "brainDataTitle": "데이터 및 기술",
-    "brainDataDesc": "동국대학교 및 ADNI 공개 데이터셋의 뇌영상 데이터를 활용합니다.",
+    "brainDataDesc": "동국대학교 및 ADNI 공개 데이터셋의 뇌 영상 데이터.",
+    "brainSoftwareLabel": "소프트웨어",
+    "brainScenario1Title": "시나리오 1: MRI 없이",
+    "brainScenario1Desc": "<strong>입력:</strong> 현재 나이, 성별, 진단(Normal / MCI), MMSE 점수<br/><br/><strong>출력:</strong><ul class='list-disc pl-5 mt-1 space-y-2'><li><strong>Case 1 - 뇌 건강 유지:</strong> Normal 또는 MCI 상태를 유지하는 피험자에서 생성된 3년 간격 예측 MRI (축상, 관상, 시상 뷰), 예측 MMSE 점수</li><li><strong>Case 2 - 뇌 건강 미관리:</strong><ul class='list-disc pl-5 mt-1 space-y-1 text-sm'><li>Normal → MCI로 전환되는 피험자의 3년 간격 예측 MRI, 예측 MMSE 점수</li><li>MCI → AD로 전환되는 피험자의 3년 간격 예측 MRI, 예측 MMSE 점수</li></ul></li></ul>",
+    "brainScenario2Title": "시나리오 2: MRI와 함께",
+    "brainScenario2Desc": "<strong>입력:</strong> 환자 MRI, 현재 나이, 성별, 진단(Normal / MCI), MMSE 점수<br/><br/><strong>출력:</strong><ul class='list-disc pl-5 mt-1 space-y-2'><li><strong>Case 1 - 뇌 건강 유지 (Steady Normal / Steady MCI):</strong> 노화 요인만 반영하여 현재 MRI에서 생성된 3년 간격 예측 MRI (축상, 관상, 시상 뷰), 예측 MMSE 점수</li><li><strong>Case 2 - 뇌 건강 미관리:</strong> 노화 및 인지 저하(Normal → MCI 또는 MCI → AD)를 반영하여 현재 MRI에서 생성된 3년 간격 예측 MRI, 예측 MMSE 점수</li></ul>",
+    "brainRequiredDataTitle": "필요 데이터",
+    "brainRequiredDataDesc": "환자 입력 정보에 조건화된 합성 종단 MRI 및 예측 MMSE 점수로, 뇌 건강 유지, Normal-to-MCI 전환, MCI-to-AD 전환의 세 가지 궤적을 포함합니다.",
     "brainEvalLabel": "평가",
     "brainEval1Title": "분포 유사성",
-    "brainEval1Desc": "실제 뇌 영상과 합성 뇌 영상 간 분포 유사성 평가",
+    "brainEval1Desc": "실제 뇌 영상과 합성 뇌 영상 간의 분포 유사성 평가.",
     "brainEval2Title": "재현성",
-    "brainEval2Desc": "영역별 만성 뇌 변화의 재현성 평가",
+    "brainEval2Desc": "영역별 만성 뇌 변화의 재현성.",
     "brainEval3Title": "목적 적합성",
-    "brainEval3Desc": "질병 분류 모델에 대한 목적 적합성 평가",
+    "brainEval3Desc": "질병 분류 모델에 대한 목적 적합성.",
     "breastLabel": "02 — 유방암",
     "breastTitle": "유방암 수술 시뮬레이션",
-    "breastSubtitle": "Beamworks · 수술 전/후 MR 1,483 케이스",
-    "breastOverview": "유방 MR 생성 및 유방 모양 예측 기술을 기반으로, 유방암 치료 및 수술 계획 수립 시 필요한 수술 절제 영역과 수술 후 유방 형태 변화를 정량화하고 시뮬레이션합니다. 수술 전/후 유방 MR 영상을 활용하여 수술 후 유방 형태를 예측함으로써 환자-의사 간 의사결정을 지원합니다.",
+    "breastSubtitle": "Beamworks",
+    "breastOverview": "환자의 수술 전 MRI와 계획된 수술 유형으로부터 모델은 수술 후 유방을 예측합니다. 합성된 이미지는 절제 영역과 그에 따른 형태 변화를 표시합니다. 이를 통해 의사는 수술 전 예상 결과를 분석하고 환자는 치료 결정에 참여할 수 있습니다.",
     "breastDataTitle": "데이터 및 기술",
-    "breastDataDesc": "유방암 수술 환자의 수술 전/후 유방 MR 영상 1,483 케이스를 기반으로 학습됩니다. 절제 영역, 임플란트 위치 및 크기 등 구조적 지식을 조건 정보로 반영합니다.",
+    "breastDataDesc": "생성 모델은 1,483건의 수술 전·후 유방 MR 이미지로 학습됩니다. 프레임워크는 절제 영역, 임플란트 위치, 임플란트 크기를 포함한 구조적 지식을 조건화 정보로 통합합니다.",
     "breastPipelineLabel": "파이프라인",
-    "breastStep1Title": "MRI Sequence 분류",
-    "breastStep1Desc": "Raw DICOM 파일을 자동으로 분류하여 임상적으로 의미 있는 MRI series로 정리합니다.",
-    "breastStep2Title": "영상 표준화",
-    "breastStep2Desc": "Orientation correction, N4-bias field removal, noise reduction, normalization 등을 통해 영상을 표준화합니다.",
-    "breastStep3Title": "다중 구조 분할",
-    "breastStep3Desc": "유방 조직, 종양 영역, 절제 영역, 임플란트 관련 구조를 식별하거나 생성 조건으로 활용합니다.",
-    "breastStep4Title": "수술 전/후 MRI 정합",
-    "breastStep4Desc": "수술 전 MR 영상과 수술 후 MR 영상을 정합하여 종단적 생성 모델 학습을 위한 데이터를 구성합니다.",
-    "breastStep5Title": "수술 후 MRI 생성",
-    "breastStep5Desc": "수술 계획, 종양 위치, 절제 영역, 임플란트 정보를 조건으로 수술 후 유방 MR 영상을 예측하는 생성 모델을 학습합니다.",
-    "breastStep6Title": "시스템 통합",
-    "breastStep6Desc": "생성 결과를 MRI viewer, segmentation module, measurement module, 3D rendering module을 포함하는 메디컬 트윈 기반 수술 계획 시스템에 통합합니다.",
+    "breastUpstreamLabel": "업스트림 전처리",
+    "breastStep1Title": "시퀀스 구성",
+    "breastStep1Desc": "원시 DICOM 파일은 AI 모델 입력 선택 및 사용자 탐색을 지원하기 위해 임상적으로 의미 있는 MRI 시리즈로 자동 분류됩니다.",
+    "breastStep2Title": "표준화",
+    "breastStep2Desc": "유방 MR 이미지는 방향 보정, N4-바이어스 필드 제거, 노이즈 감소, 정규화를 통해 표준화됩니다.",
+    "breastStep3Title": "분할",
+    "breastStep3Desc": "정량적 분석 및 생성 조건화를 위해 유방 조직, 종양 영역, 절제 영역, 임플란트 관련 구조가 식별됩니다.",
+    "breastStep4Title": "등록",
+    "breastStep4Desc": "종단적 생성 모델링을 위한 학습 데이터 구성을 위해 수술 전·후 MR 이미지가 정렬됩니다.",
+    "breastGenerationLabel": "생성 + 평가",
+    "breastStep5Title": "수술 후 생성",
+    "breastStep5Desc": "생성 모델은 수술 전 MRI에서 수술 계획, 종양 위치, 절제 영역, 임플란트 정보를 조건으로 수술 후 유방 MRI를 예측합니다.",
+    "breastStep6Title": "적용",
+    "breastStep6Desc": "생성된 결과는 MRI 시각화, 분할, 측정, 3D 렌더링 모듈을 갖춘 의료 트윈 기반 수술 계획 시스템에 통합될 수 있습니다.",
     "breastEvalLabel": "평가",
     "breastEval1Title": "정성적 평가",
-    "breastEval1Desc": "다수의 전문의가 합성 영상과 실제 영상을 구분하는 튜링 테스트 방식으로 진행됩니다.",
+    "breastEval1Desc": "유방암 전문의가 합성 수술 후 MR 이미지와 실제 이미지를 비교하는 튜링 테스트.<br><img src='/images/turing_test.png' alt='Turing Test' class='mt-4 rounded-lg w-full' />",
     "breastEval2Title": "정량적 평가",
-    "breastEval2Desc": "절제 영역 및 임플란트 영역에 대해 생성 결과와 기준 데이터 간의 일치도를 Dice Similarity Coefficient(DSC)로 분석합니다."
-  },
-  "about": {
-    "hero": {
-      "tagline": "소개",
-      "title": "SSTDV 연구팀",
-      "subtitle": "의료, 환경과학 등을 위한 최첨단 합성 시공간 데이터 생성 및 평가 방법을 개발합니다."
-    },
-    "stats": {
-      "title": "프로젝트 개요",
-      "publications": "논문",
-      "datasets": "생성 데이터셋",
-      "institutions": "연구 기관",
-      "years": "활동 기간"
-    },
-    "researchAreas": {
-      "title": "연구 분야",
-      "items": [
-        {
-          "title": "합성 데이터 생성",
-          "description": "실제 데이터의 통계적 특성을 보존하는 합성 시공간 데이터 생성 기법 개발"
-        },
-        {
-          "title": "평가 지표",
-          "description": "합성 데이터의 품질과 유용성을 정량적으로 평가하는 metrics 연구"
-        },
-        {
-          "title": "개인정보 보호",
-          "description": "차분 개인信息公开 기술과 연합학습을 활용한隐私 보호 합성 데이터 생성"
-        },
-        {
-          "title": "도메인 적응",
-          "description": "하나의 도메인에서 학습한 모델을 다른 도메인에 효율적으로 전이하는 방법 연구"
-        },
-        {
-          "title": "시간적 모델링",
-          "description": "시계열 데이터의 시간적 의존성과 변화를 효과적으로 포착하는 모델 개발"
-        },
-        {
-          "title": "불확실성 정량화",
-          "description": "합성 데이터의 불확실성을 정량화하고 신뢰할 수 있는 불확실성 추정 제공"
-        }
-      ]
-    },
-    "collaborators": {
-      "title": "공동 연구기관",
-      "items": [
-        {
-          "title": "의료 영상 파트너",
-          "description": "의료 영상 분석을 위한 합성 데이터 공동 연구"
-        },
-        {
-          "title": "환경 기관",
-          "description": "환경 모니터링 데이터 생성 및 분석 협력"
-        },
-        {
-          "title": "대학 연구기관",
-          "description": "다양한 학술 기관과의 합성 데이터 연구 협업"
-        },
-        {
-          "title": "산업 파트너",
-          "description": "실제 산업 문제에 합성 데이터 기술 적용"
-        }
-      ]
-    },
-    "mission": {
-      "title": "미션",
-      "items": [
-        {
-          "title": "고품질 합성 데이터로 AI 발전 촉진",
-          "description": "양질의 합성 데이터를 통해 머신러닝 모델의 학습 효율성과 성능을 향상させます"
-        },
-        {
-          "title": "개인정보와 윤리적 관행 보장",
-          "description": "개인정보 보호와 윤리적 합성 데이터 사용을 위한 연구 수행"
-        },
-        {
-          "title": "과학적 발견 가속화",
-          "description": "합성 데이터를 활용하여 과학 연구의 속도를 높이고 새로운 발견을 촉진"
-        }
-      ]
-    },
-    "milestones": {
-      "title": "주요 성과",
-      "items": [
-        {
-          "title": "학술 논문 발표",
-          "description": "동료评审 학술 논문 12편 출판",
-          "icon": "tabler:file-text"
-        },
-        {
-          "title": "벤치마크 데이터셋 구축",
-          "description": "48개의 벤치마크 합성 데이터셋 생성",
-          "icon": "tabler:database"
-        },
-        {
-          "title": "국제 학술 대회 발표",
-          "description": "주요 국제 학회에서의 연구 결과 발표",
-          "icon": "tabler:presentation"
-        }
-      ]
-    },
-    "getInTouch": {
-      "title": "연락처",
-      "items": [
-        {
-          "title": "이메일 문의",
-          "description": "연구 관련 문의는 이메일로 연락주세요",
-          "icon": "tabler:mail"
-        },
-        {
-          "title": "GitHub Issues",
-          "description": "프로젝트 관련 버그 리포트 및 기능 요청은 GitHub를 이용하세요",
-          "icon": "tabler:brand-github"
-        }
-      ]
-    }
-  },
-  "publications": {
-    "hero": {
-      "tagline": "연구성과",
-      "title": "논문 및 특허",
-      "subtitle": "합성 데이터 생성 및 평가 기술에 관한公开发表된 논문과 특허를 확인하세요."
-    },
-    "selected": {
-      "title": "주요 논문",
-      "items": [
-        {
-          "title": "Privacy-Preserving Synthetic Medical Imaging Data Generation using Diffeomorphic Flows",
-          "description": "권도현, 이서연, 박지훈, 최영민 | Nature Machine Intelligence, 2025"
-        },
-        {
-          "title": "Temporal Consistency in Synthetic Spatio-Temporal Data: A Benchmark Study",
-          "description": "김태형, 정수민, 한동희 | ICML, 2025"
-        },
-        {
-          "title": "Cross-Domain Adaptation of Synthetic Data Generators for Environmental Monitoring",
-          "description": "이준호, 최민지, 강성호 | AAAI, 2025"
-        },
-        {
-          "title": "Uncertainty Quantification in Synthetic Medical Time Series: A Bayesian Approach",
-          "description": "박서린, 김동윤, 조민수 | ICLR, 2024"
-        },
-        {
-          "title": "Evaluation Metrics for Synthetic Spatio-Temporal Data: A Comprehensive Survey",
-          "description": "정하은, 윤석호, 허성현 | TPAMI, 2024"
-        }
-      ]
-    },
-    "preprints": {
-      "title": "프리프린트 및 기술 보고서",
-      "items": [
-        {
-          "title": "Synthetic Data Generation for Rare Disease Imaging: A Feasibility Study",
-          "description": "최수진, 김현우, 박종석 | arXiv, 2026"
-        },
-        {
-          "title": "Federated Learning with Synthetic Data: Privacy and Utility Trade-offs",
-          "description": "서예린, 이동훈, 김지수 | Technical Report, 2026"
-        }
-      ]
-    }
+    "breastEval2Desc": "Dice 유사도 계수(DSC)를 사용하여 생성된 수술 영역(절제 및 임플란트)과 참조 수술 영역 간의 일치도를 측정합니다."
   }
 }

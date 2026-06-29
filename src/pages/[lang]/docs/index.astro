@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { locales, type Locale } from '~/i18n';
+import Hero from '~/components/widgets/Hero.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -8,12 +9,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { lang } = Astro.params as { lang: Locale };
+
+const metadata = {
+  title: 'Software',
+};
 ---
 
-<Layout metadata={{ title: 'Docs' }} lang={lang}>
-  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
-    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter mb-4">Docs</h1>
-    <p class="text-muted text-lg mb-12">Open-source repositories from the SSTDV project.</p>
+<Layout metadata={metadata} lang={lang}>
+  <Hero
+    tagline="Open-Source Software"
+    title="Software"
+    subtitle="Open-source software repositories from the SSTDV project."
+  />
+  <section class="px-4 py-2 sm:px-6 mx-auto lg:px-8 lg:py-4 max-w-4xl">
 
     <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md">
 
@@ -21,37 +29,41 @@ const { lang } = Astro.params as { lang: Locale };
 
       <h3>Knowledge Encoding</h3>
       <table>
+        <colgroup><col style="width:25%"><col style="width:62%"><col style="width:13%"></colgroup>
         <thead><tr><th>Repository</th><th>Description</th><th>GitHub</th></tr></thead>
         <tbody>
-          <tr><td>BrainShapeToolKit</td><td>Brain MRI-based shape extraction</td><td><a href="https://github.com/SSTDV-Project/BrainShapeToolKit" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
-          <tr><td>DiffAM</td><td>Spine CT-based anatomical modeling</td><td><a href="https://github.com/SSTDV-Project/DiffAM" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
-          <tr><td>VCM</td><td>Conditional brain MRI image generation</td><td><a href="https://github.com/SSTDV-Project/VCM" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
-          <tr><td>HF-GAN</td><td>High-fidelity unified brain MRI synthesis</td><td><a href="https://github.com/SSTDV-Project/HF-GAN" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>BrainShapeToolKit</td><td>Brain MRI-based shape extraction</td><td><a href="https://github.com/SSTDV-Project/BrainShapeToolKit" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
+          <tr><td>DiffAM</td><td>Spine CT-based anatomical modeling</td><td><a href="https://github.com/SSTDV-Project/DiffAM" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
+          <tr><td>VCM</td><td>Conditional brain MRI image generation</td><td><a href="https://github.com/SSTDV-Project/VCM" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
+          <tr><td>HF-GAN</td><td>High-fidelity unified brain MRI synthesis</td><td><a href="https://github.com/SSTDV-Project/HF-GAN" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
         </tbody>
       </table>
 
       <h3>Relation Modeling</h3>
       <table>
+        <colgroup><col style="width:25%"><col style="width:62%"><col style="width:13%"></colgroup>
         <thead><tr><th>Repository</th><th>Description</th><th>GitHub</th></tr></thead>
         <tbody>
-          <tr><td>KIOST-SST-EVL</td><td>EVL-based SST forecasting for temporal extreme event modeling</td><td><a href="https://github.com/SSTDV-Project/KIOST-SST-EVL" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
-          <tr><td>KIOST-SST-Downscaling</td><td>GAN-based SST downscaling for spatial relation modeling</td><td><a href="https://github.com/SSTDV-Project/KIOST-SST-Downscaling" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>KIOST-SST-EVL</td><td>EVL-based SST forecasting for temporal extreme event modeling</td><td><a href="https://github.com/SSTDV-Project/KIOST-SST-EVL" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
+          <tr><td>KIOST-SST-Downscaling</td><td>GAN-based SST downscaling for spatial relation modeling</td><td><a href="https://github.com/SSTDV-Project/KIOST-SST-Downscaling" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
         </tbody>
       </table>
 
       <h3>Data Assimilation</h3>
       <table>
+        <colgroup><col style="width:25%"><col style="width:62%"><col style="width:13%"></colgroup>
         <thead><tr><th>Repository</th><th>Description</th><th>GitHub</th></tr></thead>
         <tbody>
-          <tr><td>KIOST-3D-VAR-DA</td><td>3D-Var data assimilation with deep learning for spatiotemporal ocean data generation</td><td><a href="https://github.com/SSTDV-Project/KIOST-3D-VAR-DA" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>KIOST-3D-VAR-DA</td><td>3D-Var data assimilation with deep learning for spatiotemporal ocean data generation</td><td><a href="https://github.com/SSTDV-Project/KIOST-3D-VAR-DA" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
         </tbody>
       </table>
 
       <h3>Objective Synthesis</h3>
       <table>
+        <colgroup><col style="width:25%"><col style="width:62%"><col style="width:13%"></colgroup>
         <thead><tr><th>Repository</th><th>Description</th><th>GitHub</th></tr></thead>
         <tbody>
-          <tr><td>DiffuAug</td><td>Breast MRI generation using Classifier-Free Diffusion Guidance with DDPM and DDIM sampling</td><td><a href="https://github.com/SSTDV-Project/DiffuAug" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>DiffuAug</td><td>Breast MRI generation using Classifier-Free Diffusion Guidance with DDPM and DDIM sampling</td><td><a href="https://github.com/SSTDV-Project/DiffuAug" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
         </tbody>
       </table>
 
@@ -59,11 +71,12 @@ const { lang } = Astro.params as { lang: Locale };
 
       <h3>Statistical Similarity</h3>
       <table>
+        <colgroup><col style="width:25%"><col style="width:62%"><col style="width:13%"></colgroup>
         <thead><tr><th>Repository</th><th>Description</th><th>GitHub</th></tr></thead>
         <tbody>
-          <tr><td>EvalCorrSyn</td><td>Evaluation of multivariate distribution similarity in synthetic data</td><td><a href="https://github.com/SSTDV-Project/EvalCorrSyn" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
-          <tr><td>EvalSynLongD</td><td>Statistical similarity of real and synthetic longitudinal data</td><td><a href="https://github.com/SSTDV-Project/EvalSynLongD" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
-          <tr><td>EvalDistSim</td><td>1D data distribution similarity via KS test, KL divergence, and Jensen-Shannon divergence</td><td><a href="https://github.com/SSTDV-Project/EvalDistSim" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+          <tr><td>EvalCorrSyn</td><td>Evaluation of multivariate distribution similarity in synthetic data</td><td><a href="https://github.com/SSTDV-Project/EvalCorrSyn" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
+          <tr><td>EvalSynLongD</td><td>Statistical similarity of real and synthetic longitudinal data</td><td><a href="https://github.com/SSTDV-Project/EvalSynLongD" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
+          <tr><td>EvalDistSim</td><td>1D data distribution similarity via KS test, KL divergence, and Jensen-Shannon divergence</td><td><a href="https://github.com/SSTDV-Project/EvalDistSim" target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 px-3 py-1 rounded-full border-2 border-gray-900 bg-white text-gray-900 text-xs font-medium no-underline hover:bg-gray-100 transition-colors">GitHub</a></td></tr>
         </tbody>
       </table>
 
