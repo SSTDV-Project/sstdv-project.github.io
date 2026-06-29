@@ -39,145 +39,137 @@ const metadata = {
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
     <h2 class="text-3xl lg:text-4xl font-bold font-heading text-center mb-2">Research Goals</h2>
-    <p class="text-xl text-muted text-center mb-10">Overview of research and development technologies pursued by the SSTDV project.</p>
-    <div class="space-y-6">
+    <p class="text-lg text-muted text-center mb-10">Research directions for synthetic data generation, quality evaluation, and validation.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {[
         {
           index: 1,
-          title: 'High-Quality Synthetic Spatio-Temporal Data Generation',
-          description: `<ul class="list-decimal pl-5 space-y-1">
-            <li><strong>Knowledge Encoding:</strong> Computable data structures and generative models that explicitly encode prior knowledge — structure, dynamics, and constraints — of entities in spatio-temporal data.</li>
-            <li><strong>Objective-Reinforced Generation:</strong> Learning models for spatio-temporal data augmentation and generation using reward functions aligned with domain data requirements and objectives.</li>
-            <li><strong>Data Assimilation:</strong> Improving synthetic accuracy by correcting accumulated errors and missing data during spatio-temporal generation through data perturbation techniques.</li>
-            <li><strong>Relationship Modeling:</strong> Modeling correlations, causality, and teleconnections among multivariate spatio-temporal data from prior knowledge and data, enabling generation through learning and inference.</li>
-          </ul>`,
+          title: 'Synthetic Data Generation',
+          badge: { label: 'Generation', color: 'bg-blue-100 dark:bg-blue-900/40 text-primary' },
+          areas: [
+            { icon: '🧠', title: 'Knowledge Encoding' },
+            { icon: '🎯', title: 'Objective-Reinforced' },
+            { icon: '🌊', title: 'Data Assimilation' },
+            { icon: '🔗', title: 'Relation Modeling' },
+          ],
+          items: [
+            { label: 'Knowledge Encoding', desc: 'Encode domain prior knowledge, including structures, dynamics, and physical constraints, into computable representations and generative models.' },
+            { label: 'Objective-Reinforced', desc: 'Train augmentation and generation models using objective-aligned reward functions tailored to domain-specific data requirements.' },
+            { label: 'Data Assimilation', desc: 'Reduce accumulated errors and fill data gaps in spatio-temporal synthesis using data perturbation and assimilation techniques.' },
+            { label: 'Relation Modeling', desc: 'Model correlations, causal relationships, and teleconnections among multivariate spatio-temporal variables for learning- and inference-based generation.' },
+          ],
         },
         {
           index: 2,
-          title: 'Synthetic Data Quality Evaluation',
-          description: `<ul class="list-decimal pl-5 space-y-2">
-            <li><strong>Statistical similarity evaluation:</strong> Quantitatively assessing distributional similarity between synthetic and real data — including variable distributions and inter-variable correlations within synthetic data.</li>
-            <li><strong>Objective relevance evaluation:</strong> Quantitatively comparing performance improvement from using synthetic data on fixed AI models, evaluated using domain-specific metrics aligned with the intended use of the synthetic data.</li>
-            <li><strong>Synthetic data Turing test:</strong> Developing and conducting a domain expert evaluation protocol to validate synthetic spatio-temporal data.</li>
-          </ul>`,
+          title: 'Quality Evaluation',
+          badge: { label: 'Evaluation', color: 'bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400' },
+          areas: [
+            { icon: '📊', title: 'Statistical Similarity' },
+            { icon: '✅', title: 'Objective Relevance' },
+            { icon: '🧑‍⚕️', title: 'Expert Evaluation' },
+          ],
+          items: [
+            { label: 'Statistical Similarity', desc: 'Evaluate distributional similarity and inter-variable correlations between synthetic and real data.' },
+            { label: 'Objective Relevance', desc: 'Assess the contribution of synthetic data to downstream AI model performance using fixed models and domain-specific evaluation metrics.' },
+            { label: 'Expert Turing Test', desc: 'Develop domain-expert evaluation protocols to validate the realism and utility of synthetic spatio-temporal data.' },
+          ],
         },
         {
           index: 3,
-          title: 'Validation and Commercialization',
-          description: `<p>The synthetic data generation and evaluation technologies developed through this project are validated in the medical domain through scenario-based demonstrations:</p>
-          <ul class="list-disc pl-5 space-y-1 mt-2">
-            <li><strong>Brain imaging:</strong> Prediction of brain aging and neurodegenerative disease progression.</li>
-            <li><strong>Breast cancer surgical simulation:</strong> Prediction of post-surgical outcomes for breast cancer treatment planning.</li>
-          </ul>`,
+          title: 'Validation & Commercialization',
+          badge: { label: 'Validation', color: 'bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400' },
+          areas: [
+            { icon: '🧠', title: 'Virtual Brain' },
+            { icon: '🩺', title: 'Breast Cancer Sim.' },
+            { icon: '🌐', title: 'Open Release' },
+          ],
+          items: [
+            { label: 'Use Cases', desc: 'Validate synthetic data through applications in brain aging, neurodegenerative disease prediction, and breast cancer post-surgical outcome prediction.' },
+            { label: 'Open Release & Services', desc: 'Release synthetic datasets and software, and provide cloud-based digital convergence services for open access and subscription-based commercialization.' },
+          ],
         },
-      ].map(({ index, title, description }) => (
-        <div class="flex gap-6 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
-          <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-primary font-bold text-xl">
-            {index}
+      ].map(({ index, title, badge, areas, items }) => (
+        <div class="flex flex-col gap-4 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
+          <div class="flex items-center gap-3">
+            <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/40 text-primary font-bold text-sm">
+              {index}
+            </div>
+            <h3 class="text-base font-semibold font-heading">{title}</h3>
           </div>
-          <div>
-            <h3 class="text-xl font-semibold font-heading mb-3">{title}</h3>
-            <div class="text-muted dark:text-gray-400" set:html={description} />
+          <div class="border-t border-gray-100 dark:border-gray-800 pt-3">
+            <ul class="space-y-2">
+              {items.map(({ label, desc }, i) => (
+                <li class="p-3 rounded-lg border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-slate-800/50">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 text-sm font-semibold text-heading mb-2">
+                    {areas[i]?.icon} {label}
+                  </span>
+                  <p class="text-xs text-muted dark:text-gray-400 leading-relaxed" set:html={desc.replace(/•/g, '<span class="text-primary font-bold">•</span>')} />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       ))}
     </div>
   </div>
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-2 text-center">
-    <h2 class="text-3xl lg:text-4xl font-bold font-heading mb-2">Research Areas</h2>
-    <p class="text-xl text-muted">Core technical research areas spanning synthetic data generation and quality evaluation.</p>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl lg:text-4xl font-bold font-heading mb-2">Research Team</h2>
+      <p class="text-lg text-muted max-w-2xl mx-auto">Four research institutions collaborating across generation and evaluation.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {[
+        {
+          name: 'KAIST',
+          logo: '/images/kaist_logo.png',
+          logoH: 'h-14',
+          roles: ['Brain MRI-based shape extraction and conditional image generation', 'Evaluation using classification, detection, and prediction metrics'],
+        },
+        {
+          name: 'Dongguk University',
+          logo: '/images/dongguk_logo.png',
+          logoH: 'h-16',
+          roles: ['Multivariate distribution similarity evaluation', 'Evaluation of longitudinal brain MRI synthesis'],
+        },
+        {
+          name: 'Beamworks',
+          logo: '/images/beamworks_logo.png',
+          logoH: 'h-16',
+          roles: ['Post-surgical breast MRI generation for medical twin-based surgical planning'],
+        },
+        {
+          name: 'KIOST',
+          logo: '/images/kiost_logo.png',
+          logoH: 'h-20',
+          roles: ['Spatiotemporal dependency learning', 'Sea surface temperature forecasting'],
+        },
+      ].map(({ name, logo, logoH, roles }) => (
+        <div class="flex flex-col items-center gap-4 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm text-center">
+          <div class="h-20 flex items-center justify-center">
+            <img src={logo} alt={name} class={`${logoH} w-auto object-contain`} />
+          </div>
+          <div class="border-t border-gray-100 dark:border-gray-800 w-full pt-4">
+            <h3 class="text-sm font-bold font-heading mb-2">{name}</h3>
+            <ul class="space-y-1.5 text-left">
+              {roles.map((role) => (
+                <li class="flex gap-1.5 text-xs text-muted leading-relaxed">
+                  <span class="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  <span>{role}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 
-  <Features3
-    tagline="Generation"
-    columns={4}
-    isBeforeContent={true}
-    items={[
-      {
-        title: 'Knowledge Encoding',
-        description: 'Encoding domain prior knowledge — structure, dynamics, and physical constraints — explicitly into generative models.',
-        icon: 'tabler:brain',
-      },
-      {
-        title: 'Relation Modeling',
-        description: 'Modeling correlations, causality, and teleconnections among multivariate spatio-temporal data.',
-        icon: 'tabler:network',
-      },
-      {
-        title: 'Data Assimilation',
-        description: 'Combining numerical model outputs and real observations to generate more reliable spatio-temporal data.',
-        icon: 'tabler:adjustments',
-      },
-      {
-        title: 'Objective Synthesis',
-        description: 'Goal-oriented generative modeling conditioned on clinical objectives rather than statistical learning alone.',
-        icon: 'tabler:target-arrow',
-      },
-    ]}
-  />
-
-  <Features3
-    tagline="Evaluation"
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'Statistical Similarity',
-        description: 'Measuring distributional similarity between real and synthetic data via univariate (KS/KL/JS), multivariate correlation, and longitudinal (LMM) analysis.',
-        icon: 'tabler:chart-bar',
-      },
-      {
-        title: 'Objective Relevance',
-        description: 'Assessing biological, anatomical, and clinical validity of synthetic data for AI model training through CNN-based structural and disease-related evaluation.',
-        icon: 'tabler:checkup-list',
-      },
-      {
-        title: 'Expert Evaluation',
-        description: 'Visual Turing Test in which domain experts blindly classify real vs. synthetic medical images to validate perceptual fidelity.',
-        icon: 'tabler:eye',
-      },
-    ]}
-  />
-
-  <Features3
-    title="Research Team"
-    subtitle="Four research institutions collaborating across generation, evaluation, and use case domains."
-    columns={2}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'KAIST (CGV/CNI)',
-        description: '<ul class="list-disc pl-5 space-y-1"><li>Brain MRI-based shape extraction and conditional image generation.</li><li>Evaluation using classification, detection, and prediction performance metrics.</li></ul>',
-        image: '/images/kaist_logo.png',
-        classes: { icon: 'h-20 w-auto' },
-      },
-      {
-        title: 'Dongguk University',
-        description: '<ul class="list-disc pl-5 space-y-1"><li>Evaluation of multivariate distribution similarity and longitudinal brain MRI synthesis.</li></ul>',
-        image: '/images/dongguk_logo.png',
-        classes: { icon: 'h-24 w-auto' },
-      },
-      {
-        title: 'Beamworks',
-        description: '<ul class="list-disc pl-5 space-y-1"><li>Post-surgical breast MRI generation for medical twin-based surgical planning.</li></ul>',
-        image: '/images/beamworks_logo.png',
-        classes: { icon: 'h-24 w-auto' },
-      },
-      {
-        title: 'KIOST',
-        description: '<ul class="list-disc pl-5 space-y-1"><li>Spatiotemporal dependency learning and sea surface temperature forecasting.</li></ul>',
-        image: '/images/kiost_logo.png',
-        classes: { icon: 'h-32 w-auto' },
-      },
-    ]}
-  />
-
   <Features2
-    tagline="Resources"
-    title="Research & Use Cases"
+    title="Resources"
     subtitle={t(lang, 'resources.subtitle')}
     columns={4}
+    classes={{ headline: { container: 'max-w-none', subtitle: 'text-lg' } }}
     items={[
       {
         title: 'Research',
@@ -207,7 +199,7 @@ const metadata = {
   />
 
   <Stats
-    title="Project Outcomes"
+    title="Research Outcomes"
     stats={[
       { title: 'Open-source Software', amount: '14' },
       { title: 'Open Datasets', amount: '7' },
@@ -222,12 +214,12 @@ const metadata = {
     items={[
       {
         title: 'Email',
-        description: 'Contact us for research inquiries: <a href="mailto:jinahpark@kaist.ac.kr" class="underline text-blue-600 dark:text-blue-400">jinahpark@kaist.ac.kr</a>',
+        description: 'Contact us for research inquiries:<br/><a href="mailto:jinahpark@kaist.ac.kr" class="underline text-blue-600 dark:text-blue-400">jinahpark@kaist.ac.kr</a><br/><a href="mailto:khskhs@kaist.ac.kr" class="underline text-blue-600 dark:text-blue-400">khskhs@kaist.ac.kr</a>',
         icon: 'tabler:mail',
       },
       {
         title: 'GitHub',
-        description: 'Access open-source software and datasets: <a href="https://github.com/SSTDV-Project/" target="_blank" class="underline text-blue-600 dark:text-blue-400">github.com/SSTDV-Project</a>',
+        description: 'Access open-source software and datasets:<br/><a href="https://github.com/SSTDV-Project/" target="_blank" class="underline text-blue-600 dark:text-blue-400">github.com/SSTDV-Project</a>',
         icon: 'tabler:brand-github',
       },
     ]}

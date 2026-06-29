@@ -54,11 +54,11 @@
     "turingTestDesc": "<ul class='list-disc pl-5 mt-1 space-y-2'><li>Beyond mathematical and statistical validations, assessing the clinical and anatomical realism of synthetic medical images requires human expert judgment. To achieve this, we incorporated a Visual Turing Test.</li><li><strong>Clinical Realism Assessment</strong>: Domain experts (such as radiologists or neurologists) were presented with a blinded, randomized mix of real and synthetic 3D T1-w MRIs and tasked with classifying each scan as &quot;real&quot; or &quot;synthetic.&quot;</li><li><strong>Perceptual Fidelity Validation</strong>: This qualitative assessment serves as a critical complement to the quantitative metrics. If the experts' classification accuracy approaches random chance (approximately 50%), it strongly indicates that the synthetic MRIs are visually indistinguishable from authentic patient scans. Passing this Turing test confirms that the generated data possesses a high degree of morphological accuracy and clinical viability without obvious artifacts.</li></ul><br><img src='/images/turing_test_img.png' alt='Turing Test Results' class='mt-4 rounded-lg w-full' />"
   },
   "resources": {
-    "subtitle": "Access project research, use cases, publications & patents, and open-sources.",
-    "researchDesc": "SSTDV's synthetic data generation and evaluation methodology.",
-    "useCasesDesc": "Validated use cases in brain imaging and breast cancer surgical simulation.",
-    "publicationsDesc": "Research outcomes from the SSTDV project.",
-    "docsDesc": "Open-source repositories from the SSTDV project."
+    "subtitle": "Access project research, use cases, publications & patents, and open-source software.",
+    "researchDesc": "Synthetic data generation and evaluation methods.",
+    "useCasesDesc": "Validated applications in brain imaging and breast cancer surgery simulation.",
+    "publicationsDesc": "Research publications and patents.",
+    "docsDesc": "Open-source software repositories."
   },
   "useCases": {
     "heroTagline": "Applications",
