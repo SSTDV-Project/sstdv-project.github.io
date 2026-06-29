@@ -37,21 +37,10 @@ export function getFooterData(locale: Locale) {
   return {
     links: [
       {
-        title: t(locale, 'nav.features'),
+        title: 'Links',
         links: [
-          { text: t(locale, 'nav.generation'), href: getRelativeLocaleUrl(locale, '/features/') + '#generation' },
-          { text: t(locale, 'nav.evaluation'), href: getRelativeLocaleUrl(locale, '/features/') + '#evaluation' },
-        ],
-      },
-      {
-        title: t(locale, 'nav.useCases'),
-        links: [
+          { text: t(locale, 'nav.features'), href: getRelativeLocaleUrl(locale, '/features/') },
           { text: t(locale, 'nav.useCases'), href: getRelativeLocaleUrl(locale, '/use-cases/') },
-        ],
-      },
-      {
-        title: t(locale, 'footer.resources'),
-        links: [
           { text: 'Publications & Patents', href: getRelativeLocaleUrl(locale, '/publications/') },
           { text: t(locale, 'nav.docs'), href: getRelativeLocaleUrl(locale, '/docs/') },
         ],
