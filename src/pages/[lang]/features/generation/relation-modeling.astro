@@ -12,14 +12,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const { lang } = Astro.params as { lang: Locale };
 
 const metadata = {
-  title: 'Relation Modeling',
+  title: 'Relationship Modeling',
 };
 ---
 
 <Layout metadata={metadata} lang={lang}>
   <Hero
     tagline="Generation"
-    title="Relation Modeling"
+    title="Relationship Modeling"
     subtitle="Capture and reproduce the complex inter-variable relationships that give real data its structure and meaning."
   />
 
@@ -28,7 +28,7 @@ const metadata = {
       {
         title: 'Multivariate Dependencies',
         description: 'Model correlations and conditional dependencies across columns to preserve joint distributions.',
-        icon: 'tabler:git-branch',
+        icon: 'tabler:link',
       },
       {
         title: 'Temporal Relations',
@@ -38,12 +38,12 @@ const metadata = {
       {
         title: 'Causal Structure',
         description: 'Encode causal graphs that ensure synthetic data respects directional influences observed in the real world.',
-        icon: 'tabler:arrows-diff',
+        icon: 'tabler:sitemap',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1551288049-bebba4e2a583?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Relation Modeling',
+      alt: 'Relationship Modeling',
     }}
   >
     <Fragment slot="content">

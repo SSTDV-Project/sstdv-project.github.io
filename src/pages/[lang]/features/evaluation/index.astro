@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { locales, type Locale } from '~/i18n';
-import Features2 from '~/components/widgets/Features2.astro';
+import { Icon } from 'astro-icon/components';
 import Hero from '~/components/widgets/Hero.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
@@ -15,32 +15,63 @@ const { lang } = Astro.params as { lang: Locale };
 const metadata = {
   title: 'Evaluation',
 };
+
+const capabilities = [
+  {
+    index: 1,
+    icon: 'tabler:chart-bar',
+    title: 'Statistical Similarity',
+    description: 'Quantify how closely synthetic data reproduces the statistical properties of the original dataset — including distributional similarity and inter-variable correlations.',
+    href: getRelativeLocaleUrl(lang, '/features/evaluation/statistical-similarity/'),
+  },
+  {
+    index: 2,
+    icon: 'tabler:circle-check',
+    title: 'Objective Relevance',
+    description: 'Evaluate whether synthetic data preserves the utility needed for specific downstream tasks, using domain-specific performance metrics such as classification, detection, and prediction.',
+    href: getRelativeLocaleUrl(lang, '/features/evaluation/objective-relevance/'),
+  },
+  {
+    index: 3,
+    icon: 'tabler:user-check',
+    title: 'Expert Turing Test',
+    description: 'Develop domain-expert evaluation protocols to validate the realism and utility of synthetic spatio-temporal data through structured human assessment.',
+    href: null,
+  },
+];
 ---
 
 <Layout metadata={metadata} lang={lang}>
   <Hero
     tagline="Features"
     title="Evaluation"
-    subtitle="Assess synthetic data quality with statistical similarity and objective relevance metrics."
+    subtitle="Assess synthetic data quality through statistical similarity, objective relevance metrics, and expert evaluation protocols."
   />
 
-  <Features2
-    title="Evaluation Capabilities"
-    subtitle="Rigorous methods to measure how faithfully synthetic data reflects the real world."
-    columns={2}
-    items={[
-      {
-        title: 'Statistical Similarity',
-        description: 'Quantify how closely synthetic data reproduces the statistical properties of the original dataset — including distributional similarity and inter-variable correlations.',
-        icon: 'tabler:chart-bar',
-        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/evaluation/statistical-similarity/') },
-      },
-      {
-        title: 'Objective Relevance',
-        description: 'Evaluate whether synthetic data preserves the utility needed for specific downstream tasks, using domain-specific performance metrics such as classification, detection, and prediction.',
-        icon: 'tabler:target-arrow',
-        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/evaluation/objective-relevance/') },
-      },
-    ]}
-  />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <h2 class="text-2xl font-bold font-heading mb-2">Evaluation Capabilities</h2>
+    <p class="text-muted mb-8">Each capability addresses a distinct aspect of measuring the quality and utility of synthetic data.</p>
+    <div class="flex flex-col gap-4">
+      {capabilities.map(({ index, icon, title, description, href }) => (
+        <div class="flex gap-5 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
+          <div class="flex-shrink-0 flex flex-col items-center pt-1 gap-3">
+            <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center text-green-600 dark:text-green-400 font-bold text-sm">
+              {index}
+            </div>
+            <Icon name={icon} class="w-6 h-6 text-green-600 dark:text-green-400" />
+          </div>
+          <div class="flex-1">
+            <h3 class="text-base font-bold font-heading mb-1.5">{title}</h3>
+            <p class="text-sm text-muted leading-relaxed mb-3">{description}</p>
+            {href && (
+              <a href={href} class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+                Learn more
+                <Icon name="tabler:arrow-right" class="w-4 h-4" />
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
 </Layout>

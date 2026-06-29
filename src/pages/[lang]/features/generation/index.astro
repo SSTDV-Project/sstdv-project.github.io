@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { locales, type Locale } from '~/i18n';
-import Features2 from '~/components/widgets/Features2.astro';
+import { Icon } from 'astro-icon/components';
 import Hero from '~/components/widgets/Hero.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
@@ -15,44 +15,68 @@ const { lang } = Astro.params as { lang: Locale };
 const metadata = {
   title: 'Generation',
 };
+
+const capabilities = [
+  {
+    index: 1,
+    icon: 'tabler:brain',
+    title: 'Knowledge Encoding',
+    description: 'Encode domain prior knowledge, including structures, dynamics, and physical constraints, into computable representations and generative models.',
+    href: getRelativeLocaleUrl(lang, '/features/generation/knowledge-encoding/'),
+  },
+  {
+    index: 2,
+    icon: 'tabler:target',
+    title: 'Objective-Reinforced',
+    description: 'Train generative models guided by domain-specific objectives and reward functions.',
+    href: getRelativeLocaleUrl(lang, '/features/generation/objective-reinforced/'),
+  },
+  {
+    index: 3,
+    icon: 'tabler:activity',
+    title: 'Data Assimilation',
+    description: 'Improve spatio-temporal synthesis accuracy by correcting accumulated errors and data gaps through data perturbation techniques.',
+    href: getRelativeLocaleUrl(lang, '/features/generation/data-assimilation/'),
+  },
+  {
+    index: 4,
+    icon: 'tabler:link',
+    title: 'Relationship Modeling',
+    description: 'Model correlations, causality, and teleconnections among multivariate spatio-temporal variables for learning- and inference-based generation.',
+    href: getRelativeLocaleUrl(lang, '/features/generation/relation-modeling/'),
+  },
+];
 ---
 
 <Layout metadata={metadata} lang={lang}>
   <Hero
     tagline="Features"
     title="Generation"
-    subtitle="Produce high-fidelity synthetic tabular data through knowledge encoding, relation modeling, data assimilation, and objective-reinforced learning."
+    subtitle="Produce high-fidelity synthetic spatio-temporal data through knowledge encoding, objective-reinforced learning, data assimilation, and relation modeling."
   />
 
-  <Features2
-    title="Generation Capabilities"
-    subtitle="Each capability addresses a distinct aspect of producing realistic, useful synthetic data."
-    columns={2}
-    items={[
-      {
-        title: 'Knowledge Encoding',
-        description: 'Transform domain expertise into structured representations that guide synthetic data generation with precision and fidelity.',
-        icon: 'tabler:brain',
-        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/generation/knowledge-encoding/') },
-      },
-      {
-        title: 'Relation Modeling',
-        description: 'Capture and reproduce the complex inter-variable dependencies that define the structure and coherence of real datasets.',
-        icon: 'tabler:binary-tree',
-        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/generation/relation-modeling/') },
-      },
-      {
-        title: 'Data Assimilation',
-        description: 'Incorporate real-world observations into the generation pipeline to ensure synthetic outputs stay grounded in empirical evidence.',
-        icon: 'tabler:database-import',
-        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/generation/data-assimilation/') },
-      },
-      {
-        title: 'Objective Reinforced',
-        description: 'Guide generation toward user-defined objectives, optimizing synthetic data for downstream tasks and performance metrics.',
-        icon: 'tabler:target',
-        callToAction: { text: 'Learn more', href: getRelativeLocaleUrl(lang, '/features/generation/objective-reinforced/') },
-      },
-    ]}
-  />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <h2 class="text-2xl font-bold font-heading mb-2">Generation Capabilities</h2>
+    <p class="text-muted mb-8">Each capability addresses a distinct aspect of producing realistic, high-quality synthetic data.</p>
+    <div class="flex flex-col gap-4">
+      {capabilities.map(({ index, icon, title, description, href }) => (
+        <div class="flex gap-5 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
+          <div class="flex-shrink-0 flex flex-col items-center pt-1 gap-3">
+            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-primary font-bold text-sm">
+              {index}
+            </div>
+            <Icon name={icon} class="w-6 h-6 text-primary" />
+          </div>
+          <div class="flex-1">
+            <h3 class="text-base font-bold font-heading mb-1.5">{title}</h3>
+            <p class="text-sm text-muted leading-relaxed mb-3">{description}</p>
+            <a href={href} class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+              Learn more
+              <Icon name="tabler:arrow-right" class="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
 </Layout>
