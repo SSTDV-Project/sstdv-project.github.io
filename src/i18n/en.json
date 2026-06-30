@@ -82,7 +82,7 @@
     "brainEval1Desc": "Evaluating distributional similarity between real and synthetic brain images.",
     "brainEval2Title": "Reproducibility",
     "brainEval2Desc": "Reproducibility of region-specific chronic brain changes.",
-    "brainEval3Title": "Fitness-for-Purpose",
+    "brainEval3Title": "Objective-Reinforced",
     "brainEval3Desc": "Fitness-for-purpose for disease classification models.",
     "breastLabel": "02 — Breast Cancer",
     "breastTitle": "Breast Cancer Surgical Simulation",
