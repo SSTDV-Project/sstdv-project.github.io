@@ -26,13 +26,13 @@ const { lang } = Astro.params as { lang: Locale };
 
       <h2>Available Tutorials</h2>
 
-      <h3><a href={getRelativeLocaleUrl(lang, '/docs/tutorials/brain-imaging/')}>Brain Imaging Analysis</a></h3>
+      <h3><a href={getRelativeLocaleUrl(lang, '/software/tutorials/brain-imaging/')}>Brain Imaging Analysis</a></h3>
       <p>
         Complete pipeline using BrainShapeToolKit and DiffAM. Shape analysis and visualization of brain MRI data,
         including surface extraction, feature computation, and differentiable appearance modeling.
       </p>
 
-      <h3><a href={getRelativeLocaleUrl(lang, '/docs/tutorials/breast-cancer/')}>Breast Cancer Detection</a></h3>
+      <h3><a href={getRelativeLocaleUrl(lang, '/software/tutorials/breast-cancer/')}>Breast Cancer Detection</a></h3>
       <p>
         End-to-end workflow using DiffuAug for synthetic data augmentation and EvalDistSim for evaluation.
         Covers synthetic mammography generation, distribution similarity assessment, and model training with augmented data.

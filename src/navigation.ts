@@ -8,7 +8,7 @@ export function getHeaderData(locale: Locale) {
     links: [
       {
         text: t(locale, 'nav.features'),
-        href: getRelativeLocaleUrl(locale, '/features/'),
+        href: getRelativeLocaleUrl(locale, '/research/'),
       },
       {
         text: t(locale, 'nav.useCases'),
@@ -20,7 +20,7 @@ export function getHeaderData(locale: Locale) {
       },
       {
         text: t(locale, 'nav.docs'),
-        href: getRelativeLocaleUrl(locale, '/docs/'),
+        href: getRelativeLocaleUrl(locale, '/software/'),
       },
     ],
     actions: [
@@ -39,10 +39,10 @@ export function getFooterData(locale: Locale) {
       {
         title: 'Links',
         links: [
-          { text: t(locale, 'nav.features'), href: getRelativeLocaleUrl(locale, '/features/') },
+          { text: t(locale, 'nav.features'), href: getRelativeLocaleUrl(locale, '/research/') },
           { text: t(locale, 'nav.useCases'), href: getRelativeLocaleUrl(locale, '/use-cases/') },
           { text: 'Publications & Patents', href: getRelativeLocaleUrl(locale, '/publications/') },
-          { text: t(locale, 'nav.docs'), href: getRelativeLocaleUrl(locale, '/docs/') },
+          { text: t(locale, 'nav.docs'), href: getRelativeLocaleUrl(locale, '/software/') },
         ],
       },
     ],

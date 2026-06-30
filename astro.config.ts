@@ -24,9 +24,14 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 export default defineConfig({
   output: 'static',
 
+  server: {
+    port: 4000,
+    host: true,
+  },
+
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ko'],
+    locales: ['en'],
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: false,
@@ -42,7 +47,6 @@ export default defineConfig({
         defaultLocale: 'en',
         locales: {
           en: 'en',
-          ko: 'ko',
         },
       },
     }),
