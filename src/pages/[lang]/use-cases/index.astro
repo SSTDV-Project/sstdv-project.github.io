@@ -129,17 +129,16 @@ const metadata = { title: t(lang, 'useCases.heroTitle') };
     <p class="text-xs font-bold tracking-widest uppercase text-muted mb-3">{t(lang, 'useCases.breastPipelineLabel')}</p>
     <div class="flex flex-col gap-3 mb-8">
       {[
-        { num: 1, icon: 'tabler:folders',          title: t(lang, 'useCases.breastStep1Title'), desc: t(lang, 'useCases.breastStep1Desc') },
-        { num: 2, icon: 'tabler:adjustments',      title: t(lang, 'useCases.breastStep2Title'), desc: t(lang, 'useCases.breastStep2Desc') },
-        { num: 3, icon: 'tabler:vector',           title: t(lang, 'useCases.breastStep3Title'), desc: t(lang, 'useCases.breastStep3Desc') },
-        { num: 4, icon: 'tabler:arrows-join',      title: t(lang, 'useCases.breastStep4Title'), desc: t(lang, 'useCases.breastStep4Desc') },
-        { num: 5, icon: 'tabler:brain',            title: t(lang, 'useCases.breastStep5Title'), desc: t(lang, 'useCases.breastStep5Desc') },
-        { num: 6, icon: 'tabler:layout-dashboard', title: t(lang, 'useCases.breastStep6Title'), desc: t(lang, 'useCases.breastStep6Desc') },
-      ].map(({ num, icon, title, desc }) => (
+        { num: 1, title: t(lang, 'useCases.breastStep1Title'), desc: t(lang, 'useCases.breastStep1Desc') },
+        { num: 2, title: t(lang, 'useCases.breastStep2Title'), desc: t(lang, 'useCases.breastStep2Desc') },
+        { num: 3, title: t(lang, 'useCases.breastStep3Title'), desc: t(lang, 'useCases.breastStep3Desc') },
+        { num: 4, title: t(lang, 'useCases.breastStep4Title'), desc: t(lang, 'useCases.breastStep4Desc') },
+        { num: 5, title: t(lang, 'useCases.breastStep5Title'), desc: t(lang, 'useCases.breastStep5Desc') },
+        { num: 6, title: t(lang, 'useCases.breastStep6Title'), desc: t(lang, 'useCases.breastStep6Desc') },
+      ].map(({ num, title, desc }) => (
         <div class="flex gap-4 p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
-          <div class="flex-shrink-0 flex flex-col items-center gap-2 pt-0.5">
+          <div class="flex-shrink-0 pt-0.5">
             <div class="w-7 h-7 rounded-full bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center text-purple-600 dark:text-purple-400 font-bold text-xs">{num}</div>
-            <Icon name={icon} class="w-4 h-4 text-purple-500" />
           </div>
           <div>
             <h3 class="text-sm font-bold font-heading mb-1" set:html={title} />
