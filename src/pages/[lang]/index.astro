@@ -140,7 +140,7 @@ const metadata = {
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
     <div class="text-center mb-8">
       <h2 class="text-3xl lg:text-4xl font-bold font-heading mb-2">Research Team</h2>
-      <p class="text-lg text-muted max-w-2xl mx-auto">Four research institutions collaborating across generation and evaluation.</p>
+      <p class="text-lg text-muted max-w-2xl mx-auto">A collaborative team of academic, public research, and industry partners working on synthetic spatio-temporal data generation, evaluation, and validation.</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       {[
@@ -148,33 +148,38 @@ const metadata = {
           name: 'KAIST',
           logo: '/images/kaist_logo.png',
           logoH: 'h-14',
+          contacts: ['Jinah Park', 'Yong Jeong'],
           roles: ['Brain MRI-based shape extraction and conditional image generation', 'Evaluation using classification, detection, and prediction metrics'],
         },
         {
           name: 'Dongguk University',
           logo: '/images/dongguk_logo.png',
           logoH: 'h-16',
+          contacts: ['Kwangki Kim', 'Sungho Woo'],
           roles: ['Multivariate distribution similarity evaluation', 'Evaluation of longitudinal brain MRI synthesis'],
         },
         {
           name: 'Beamworks',
           logo: '/images/beamworks_logo.png',
           logoH: 'h-16',
+          contacts: ['Jaeil Kim'],
           roles: ['Post-surgical breast MRI generation for medical twin-based surgical planning'],
         },
         {
           name: 'KIOST',
           logo: '/images/kiost_logo.png',
           logoH: 'h-20',
+          contacts: ['Jinah Kim'],
           roles: ['Spatiotemporal dependency learning', 'Sea surface temperature forecasting'],
         },
-      ].map(({ name, logo, logoH, roles }) => (
+      ].map(({ name, logo, logoH, contacts, roles }) => (
         <div class="flex flex-col items-center gap-4 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm text-center">
           <div class="h-20 flex items-center justify-center">
             <img src={logo} alt={name} class={`${logoH} w-auto object-contain`} />
           </div>
           <div class="border-t border-gray-100 dark:border-gray-800 w-full pt-4">
-            <h3 class="text-sm font-bold font-heading mb-2">{name}</h3>
+            <h3 class="text-sm font-bold font-heading mb-1">{name}</h3>
+            <p class="text-xs text-muted mb-3">{contacts.join(', ')}</p>
             <ul class="space-y-1.5 text-left">
               {roles.map((role) => (
                 <li class="flex gap-1.5 text-xs text-muted leading-relaxed">

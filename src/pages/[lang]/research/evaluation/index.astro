@@ -1,7 +1,6 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { t, locales, type Locale } from '~/i18n';
-import { Icon } from 'astro-icon/components';
 import Hero from '~/components/widgets/Hero.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
@@ -13,9 +12,9 @@ const { lang } = Astro.params as { lang: Locale };
 const metadata = { title: t(lang, 'features.evaluationTitle') };
 
 const items = [
-  { index: 1, icon: 'tabler:chart-bar',    title: t(lang, 'features.statisticalSimilarityTitle'), desc: t(lang, 'features.statisticalSimilarityDesc') },
-  { index: 2, icon: 'tabler:circle-check', title: t(lang, 'features.objectiveRelevanceTitle'),    desc: t(lang, 'features.objectiveRelevanceDesc') },
-  { index: 3, icon: 'tabler:user-check',   title: t(lang, 'features.turingTestTitle'),            desc: t(lang, 'features.turingTestDesc') },
+  { index: 1, emoji: '📊', title: t(lang, 'features.statisticalSimilarityTitle'), desc: t(lang, 'features.statisticalSimilarityDesc') },
+  { index: 2, emoji: '✅', title: t(lang, 'features.objectiveRelevanceTitle'),    desc: t(lang, 'features.objectiveRelevanceDesc') },
+  { index: 3, emoji: '🧑‍⚕️', title: t(lang, 'features.turingTestTitle'),            desc: t(lang, 'features.turingTestDesc') },
 ];
 ---
 
@@ -55,13 +54,12 @@ const items = [
     </div>
 
     <div class="flex flex-col gap-4">
-      {items.map(({ index, icon, title, desc }) => (
+      {items.map(({ index, emoji, title, desc }) => (
         <div class="flex gap-5 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
-          <div class="flex-shrink-0 flex flex-col items-center pt-1 gap-3">
+          <div class="flex-shrink-0 pt-1">
             <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-sm">
               {index}
             </div>
-            <Icon name={icon} class="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
           </div>
           <div class="flex-1">
             <h3 class="text-base font-bold font-heading mb-2" set:html={title} />

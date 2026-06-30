@@ -1,9 +1,9 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { t, locales, type Locale } from '~/i18n';
-import Content from '~/components/widgets/Content.astro';
+import { Icon } from 'astro-icon/components';
 import Hero from '~/components/widgets/Hero.astro';
-import Steps from '~/components/widgets/Steps.astro';
+import Image from '~/components/common/Image.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -11,10 +11,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { lang } = Astro.params as { lang: Locale };
-
-const metadata = {
-  title: t(lang, 'useCases.heroTitle'),
-};
+const metadata = { title: t(lang, 'useCases.heroTitle') };
 ---
 
 <Layout metadata={metadata} lang={lang}>
@@ -24,177 +21,149 @@ const metadata = {
     subtitle={t(lang, 'useCases.heroSubtitle')}
   />
 
-  <!-- 01. Brain Imaging -->
-  <div id="brain-imaging" class="max-w-5xl mx-auto px-4 sm:px-6 pt-12 pb-2">
-    <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
-      {t(lang, 'useCases.brainLabel')}
-    </p>
-    <h2 class="text-3xl font-bold font-heading text-heading mt-1">
-      {t(lang, 'useCases.brainTitle')}
-    </h2>
-    <p class="mt-1 text-muted">{t(lang, 'useCases.brainSubtitle')}</p>
-  </div>
+  <!-- ── 01 Brain Imaging ── -->
+  <section id="brain-imaging" class="max-w-5xl mx-auto px-4 sm:px-6 pt-12 pb-16">
+    <!-- Section header -->
+    <div class="flex items-center gap-3 mb-2">
+      <span class="text-xs font-bold tracking-widest uppercase text-blue-500">{t(lang, 'useCases.brainLabel')}</span>
+    </div>
+    <h2 class="text-3xl font-bold font-heading text-heading">{t(lang, 'useCases.brainTitle')}</h2>
+    <p class="text-sm text-muted mt-0.5 mb-6">{t(lang, 'useCases.brainSubtitle')}</p>
 
-  <Content
-    items={[
-      {
-        title: t(lang, 'useCases.brainDataTitle'),
-        description: t(lang, 'useCases.brainDataDesc'),
-        icon: 'tabler:database',
-      },
-    ]}
-    image={{ src: '~/assets/images/VirtualBrain.PNG', alt: 'Brain Imaging', width: 1280, height: 720 }}
-  >
-    <Fragment slot="content">
-      <p class="text-lg dark:text-slate-400">{t(lang, 'useCases.brainOverview')}</p>
-    </Fragment>
-  </Content>
-
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-2">
-    <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
-      {t(lang, 'useCases.brainSoftwareLabel')}
-    </p>
-  </div>
-
-  <Steps
-    items={[
-      {
-        title: t(lang, 'useCases.brainScenario1Title'),
-        description: t(lang, 'useCases.brainScenario1Desc'),
-        icon: 'tabler:user-question',
-      },
-      {
-        title: t(lang, 'useCases.brainScenario2Title'),
-        description: t(lang, 'useCases.brainScenario2Desc'),
-        icon: 'tabler:brain',
-      },
-      {
-        title: t(lang, 'useCases.brainRequiredDataTitle'),
-        description: t(lang, 'useCases.brainRequiredDataDesc'),
-        icon: 'tabler:database',
-      },
-    ]}
-  />
-
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-2">
-    <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
-      {t(lang, 'useCases.brainEvalLabel')}
-    </p>
-  </div>
-
-  <Steps
-    items={[
-      {
-        title: t(lang, 'useCases.brainEval1Title'),
-        description: t(lang, 'useCases.brainEval1Desc'),
-        icon: 'tabler:chart-bar',
-      },
-      {
-        title: t(lang, 'useCases.brainEval2Title'),
-        description: t(lang, 'useCases.brainEval2Desc'),
-        icon: 'tabler:repeat',
-      },
-      {
-        title: t(lang, 'useCases.brainEval3Title'),
-        description: t(lang, 'useCases.brainEval3Desc'),
-        icon: 'tabler:check',
-      },
-    ]}
-  />
-
-  <!-- 02. Breast Cancer -->
-  <div class="bg-blue-50 dark:bg-slate-800">
-    <div id="breast-cancer" class="max-w-5xl mx-auto px-4 sm:px-6 pt-12 pb-2">
-      <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
-        {t(lang, 'useCases.breastLabel')}
-      </p>
-      <h2 class="text-3xl font-bold font-heading text-heading mt-1">
-        {t(lang, 'useCases.breastTitle')}
-      </h2>
-      <p class="mt-1 text-muted">{t(lang, 'useCases.breastSubtitle')}</p>
+    <!-- Overview + image -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-6 flex flex-col gap-3">
+        <p class="text-sm font-bold text-heading uppercase tracking-wide">Overview</p>
+        <p class="text-sm text-muted leading-relaxed">{t(lang, 'useCases.brainOverview')}</p>
+        <div class="mt-2 pt-3 border-t border-gray-100 dark:border-gray-800">
+          <p class="text-xs font-bold text-heading uppercase tracking-wide mb-1">Data &amp; Technologies</p>
+          <p class="text-sm text-muted">{t(lang, 'useCases.brainDataDesc')}</p>
+        </div>
+      </div>
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
+        <Image
+          src="~/assets/images/VirtualBrain.PNG"
+          alt="Virtual Brain"
+          width={800}
+          height={450}
+          class="w-full h-full object-cover"
+        />
+      </div>
     </div>
 
-    <Content
-      isReversed
-      items={[
-        {
-          title: t(lang, 'useCases.breastDataTitle'),
-          description: t(lang, 'useCases.breastDataDesc'),
-          icon: 'tabler:database',
-        },
-      ]}
-      image={{ src: '~/assets/images/Breast.PNG', alt: 'Breast Cancer', width: 1280, height: 720 }}
-    >
-      <Fragment slot="content">
-        <p class="text-lg dark:text-slate-400" set:html={t(lang, 'useCases.breastOverview')} />
-      </Fragment>
-    </Content>
-
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6">
-      <img src="/images/breast_usecase_pipeline.png" alt="Breast Cancer Surgical Simulation Pipeline" class="rounded-lg w-full" />
+    <!-- Software scenarios -->
+    <p class="text-xs font-bold tracking-widest uppercase text-muted mb-3">{t(lang, 'useCases.brainSoftwareLabel')}</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      {[
+        { num: 1, icon: 'tabler:user-question', title: t(lang, 'useCases.brainScenario1Title'), desc: t(lang, 'useCases.brainScenario1Desc') },
+        { num: 2, icon: 'tabler:brain',          title: t(lang, 'useCases.brainScenario2Title'), desc: t(lang, 'useCases.brainScenario2Desc') },
+        { num: 3, icon: 'tabler:database',       title: t(lang, 'useCases.brainRequiredDataTitle'), desc: t(lang, 'useCases.brainRequiredDataDesc') },
+      ].map(({ num, icon, title, desc }) => (
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-primary font-bold text-xs shrink-0">{num}</div>
+            <Icon name={icon} class="w-4 h-4 text-primary shrink-0" />
+            <h3 class="text-sm font-bold font-heading leading-tight" set:html={title} />
+          </div>
+          <div class="text-xs text-muted leading-relaxed [&_strong]:font-semibold [&_strong]:text-heading [&_br]:block" set:html={desc} />
+        </div>
+      ))}
     </div>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-2 pb-2">
-      <h3 class="text-2xl font-bold font-heading text-heading">
-        {t(lang, 'useCases.breastPipelineLabel')}
-      </h3>
+    <!-- Evaluation -->
+    <p class="text-xs font-bold tracking-widest uppercase text-muted mb-3">{t(lang, 'useCases.brainEvalLabel')}</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {[
+        { icon: 'tabler:chart-bar', title: t(lang, 'useCases.brainEval1Title'), desc: t(lang, 'useCases.brainEval1Desc') },
+        { icon: 'tabler:repeat',    title: t(lang, 'useCases.brainEval2Title'), desc: t(lang, 'useCases.brainEval2Desc') },
+        { icon: 'tabler:check',     title: t(lang, 'useCases.brainEval3Title'), desc: t(lang, 'useCases.brainEval3Desc') },
+      ].map(({ icon, title, desc }) => (
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <Icon name={icon} class="w-4 h-4 text-primary shrink-0" />
+            <h3 class="text-sm font-bold font-heading" set:html={title} />
+          </div>
+          <p class="text-xs text-muted leading-relaxed" set:html={desc} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <div class="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent mx-8" />
+
+  <!-- ── 02 Breast Cancer ── -->
+  <section id="breast-cancer" class="max-w-5xl mx-auto px-4 sm:px-6 pt-12 pb-16">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="text-xs font-bold tracking-widest uppercase text-purple-500">{t(lang, 'useCases.breastLabel')}</span>
+    </div>
+    <h2 class="text-3xl font-bold font-heading text-heading">{t(lang, 'useCases.breastTitle')}</h2>
+    <p class="text-sm text-muted mt-0.5 mb-6">{t(lang, 'useCases.breastSubtitle')}</p>
+
+    <!-- Overview + image -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
+        <Image
+          src="~/assets/images/Breast.PNG"
+          alt="Breast Cancer"
+          width={800}
+          height={450}
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-6 flex flex-col gap-3">
+        <p class="text-sm font-bold text-heading uppercase tracking-wide">Overview</p>
+        <p class="text-sm text-muted leading-relaxed" set:html={t(lang, 'useCases.breastOverview')} />
+        <div class="mt-2 pt-3 border-t border-gray-100 dark:border-gray-800">
+          <p class="text-xs font-bold text-heading uppercase tracking-wide mb-1">Data &amp; Technologies</p>
+          <p class="text-sm text-muted">{t(lang, 'useCases.breastDataDesc')}</p>
+        </div>
+      </div>
     </div>
 
-    <Steps
-      items={[
-        {
-          title: t(lang, 'useCases.breastStep1Title'),
-          description: t(lang, 'useCases.breastStep1Desc'),
-          icon: 'tabler:folders',
-        },
-        {
-          title: t(lang, 'useCases.breastStep2Title'),
-          description: t(lang, 'useCases.breastStep2Desc'),
-          icon: 'tabler:adjustments',
-        },
-        {
-          title: t(lang, 'useCases.breastStep3Title'),
-          description: t(lang, 'useCases.breastStep3Desc'),
-          icon: 'tabler:vector',
-        },
-        {
-          title: t(lang, 'useCases.breastStep4Title'),
-          description: t(lang, 'useCases.breastStep4Desc'),
-          icon: 'tabler:arrows-join',
-        },
-        {
-          title: t(lang, 'useCases.breastStep5Title'),
-          description: t(lang, 'useCases.breastStep5Desc'),
-          icon: 'tabler:brain',
-        },
-        {
-          title: t(lang, 'useCases.breastStep6Title'),
-          description: t(lang, 'useCases.breastStep6Desc'),
-          icon: 'tabler:layout-dashboard',
-        },
-      ]}
-    />
-
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-2">
-      <h3 class="text-2xl font-bold font-heading text-heading">
-        {t(lang, 'useCases.breastEvalLabel')}
-      </h3>
+    <!-- Pipeline image -->
+    <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm overflow-hidden mb-8">
+      <img src="/images/breast_usecase_pipeline.png" alt="Breast Cancer Surgical Simulation Pipeline" class="w-full" />
     </div>
 
-    <Steps
-      items={[
-        {
-          title: t(lang, 'useCases.breastEval1Title'),
-          description: t(lang, 'useCases.breastEval1Desc'),
-          icon: 'tabler:eye',
-        },
-        {
-          title: t(lang, 'useCases.breastEval2Title'),
-          description: t(lang, 'useCases.breastEval2Desc'),
-          icon: 'tabler:chart-bar',
-        },
-      ]}
-    />
+    <!-- Pipeline steps -->
+    <p class="text-xs font-bold tracking-widest uppercase text-muted mb-3">{t(lang, 'useCases.breastPipelineLabel')}</p>
+    <div class="flex flex-col gap-3 mb-8">
+      {[
+        { num: 1, icon: 'tabler:folders',          title: t(lang, 'useCases.breastStep1Title'), desc: t(lang, 'useCases.breastStep1Desc') },
+        { num: 2, icon: 'tabler:adjustments',      title: t(lang, 'useCases.breastStep2Title'), desc: t(lang, 'useCases.breastStep2Desc') },
+        { num: 3, icon: 'tabler:vector',           title: t(lang, 'useCases.breastStep3Title'), desc: t(lang, 'useCases.breastStep3Desc') },
+        { num: 4, icon: 'tabler:arrows-join',      title: t(lang, 'useCases.breastStep4Title'), desc: t(lang, 'useCases.breastStep4Desc') },
+        { num: 5, icon: 'tabler:brain',            title: t(lang, 'useCases.breastStep5Title'), desc: t(lang, 'useCases.breastStep5Desc') },
+        { num: 6, icon: 'tabler:layout-dashboard', title: t(lang, 'useCases.breastStep6Title'), desc: t(lang, 'useCases.breastStep6Desc') },
+      ].map(({ num, icon, title, desc }) => (
+        <div class="flex gap-4 p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
+          <div class="flex-shrink-0 flex flex-col items-center gap-2 pt-0.5">
+            <div class="w-7 h-7 rounded-full bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center text-purple-600 dark:text-purple-400 font-bold text-xs">{num}</div>
+            <Icon name={icon} class="w-4 h-4 text-purple-500" />
+          </div>
+          <div>
+            <h3 class="text-sm font-bold font-heading mb-1" set:html={title} />
+            <p class="text-xs text-muted leading-relaxed" set:html={desc} />
+          </div>
+        </div>
+      ))}
+    </div>
 
-  </div>
+    <!-- Evaluation -->
+    <p class="text-xs font-bold tracking-widest uppercase text-muted mb-3">{t(lang, 'useCases.breastEvalLabel')}</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {[
+        { icon: 'tabler:eye',       title: t(lang, 'useCases.breastEval1Title'), desc: t(lang, 'useCases.breastEval1Desc') },
+        { icon: 'tabler:chart-bar', title: t(lang, 'useCases.breastEval2Title'), desc: t(lang, 'useCases.breastEval2Desc') },
+      ].map(({ icon, title, desc }) => (
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <Icon name={icon} class="w-4 h-4 text-purple-500 shrink-0" />
+            <h3 class="text-sm font-bold font-heading" set:html={title} />
+          </div>
+          <p class="text-xs text-muted leading-relaxed" set:html={desc} />
+        </div>
+      ))}
+    </div>
+  </section>
 </Layout>
