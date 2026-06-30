@@ -83,7 +83,7 @@
     "brainEval2Title": "Reproducibility",
     "brainEval2Desc": "Reproducibility of region-specific chronic brain changes.",
     "brainEval3Title": "Objective-Reinforced",
-    "brainEval3Desc": "Fitness-for-purpose for disease classification models.",
+    "brainEval3Desc": "Evaluating whether synthetic data preserves the utility needed for specific downstream tasks, such as disease classification models.",
     "breastLabel": "02 — Breast Cancer",
     "breastTitle": "Breast Cancer Surgical Simulation",
     "breastSubtitle": "Beamworks",

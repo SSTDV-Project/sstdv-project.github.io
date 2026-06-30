@@ -11,10 +11,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const { lang } = Astro.params as { lang: Locale };
 const metadata = { title: t(lang, 'features.evaluationTitle') };
 
-const items = [
-  { index: 1, emoji: '📊', title: t(lang, 'features.statisticalSimilarityTitle'), desc: t(lang, 'features.statisticalSimilarityDesc') },
-  { index: 2, emoji: '✅', title: t(lang, 'features.objectiveRelevanceTitle'),    desc: t(lang, 'features.objectiveRelevanceDesc') },
-  { index: 3, emoji: '🧑‍⚕️', title: t(lang, 'features.turingTestTitle'),            desc: t(lang, 'features.turingTestDesc') },
+const quantitativeItems = [
+  { index: 1, title: t(lang, 'features.statisticalSimilarityTitle'), desc: t(lang, 'features.statisticalSimilarityDesc') },
+  { index: 2, title: t(lang, 'features.objectiveRelevanceTitle'),    desc: t(lang, 'features.objectiveRelevanceDesc') },
+];
+const qualitativeItems = [
+  { index: 1, title: t(lang, 'features.turingTestTitle'), desc: t(lang, 'features.turingTestDesc') },
 ];
 ---
 
@@ -52,8 +54,28 @@ const items = [
       ))}
     </div>
 
+    <!-- Quantitative -->
+    <p class="text-xs font-bold tracking-widest uppercase text-muted mb-3">Quantitative Evaluation</p>
+    <div class="flex flex-col gap-4 mb-8">
+      {quantitativeItems.map(({ index, title, desc }) => (
+        <div class="flex gap-5 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
+          <div class="flex-shrink-0 pt-1">
+            <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-sm">
+              {index}
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-base font-bold font-heading mb-2" set:html={title} />
+            <div class="text-sm text-muted leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mt-2 [&_ul]:space-y-1 [&_ul_ul]:mt-1 [&_strong]:font-semibold [&_strong]:text-heading [&_a]:text-primary [&_a]:underline [&_img]:rounded-lg [&_img]:mt-4 [&_img]:w-full" set:html={desc} />
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Qualitative -->
+    <p class="text-xs font-bold tracking-widest uppercase text-muted mb-3">Qualitative Evaluation</p>
     <div class="flex flex-col gap-4">
-      {items.map(({ index, emoji, title, desc }) => (
+      {qualitativeItems.map(({ index, title, desc }) => (
         <div class="flex gap-5 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
           <div class="flex-shrink-0 pt-1">
             <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-sm">

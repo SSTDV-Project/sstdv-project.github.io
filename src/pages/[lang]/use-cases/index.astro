@@ -72,16 +72,23 @@ const metadata = { title: t(lang, 'useCases.heroTitle') };
 
     <!-- Evaluation -->
     <p class="text-xs font-bold tracking-widest uppercase text-muted mb-3">{t(lang, 'useCases.brainEvalLabel')}</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {[
-        { icon: 'tabler:chart-bar', title: t(lang, 'useCases.brainEval1Title'), desc: t(lang, 'useCases.brainEval1Desc') },
-        { icon: 'tabler:repeat',    title: t(lang, 'useCases.brainEval2Title'), desc: t(lang, 'useCases.brainEval2Desc') },
-        { icon: 'tabler:check',     title: t(lang, 'useCases.brainEval3Title'), desc: t(lang, 'useCases.brainEval3Desc') },
+        {
+          icon: 'tabler:chart-bar',
+          title: 'Quantitative Evaluation',
+          desc: `${t(lang, 'useCases.brainEval1Title')}: ${t(lang, 'useCases.brainEval1Desc')}<br/>${t(lang, 'useCases.brainEval2Title')}: ${t(lang, 'useCases.brainEval2Desc')}`,
+        },
+        {
+          icon: 'tabler:eye',
+          title: 'Qualitative Evaluation',
+          desc: `${t(lang, 'useCases.brainEval3Title')}: ${t(lang, 'useCases.brainEval3Desc')}`,
+        },
       ].map(({ icon, title, desc }) => (
         <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-5">
           <div class="flex items-center gap-2 mb-2">
             <Icon name={icon} class="w-4 h-4 text-primary shrink-0" />
-            <h3 class="text-sm font-bold font-heading" set:html={title} />
+            <h3 class="text-sm font-bold font-heading">{title}</h3>
           </div>
           <p class="text-xs text-muted leading-relaxed" set:html={desc} />
         </div>
@@ -101,6 +108,14 @@ const metadata = { title: t(lang, 'useCases.heroTitle') };
 
     <!-- Overview + image -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-6 flex flex-col gap-3">
+        <p class="text-sm font-bold text-heading uppercase tracking-wide">Overview</p>
+        <p class="text-sm text-muted leading-relaxed" set:html={t(lang, 'useCases.breastOverview')} />
+        <div class="mt-2 pt-3 border-t border-gray-100 dark:border-gray-800">
+          <p class="text-xs font-bold text-heading uppercase tracking-wide mb-1">Data &amp; Technologies</p>
+          <p class="text-sm text-muted">{t(lang, 'useCases.breastDataDesc')}</p>
+        </div>
+      </div>
       <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
         <Image
           src="~/assets/images/Breast.PNG"
@@ -109,14 +124,6 @@ const metadata = { title: t(lang, 'useCases.heroTitle') };
           height={450}
           class="w-full h-full object-cover"
         />
-      </div>
-      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-6 flex flex-col gap-3">
-        <p class="text-sm font-bold text-heading uppercase tracking-wide">Overview</p>
-        <p class="text-sm text-muted leading-relaxed" set:html={t(lang, 'useCases.breastOverview')} />
-        <div class="mt-2 pt-3 border-t border-gray-100 dark:border-gray-800">
-          <p class="text-xs font-bold text-heading uppercase tracking-wide mb-1">Data &amp; Technologies</p>
-          <p class="text-sm text-muted">{t(lang, 'useCases.breastDataDesc')}</p>
-        </div>
       </div>
     </div>
 
@@ -152,8 +159,8 @@ const metadata = { title: t(lang, 'useCases.heroTitle') };
     <p class="text-xs font-bold tracking-widest uppercase text-muted mb-3">{t(lang, 'useCases.breastEvalLabel')}</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {[
-        { icon: 'tabler:eye',       title: t(lang, 'useCases.breastEval1Title'), desc: t(lang, 'useCases.breastEval1Desc') },
         { icon: 'tabler:chart-bar', title: t(lang, 'useCases.breastEval2Title'), desc: t(lang, 'useCases.breastEval2Desc') },
+        { icon: 'tabler:eye',       title: t(lang, 'useCases.breastEval1Title'), desc: t(lang, 'useCases.breastEval1Desc') },
       ].map(({ icon, title, desc }) => (
         <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-5">
           <div class="flex items-center gap-2 mb-2">
