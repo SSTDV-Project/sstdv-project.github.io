@@ -1,8 +1,9 @@
 ---
 import type { GetStaticPaths } from 'astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import { t, locales, type Locale } from '~/i18n';
+import { Icon } from 'astro-icon/components';
 import Hero from '~/components/widgets/Hero.astro';
-import Steps from '~/components/widgets/Steps.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -10,10 +11,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { lang } = Astro.params as { lang: Locale };
-
-const metadata = {
-  title: t(lang, 'features.heroTitle'),
-};
+const metadata = { title: t(lang, 'features.heroTitle') };
 ---
 
 <Layout metadata={metadata} lang={lang}>
@@ -23,89 +21,39 @@ const metadata = {
     subtitle={t(lang, 'features.heroSubtitle')}
   />
 
-  <div id="generation" class="max-w-5xl mx-auto px-4 sm:px-6 pt-12 pb-2">
-    <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
-      {t(lang, 'features.generationLabel')}
-    </p>
-    <h2 class="text-3xl font-bold font-heading text-heading mt-1">
-      {t(lang, 'features.generationTitle')}
-    </h2>
-    <p class="mt-2 text-gray-900 dark:text-white text-lg" set:html={t(lang, 'features.generationSubtitle')} />
-    <div class="mt-6 p-6 rounded-xl bg-blue-50 dark:bg-slate-800 border border-blue-200 dark:border-blue-900">
-      <h3 class="text-xl font-bold font-heading text-heading mb-3">Significance of the Framework</h3>
-      <p class="text-muted leading-relaxed">
-        This generation framework establishes a multi-layered synthesis pipeline spanning <strong>knowledge encoding</strong> (domain priors and physical constraints), <strong>relation modeling</strong> (spatiotemporal dependencies and teleconnections), <strong>data assimilation</strong> (observation-guided error correction), and <strong>objective synthesis</strong> (goal-oriented generative conditioning).
-      </p>
-      <p class="text-muted leading-relaxed mt-3">
-        By explicitly encoding domain knowledge at each stage, the framework produces synthetic spatio-temporal data that is statistically faithful, physically plausible, and purpose-aligned — enabling high-quality training data generation across diverse domains including ocean dynamics and medical imaging, while overcoming the limitations of data scarcity and privacy constraints.
-      </p>
-    </div>
-  </div>
-
-  <Steps
-    items={[
-      {
-        title: t(lang, 'features.knowledgeEncodingTitle'),
-        description: t(lang, 'features.knowledgeEncodingDesc'),
-        icon: 'tabler:brain',
-      },
-      {
-        title: t(lang, 'features.relationModelingTitle'),
-        description: t(lang, 'features.relationModelingDesc'),
-        icon: 'tabler:network',
-      },
-      {
-        title: t(lang, 'features.dataAssimilationTitle'),
-        description: t(lang, 'features.dataAssimilationDesc'),
-        icon: 'tabler:adjustments',
-      },
-      {
-        title: t(lang, 'features.objectiveReinforcementTitle'),
-        description: t(lang, 'features.objectiveReinforcementDesc'),
-        icon: 'tabler:target-arrow',
-      },
-    ]}
-  />
-
-  <div class="bg-blue-50 dark:bg-slate-800">
-    <div id="evaluation" class="max-w-5xl mx-auto px-4 sm:px-6 pt-12 pb-2">
-      <p class="text-sm font-bold tracking-widest uppercase text-secondary dark:text-blue-200">
-        {t(lang, 'features.evaluationLabel')}
-      </p>
-      <h2 class="text-3xl font-bold font-heading text-heading mt-1">
-        {t(lang, 'features.evaluationTitle')}
-      </h2>
-      <p class="mt-2 text-gray-900 dark:text-white text-lg" set:html={t(lang, 'features.evaluationSubtitle')} />
-      <div class="mt-6 p-6 rounded-xl bg-white dark:bg-slate-900 shadow-sm">
-        <h3 class="text-xl font-bold font-heading text-heading mb-3">Significance of the Framework</h3>
-        <p class="text-muted leading-relaxed">
-          This comprehensive evaluation framework establishes a robust, four-layered validation network spanning the <strong>micro</strong> (1D distributions), <strong>meso</strong> (multivariate correlations), <strong>macro</strong> (longitudinal time-series trends), and <strong>clinical</strong> (expert Turing test) levels.
-        </p>
-        <p class="text-muted leading-relaxed mt-3">
-          By combining rigorous mathematical proofs with human expert validation, this project demonstrates that the synthesized 3D T1-w brain MRIs maintain exceptional structural, temporal, and perceptual fidelity. Consequently, it proves that these synthetic images are highly reliable, safe, and valuable as training data for advanced downstream AI tasks, seamlessly substituting real patient data while bypassing privacy and scarcity limitations.
-        </p>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <a href={getRelativeLocaleUrl(lang, '/research/generation/')}
+      class="group flex flex-col gap-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-400 dark:hover:border-blue-600 transition-all p-8">
+      <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center">
+        <Icon name="tabler:wand" class="w-6 h-6 text-blue-600 dark:text-blue-400" />
       </div>
-    </div>
+      <div>
+        <p class="text-xs font-bold tracking-widest uppercase text-blue-500 mb-1">01</p>
+        <h2 class="text-2xl font-bold font-heading text-heading group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          {t(lang, 'features.generationTitle')}
+        </h2>
+        <p class="mt-2 text-muted text-sm leading-relaxed" set:html={t(lang, 'features.generationSubtitle')} />
+      </div>
+      <div class="mt-auto flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400">
+        View research <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </div>
+    </a>
 
-    <Steps
-      items={[
-        {
-          title: t(lang, 'features.statisticalSimilarityTitle'),
-          description: t(lang, 'features.statisticalSimilarityDesc'),
-          icon: 'tabler:chart-bar',
-        },
-        {
-          title: t(lang, 'features.objectiveRelevanceTitle'),
-          description: t(lang, 'features.objectiveRelevanceDesc'),
-          icon: 'tabler:check',
-        },
-        {
-          title: t(lang, 'features.turingTestTitle'),
-          description: t(lang, 'features.turingTestDesc'),
-          icon: 'tabler:user-check',
-        },
-      ]}
-    />
+    <a href={getRelativeLocaleUrl(lang, '/research/evaluation/')}
+      class="group flex flex-col gap-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-emerald-400 dark:hover:border-emerald-600 transition-all p-8">
+      <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center">
+        <Icon name="tabler:chart-bar" class="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+      </div>
+      <div>
+        <p class="text-xs font-bold tracking-widest uppercase text-emerald-500 mb-1">02</p>
+        <h2 class="text-2xl font-bold font-heading text-heading group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+          {t(lang, 'features.evaluationTitle')}
+        </h2>
+        <p class="mt-2 text-muted text-sm leading-relaxed" set:html={t(lang, 'features.evaluationSubtitle')} />
+      </div>
+      <div class="mt-auto flex items-center gap-1 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+        View research <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </div>
+    </a>
   </div>
-
 </Layout>

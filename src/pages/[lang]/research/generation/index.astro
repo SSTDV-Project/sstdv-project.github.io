@@ -1,7 +1,6 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { locales, type Locale } from '~/i18n';
+import { t, locales, type Locale } from '~/i18n';
 import { Icon } from 'astro-icon/components';
 import Hero from '~/components/widgets/Hero.astro';
 import Layout from '~/layouts/PageLayout.astro';
@@ -11,55 +10,52 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { lang } = Astro.params as { lang: Locale };
+const metadata = { title: t(lang, 'features.generationTitle') };
 
-const metadata = {
-  title: 'Generation',
-};
-
-const capabilities = [
-  {
-    index: 1,
-    icon: 'tabler:brain',
-    title: 'Knowledge Encoding',
-    description: 'Encode domain prior knowledge, including structures, dynamics, and physical constraints, into computable representations and generative models.',
-    href: getRelativeLocaleUrl(lang, '/research/generation/knowledge-encoding/'),
-  },
-  {
-    index: 2,
-    icon: 'tabler:target',
-    title: 'Objective-Reinforced',
-    description: 'Train generative models guided by domain-specific objectives and reward functions.',
-    href: getRelativeLocaleUrl(lang, '/research/generation/objective-reinforced/'),
-  },
-  {
-    index: 3,
-    icon: 'tabler:activity',
-    title: 'Data Assimilation',
-    description: 'Improve spatio-temporal synthesis accuracy by correcting accumulated errors and data gaps through data perturbation techniques.',
-    href: getRelativeLocaleUrl(lang, '/research/generation/data-assimilation/'),
-  },
-  {
-    index: 4,
-    icon: 'tabler:link',
-    title: 'Relationship Modeling',
-    description: 'Model correlations, causality, and teleconnections among multivariate spatio-temporal variables for learning- and inference-based generation.',
-    href: getRelativeLocaleUrl(lang, '/research/generation/relation-modeling/'),
-  },
+const items = [
+  { index: 1, icon: 'tabler:brain',    title: t(lang, 'features.knowledgeEncodingTitle'),      desc: t(lang, 'features.knowledgeEncodingDesc') },
+  { index: 2, icon: 'tabler:target',   title: t(lang, 'features.objectiveReinforcementTitle'), desc: t(lang, 'features.objectiveReinforcementDesc') },
+  { index: 3, icon: 'tabler:activity', title: t(lang, 'features.dataAssimilationTitle'),       desc: t(lang, 'features.dataAssimilationDesc') },
+  { index: 4, icon: 'tabler:link',     title: t(lang, 'features.relationModelingTitle'),       desc: t(lang, 'features.relationModelingDesc') },
 ];
 ---
 
 <Layout metadata={metadata} lang={lang}>
   <Hero
-    tagline="Features"
-    title="Generation"
-    subtitle="Produce high-fidelity synthetic spatio-temporal data through knowledge encoding, objective-reinforced learning, data assimilation, and relation modeling."
+    tagline={t(lang, 'features.generationLabel')}
+    title={t(lang, 'features.generationTitle')}
   />
 
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-    <h2 class="text-2xl font-bold font-heading mb-2">Generation Capabilities</h2>
-    <p class="text-muted mb-8">Each capability addresses a distinct aspect of producing realistic, high-quality synthetic data.</p>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+    <div class="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+      {[
+        {
+          label: 'Objective',
+          color: 'bg-blue-600',
+          text: 'Develop a principled framework for generating high-quality synthetic spatio-temporal data by explicitly integrating domain knowledge at every stage of the synthesis pipeline.',
+        },
+        {
+          label: 'Purpose',
+          color: 'bg-blue-500',
+          text: 'Produce synthetic data that is statistically faithful, structurally coherent, and purpose-aligned, across domains ranging from ocean dynamics to medical imaging.',
+        },
+        {
+          label: 'Methodology',
+          color: 'bg-blue-400',
+          text: 'Encode physical constraints, inter-variable relationships, and task-specific objectives into generative models, rather than relying solely on data-driven learning.',
+        },
+      ].map(({ label, color, text }) => (
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
+          <div class={`${color} px-4 py-2`}>
+            <span class="text-xs font-bold tracking-widest uppercase text-white">{label}</span>
+          </div>
+          <p class="px-5 py-4 text-sm text-muted leading-relaxed">{text}</p>
+        </div>
+      ))}
+    </div>
+
     <div class="flex flex-col gap-4">
-      {capabilities.map(({ index, icon, title, description, href }) => (
+      {items.map(({ index, icon, title, desc }) => (
         <div class="flex gap-5 p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm">
           <div class="flex-shrink-0 flex flex-col items-center pt-1 gap-3">
             <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-primary font-bold text-sm">
@@ -68,12 +64,8 @@ const capabilities = [
             <Icon name={icon} class="w-6 h-6 text-primary" />
           </div>
           <div class="flex-1">
-            <h3 class="text-base font-bold font-heading mb-1.5">{title}</h3>
-            <p class="text-sm text-muted leading-relaxed mb-3">{description}</p>
-            <a href={href} class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
-              Learn more
-              <Icon name="tabler:arrow-right" class="w-4 h-4" />
-            </a>
+            <h3 class="text-base font-bold font-heading mb-2" set:html={title} />
+            <div class="text-sm text-muted leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mt-2 [&_ul]:space-y-1 [&_ul_ul]:mt-1 [&_strong]:font-semibold [&_strong]:text-heading [&_a]:text-primary [&_a]:underline [&_img]:rounded-lg [&_img]:mt-4 [&_img]:w-full" set:html={desc} />
           </div>
         </div>
       ))}

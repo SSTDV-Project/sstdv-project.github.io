@@ -8,7 +8,10 @@ export function getHeaderData(locale: Locale) {
     links: [
       {
         text: t(locale, 'nav.features'),
-        href: getRelativeLocaleUrl(locale, '/research/'),
+        links: [
+          { text: 'Generation', href: getRelativeLocaleUrl(locale, '/research/generation/') },
+          { text: 'Evaluation', href: getRelativeLocaleUrl(locale, '/research/evaluation/') },
+        ],
       },
       {
         text: t(locale, 'nav.useCases'),
