@@ -53,11 +53,10 @@ const metadata = { title: t(lang, 'useCases.heroTitle') };
 
     <!-- Software scenarios -->
     <p class="text-xs font-bold tracking-widest uppercase text-muted mb-3">{t(lang, 'useCases.brainSoftwareLabel')}</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
       {[
         { num: 1, icon: 'tabler:user-question', title: t(lang, 'useCases.brainScenario1Title'), desc: t(lang, 'useCases.brainScenario1Desc') },
         { num: 2, icon: 'tabler:brain',          title: t(lang, 'useCases.brainScenario2Title'), desc: t(lang, 'useCases.brainScenario2Desc') },
-        { num: 3, icon: 'tabler:database',       title: t(lang, 'useCases.brainRequiredDataTitle'), desc: t(lang, 'useCases.brainRequiredDataDesc') },
       ].map(({ num, icon, title, desc }) => (
         <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-5">
           <div class="flex items-center gap-2 mb-3">
@@ -77,12 +76,12 @@ const metadata = { title: t(lang, 'useCases.heroTitle') };
         {
           icon: 'tabler:chart-bar',
           title: 'Quantitative Evaluation',
-          desc: `${t(lang, 'useCases.brainEval1Title')}: ${t(lang, 'useCases.brainEval1Desc')}<br/>${t(lang, 'useCases.brainEval2Title')}: ${t(lang, 'useCases.brainEval2Desc')}`,
+          desc: t(lang, 'useCases.brainEval1Desc'),
         },
         {
           icon: 'tabler:eye',
           title: 'Qualitative Evaluation',
-          desc: `${t(lang, 'useCases.brainEval3Title')}: ${t(lang, 'useCases.brainEval3Desc')}`,
+          desc: t(lang, 'useCases.brainEval3Desc'),
         },
       ].map(({ icon, title, desc }) => (
         <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-sm p-5">
